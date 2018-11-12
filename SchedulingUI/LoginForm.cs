@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace SchedulingUI
 {
-    public partial class MainForm : Form
+    public partial class LoginForm : Form
     {
-        public MainForm()
+        public LoginForm()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
