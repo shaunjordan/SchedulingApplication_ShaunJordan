@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.userNameLabel = new System.Windows.Forms.Label();
@@ -37,58 +38,41 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(106, 106);
+            resources.ApplyResources(this.textBox1, "textBox1");
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(114, 20);
-            this.textBox1.TabIndex = 0;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(106, 155);
+            resources.ApplyResources(this.textBox2, "textBox2");
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(114, 20);
-            this.textBox2.TabIndex = 1;
             // 
             // userNameLabel
             // 
-            this.userNameLabel.AutoSize = true;
-            this.userNameLabel.Location = new System.Drawing.Point(106, 90);
+            resources.ApplyResources(this.userNameLabel, "userNameLabel");
             this.userNameLabel.Name = "userNameLabel";
-            this.userNameLabel.Size = new System.Drawing.Size(60, 13);
-            this.userNameLabel.TabIndex = 2;
-            this.userNameLabel.Text = "User Name";
             // 
             // passwordLabel
             // 
-            this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Location = new System.Drawing.Point(106, 139);
+            resources.ApplyResources(this.passwordLabel, "passwordLabel");
             this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(53, 13);
-            this.passwordLabel.TabIndex = 3;
-            this.passwordLabel.Text = "Password";
             // 
             // loginButton
             // 
-            this.loginButton.Location = new System.Drawing.Point(145, 195);
+            resources.ApplyResources(this.loginButton, "loginButton");
             this.loginButton.Name = "loginButton";
-            this.loginButton.Size = new System.Drawing.Size(75, 23);
-            this.loginButton.TabIndex = 4;
-            this.loginButton.Text = "Login";
             this.loginButton.UseVisualStyleBackColor = true;
             this.loginButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.loginButton);
             this.Controls.Add(this.passwordLabel);
             this.Controls.Add(this.userNameLabel);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Name = "LoginForm";
-            this.Text = "Scheduler";
             this.ResumeLayout(false);
             this.PerformLayout();
 
