@@ -26,13 +26,17 @@ namespace SchedulingUI
 
         private void button1_Click(object sender, EventArgs e)
         {
+            /*
+             * 
+             * Getting the culture info
+             * 
+            CultureInfo ci = new CultureInfo("de-DE");
+            Properties.Resources.Culture = ci;
+            string s1 = SchedulingUI.Properties.Resources.Hello;
+            MessageBox.Show(s1);
+            */
 
-
-
-            //Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("de-DE");
-            //MessageBox.Show(Properties.strings.Hello);
-
-            MessageBox.Show(userLocation.Position.Location.ToString());
+            //MessageBox.Show(userLocation.Position.Location.ToString());
 
             //MySqlConnection connection = new MySqlConnection();
 
@@ -47,6 +51,8 @@ namespace SchedulingUI
             // * display an error to the user in English and German
             // * Messagebox.Show(); 
             // */
+
+           
 
             //connection.Close();
 

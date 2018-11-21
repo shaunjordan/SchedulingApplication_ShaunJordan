@@ -19,5 +19,6 @@ namespace SchedulingUI
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
         }
+
     }
 }
