@@ -4,4 +4,10 @@
     <TargetFramework>netstandard1.4</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="MySql.Data">
+      <HintPath>..\SchedulingUI\bin\Debug\MySql.Data.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
