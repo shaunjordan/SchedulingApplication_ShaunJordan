@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using MySql.Data;
 using MySql.Data.MySqlClient;
+using System.Windows.Forms;
 
-
-namespace SchedulingClassLibrary
+namespace ClassLibrary
 {
     public class DBConnection
     {
@@ -27,20 +29,30 @@ namespace SchedulingClassLibrary
 
             connection = new MySqlConnection(connectionString);
 
-            connection.Open(); //add System.Data as reference
-        }
-
-        private void Connection()
-        {
             try
             {
-                //connection.Open();
+                connection.Open();
 
+                MessageBox.Show("Connected sucessfully");
+
+                connection.Close();
             }
-            catch
+            catch (MySqlException ex)
             {
-
+                MessageBox.Show(ex.Message + connectionString);
             }
         }
+
+        //private void Connection()
+        //{
+        //    try
+        //    {
+        //        connection.Open();
+        //    }
+        //    catch
+        //    {
+
+        //    }
+        //}
     }
 }

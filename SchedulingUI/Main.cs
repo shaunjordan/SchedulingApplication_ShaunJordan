@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using ClassLibrary;
 
 namespace SchedulingUI
 {
@@ -16,6 +16,13 @@ namespace SchedulingUI
         public Main()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DBConnection conn = new DBConnection();
+
+            conn.InitConnection();
         }
     }
 }

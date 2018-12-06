@@ -11,6 +11,7 @@ using System.Threading;
 using System.Globalization;
 using SchedulingUI.Properties;
 using System.Device.Location;
+using ClassLibrary;
 
 namespace SchedulingUI
 {
@@ -25,6 +26,9 @@ namespace SchedulingUI
 
         private void button1_Click(object sender, EventArgs e)
         {
+            DBConnection conn = new DBConnection();
+
+            //conn.
             /*
              * 
              * Getting the culture info
