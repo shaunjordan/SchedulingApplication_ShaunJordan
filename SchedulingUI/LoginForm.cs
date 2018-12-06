@@ -10,8 +10,11 @@ using System.Windows.Forms;
 using System.Threading;
 using System.Globalization;
 using SchedulingUI.Properties;
+using SchedulingUI;
 using System.Device.Location;
 using ClassLibrary;
+using MySql.Data.MySqlClient;
+using MySql.Data;
 
 namespace SchedulingUI
 {
@@ -22,11 +25,23 @@ namespace SchedulingUI
         public LoginForm()
         {
             InitializeComponent();
+
+            //DBConnection conn = new DBConnection();
+
+            //try
+            //{
+            //    conn.InitConnection();
+            //}
+            //catch (MySqlException ex)
+            //{
+
+            //    throw;
+            //}
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void loginButton_Click(object sender, EventArgs e)
         {
-            DBConnection conn = new DBConnection();
+
 
             //conn.
             /*
@@ -54,11 +69,13 @@ namespace SchedulingUI
             // * display an error to the user in English and German
             // * Messagebox.Show(); 
             // */
+            this.Close();
+            Main mainForm = new Main();
 
-           
+            mainForm.Show();
+
 
             //connection.Close();
-
         }
     }
 }

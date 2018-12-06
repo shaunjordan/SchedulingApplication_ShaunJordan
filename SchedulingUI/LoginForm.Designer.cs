@@ -61,7 +61,7 @@
             resources.ApplyResources(this.loginButton, "loginButton");
             this.loginButton.Name = "loginButton";
             this.loginButton.UseVisualStyleBackColor = true;
-            this.loginButton.Click += new System.EventHandler(this.button1_Click);
+            this.loginButton.Click += new System.EventHandler(this.loginButton_Click);
             // 
             // LoginForm
             // 
