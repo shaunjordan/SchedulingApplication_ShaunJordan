@@ -69,12 +69,13 @@ namespace SchedulingUI
             // * display an error to the user in English and German
             // * Messagebox.Show(); 
             // */
-            this.Close();
+            
             Main mainForm = new Main();
 
             mainForm.Show();
 
-
+            this.Hide();
+            
             //connection.Close();
         }
     }
