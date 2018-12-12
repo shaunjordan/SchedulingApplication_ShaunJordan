@@ -32,11 +32,12 @@
             this.apptMgrBtn = new System.Windows.Forms.Button();
             this.custMgrBtn = new System.Windows.Forms.Button();
             this.exitBtn = new System.Windows.Forms.Button();
+            this.reportsBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(52, 388);
+            this.button1.Location = new System.Drawing.Point(409, 386);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -47,7 +48,7 @@
             // apptMgrBtn
             // 
             this.apptMgrBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.apptMgrBtn.Location = new System.Drawing.Point(52, 231);
+            this.apptMgrBtn.Location = new System.Drawing.Point(52, 292);
             this.apptMgrBtn.Name = "apptMgrBtn";
             this.apptMgrBtn.Size = new System.Drawing.Size(130, 23);
             this.apptMgrBtn.TabIndex = 1;
@@ -57,7 +58,7 @@
             // custMgrBtn
             // 
             this.custMgrBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.custMgrBtn.Location = new System.Drawing.Point(208, 231);
+            this.custMgrBtn.Location = new System.Drawing.Point(203, 292);
             this.custMgrBtn.Name = "custMgrBtn";
             this.custMgrBtn.Size = new System.Drawing.Size(130, 23);
             this.custMgrBtn.TabIndex = 2;
@@ -67,18 +68,29 @@
             // exitBtn
             // 
             this.exitBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exitBtn.Location = new System.Drawing.Point(263, 388);
+            this.exitBtn.Location = new System.Drawing.Point(409, 342);
             this.exitBtn.Name = "exitBtn";
             this.exitBtn.Size = new System.Drawing.Size(75, 23);
             this.exitBtn.TabIndex = 3;
             this.exitBtn.Text = "Exit";
             this.exitBtn.UseVisualStyleBackColor = true;
             // 
+            // reportsBtn
+            // 
+            this.reportsBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.reportsBtn.Location = new System.Drawing.Point(354, 292);
+            this.reportsBtn.Name = "reportsBtn";
+            this.reportsBtn.Size = new System.Drawing.Size(130, 23);
+            this.reportsBtn.TabIndex = 4;
+            this.reportsBtn.Text = "Reports";
+            this.reportsBtn.UseVisualStyleBackColor = true;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.reportsBtn);
             this.Controls.Add(this.exitBtn);
             this.Controls.Add(this.custMgrBtn);
             this.Controls.Add(this.apptMgrBtn);
@@ -95,5 +107,6 @@
         private System.Windows.Forms.Button apptMgrBtn;
         private System.Windows.Forms.Button custMgrBtn;
         private System.Windows.Forms.Button exitBtn;
+        private System.Windows.Forms.Button reportsBtn;
     }
 }
