@@ -74,7 +74,7 @@ namespace SchedulingUI
 
             mainForm.Show();
 
-            this.Hide();
+            //this.Hide();
             
             //connection.Close();
         }

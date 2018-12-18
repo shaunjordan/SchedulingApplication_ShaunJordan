@@ -183,6 +183,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="U05FdzDataSet.xsc">
+      <DependentUpon>U05FdzDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="U05FdzDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="U05FdzDataSet.xss">
+      <DependentUpon>U05FdzDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

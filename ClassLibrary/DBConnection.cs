@@ -18,7 +18,7 @@ namespace ClassLibrary
         private string password;
         private string connectionString;
 
-        public void InitConnection()
+        public string InitConnection()
         {
             server = "52.206.157.109";
             databaseName = "U05Fdz";
@@ -35,12 +35,19 @@ namespace ClassLibrary
 
                 MessageBox.Show("Connected sucessfully");
 
-                connection.Close();
+                
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message + connectionString);
             }
+
+            return connectionString;
+        }
+
+        public void CloseConnection()
+        {
+            connection.Close();
         }
 
         //private void Connection()

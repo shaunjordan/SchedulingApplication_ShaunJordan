@@ -20,9 +20,15 @@ namespace SchedulingUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DBConnection conn = new DBConnection();
+            //DBConnection conn = new DBConnection();
 
-            conn.InitConnection();
+            //conn.InitConnection();
+        }
+
+        private void custMgrBtn_Click(object sender, EventArgs e)
+        {
+            Customers customers = new Customers();
+            customers.Show();
         }
     }
 }

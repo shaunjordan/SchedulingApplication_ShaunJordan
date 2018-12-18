@@ -32,8 +32,8 @@
             this.delCustBtn = new System.Windows.Forms.Button();
             this.editCustBtn = new System.Windows.Forms.Button();
             this.addCustBtn = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.customersDataGrid = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.customersDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // backBtn
@@ -76,28 +76,35 @@
             this.addCustBtn.Text = "Add New Customer";
             this.addCustBtn.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // customersDataGrid
             // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(78, 32);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(351, 294);
-            this.dataGridView1.TabIndex = 10;
+            this.customersDataGrid.AllowUserToAddRows = false;
+            this.customersDataGrid.AllowUserToDeleteRows = false;
+            this.customersDataGrid.AllowUserToResizeColumns = false;
+            this.customersDataGrid.AllowUserToResizeRows = false;
+            this.customersDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.customersDataGrid.Location = new System.Drawing.Point(78, 32);
+            this.customersDataGrid.MultiSelect = false;
+            this.customersDataGrid.Name = "customersDataGrid";
+            this.customersDataGrid.ReadOnly = true;
+            this.customersDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.customersDataGrid.ShowEditingIcon = false;
+            this.customersDataGrid.Size = new System.Drawing.Size(351, 294);
+            this.customersDataGrid.TabIndex = 10;
             // 
             // Customers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.customersDataGrid);
             this.Controls.Add(this.backBtn);
             this.Controls.Add(this.delCustBtn);
             this.Controls.Add(this.editCustBtn);
             this.Controls.Add(this.addCustBtn);
             this.Name = "Customers";
             this.Text = "Customers";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.customersDataGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -108,6 +115,6 @@
         private System.Windows.Forms.Button delCustBtn;
         private System.Windows.Forms.Button editCustBtn;
         private System.Windows.Forms.Button addCustBtn;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView customersDataGrid;
     }
 }

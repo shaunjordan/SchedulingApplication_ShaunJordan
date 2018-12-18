@@ -64,6 +64,7 @@
             this.custMgrBtn.TabIndex = 2;
             this.custMgrBtn.Text = "Manage Customers";
             this.custMgrBtn.UseVisualStyleBackColor = true;
+            this.custMgrBtn.Click += new System.EventHandler(this.custMgrBtn_Click);
             // 
             // exitBtn
             // 
