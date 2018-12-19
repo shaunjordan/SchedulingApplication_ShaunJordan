@@ -27,9 +27,11 @@ namespace ClassLibrary
             int rowCount = Convert.ToInt32(results.Rows.Count.ToString());
 
             //TODO: try statements and develop messages class to take a delegate?
+                      
 
             conn.CloseConnection();
             return rowCount;
         }
+        
     }
 }
