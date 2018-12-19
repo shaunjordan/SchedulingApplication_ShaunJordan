@@ -33,9 +33,8 @@ namespace ClassLibrary
             {
                 connection.Open();
 
-                MessageBox.Show("Connected sucessfully");
+                //MessageBox.Show("Connected sucessfully");
 
-                
             }
             catch (MySqlException ex)
             {

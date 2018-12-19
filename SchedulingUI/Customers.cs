@@ -11,6 +11,7 @@ using ClassLibrary;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 
+
 namespace SchedulingUI
 {
     public partial class Customers : Form
@@ -19,8 +20,7 @@ namespace SchedulingUI
         {
             InitializeComponent();
             DBConnection connection = new DBConnection();
-            //connection.InitConnection();
-
+            
             string select = "SELECT customerId, customerName FROM customer";
            
             MySqlDataAdapter adapter = new MySqlDataAdapter(select, connection.InitConnection());
@@ -29,7 +29,6 @@ namespace SchedulingUI
             adapter.Fill(ds);
 
             customersDataGrid.DataSource = ds.Tables[0];
-            //customersDataGrid.AutoGenerateColumns = true;
             customersDataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             customersDataGrid.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 

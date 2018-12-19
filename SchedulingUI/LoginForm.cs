@@ -25,24 +25,21 @@ namespace SchedulingUI
         public LoginForm()
         {
             InitializeComponent();
-
-            //DBConnection conn = new DBConnection();
-
-            //try
-            //{
-            //    conn.InitConnection();
-            //}
-            //catch (MySqlException ex)
-            //{
-
-            //    throw;
-            //}
+                        
         }
 
         private void loginButton_Click(object sender, EventArgs e)
         {
 
+            UserLogin login = new UserLogin();
 
+            string user = userNameInput.Text;
+            string pass = passwordInput.Text;
+
+            int result = login.ValidLogin(user, pass);
+
+
+            #region Test
             //conn.
             /*
              * 
@@ -69,6 +66,7 @@ namespace SchedulingUI
             // * display an error to the user in English and German
             // * Messagebox.Show(); 
             // */
+            #endregion
 
             CultureInfo currentCulture = CultureInfo.CurrentCulture;
             
