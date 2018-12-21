@@ -12,7 +12,7 @@ namespace ClassLibrary
 {
     public class UserLogin
     {
-        public int ValidLogin(string userName, string password)
+        public bool Login(string userName, string password)
         {
 
             DBConnection conn = new DBConnection();
@@ -27,10 +27,16 @@ namespace ClassLibrary
             int rowCount = Convert.ToInt32(results.Rows.Count.ToString());
 
             //TODO: try statements and develop messages class to take a delegate?
-                      
-
             conn.CloseConnection();
-            return rowCount;
+            if (rowCount > 0)
+            {
+                return true;
+            } else
+            {
+                return false;
+            }
+            
+
         }
         
     }

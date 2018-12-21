@@ -36,7 +36,7 @@ namespace SchedulingUI
             string user = userNameInput.Text;
             string pass = passwordInput.Text;
 
-            int result = login.ValidLogin(user, pass);
+            bool validLogin = login.Login(user, pass);
 
 
             #region Test
@@ -68,10 +68,20 @@ namespace SchedulingUI
             // */
             #endregion
 
-            CultureInfo currentCulture = CultureInfo.CurrentCulture;
+            //CultureInfo currentCulture = CultureInfo.CurrentCulture;
+
+            if (validLogin)
+            {
+                DialogResult = System.Windows.Forms.DialogResult.OK;
+            } else
+            {
+                //return some other catch exception here.
+                DialogResult = System.Windows.Forms.DialogResult.None;
+                MessageBox.Show("Login Invalid");
+            }
             
 
-            MessageBox.Show(currentCulture.ToString());
+            //MessageBox.Show(currentCulture.ToString());
 
             //Main mainForm = new Main();
 

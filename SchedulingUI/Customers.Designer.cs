@@ -39,7 +39,7 @@
             // backBtn
             // 
             this.backBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.backBtn.Location = new System.Drawing.Point(343, 391);
+            this.backBtn.Location = new System.Drawing.Point(641, 406);
             this.backBtn.Name = "backBtn";
             this.backBtn.Size = new System.Drawing.Size(81, 23);
             this.backBtn.TabIndex = 9;
@@ -49,7 +49,7 @@
             // delCustBtn
             // 
             this.delCustBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.delCustBtn.Location = new System.Drawing.Point(331, 346);
+            this.delCustBtn.Location = new System.Drawing.Point(624, 344);
             this.delCustBtn.Name = "delCustBtn";
             this.delCustBtn.Size = new System.Drawing.Size(98, 23);
             this.delCustBtn.TabIndex = 8;
@@ -59,17 +59,18 @@
             // editCustBtn
             // 
             this.editCustBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.editCustBtn.Location = new System.Drawing.Point(196, 346);
+            this.editCustBtn.Location = new System.Drawing.Point(462, 344);
             this.editCustBtn.Name = "editCustBtn";
             this.editCustBtn.Size = new System.Drawing.Size(129, 23);
             this.editCustBtn.TabIndex = 7;
             this.editCustBtn.Text = "Edit Selected Customer";
             this.editCustBtn.UseVisualStyleBackColor = true;
+            this.editCustBtn.Click += new System.EventHandler(this.editCustBtn_Click);
             // 
             // addCustBtn
             // 
             this.addCustBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addCustBtn.Location = new System.Drawing.Point(78, 346);
+            this.addCustBtn.Location = new System.Drawing.Point(317, 344);
             this.addCustBtn.Name = "addCustBtn";
             this.addCustBtn.Size = new System.Drawing.Size(112, 23);
             this.addCustBtn.TabIndex = 6;
@@ -83,13 +84,13 @@
             this.customersDataGrid.AllowUserToResizeColumns = false;
             this.customersDataGrid.AllowUserToResizeRows = false;
             this.customersDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.customersDataGrid.Location = new System.Drawing.Point(78, 32);
+            this.customersDataGrid.Location = new System.Drawing.Point(25, 32);
             this.customersDataGrid.MultiSelect = false;
             this.customersDataGrid.Name = "customersDataGrid";
             this.customersDataGrid.ReadOnly = true;
             this.customersDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.customersDataGrid.ShowEditingIcon = false;
-            this.customersDataGrid.Size = new System.Drawing.Size(351, 294);
+            this.customersDataGrid.Size = new System.Drawing.Size(733, 294);
             this.customersDataGrid.TabIndex = 10;
             // 
             // Customers

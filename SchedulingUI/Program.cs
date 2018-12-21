@@ -17,7 +17,18 @@ namespace SchedulingUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+            Application.Run(new Main());
+
+            // TODO: add this back after debugging. 
+            //Main mainScreen = new Main();
+            //LoginForm loginForm = new LoginForm();
+
+            //if (loginForm.ShowDialog() == DialogResult.OK)
+            //{
+            //    Application.Run(mainScreen);
+            //}
+
+            
         }
 
     }
