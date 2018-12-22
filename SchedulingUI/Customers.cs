@@ -20,6 +20,12 @@ namespace SchedulingUI
         {
             InitializeComponent();
             DBConnection connection = new DBConnection();
+            
+            MySqlConnection conn = new MySqlConnection(connection.InitConnection());
+
+            conn.Open();
+
+            List <Customer> allCustomers = new List<Customer>();
 
             string select = "SELECT " +
                             "cust.customerId Customer_Id, " +
@@ -34,21 +40,42 @@ namespace SchedulingUI
                             "INNER JOIN country ctry ON ctry.countryId = city.countryId " +
                             "ORDER BY cust.customerId ASC";
 
-            //string select = "SELECT customerName from customer";
-
-            MySqlDataAdapter adapter = new MySqlDataAdapter(select, connection.InitConnection());
-            DataSet ds = new DataSet();
-
-            adapter.Fill(ds);
-
-            customersDataGrid.DataSource = ds.Tables[0];
-            customersDataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            for (int i = 0; i < customersDataGrid.RowCount; i++)
+            using (MySqlCommand command = new MySqlCommand(select, conn))
             {
-                customersDataGrid.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                using (MySqlDataReader reader = command.ExecuteReader()) {
+                    if (reader != null)
+                    {
+                        while (reader.Read())
+                        {
+                            Customer customer = new Customer();
+                            customer.CustomerName = reader["userName"].ToString();
+                            customer.CustomerId = Convert.ToInt32(reader["customerId"]);
+                            allCustomers.Add(customer);
+                        }
+                    }
+                }
+
             }
 
-            connection.CloseConnection();                       
+            //string select = "SELECT customerName from customer";
+
+            //MySqlDataAdapter adapter = new MySqlDataAdapter(select, connection.InitConnection());
+            //DataSet ds = new DataSet();
+
+            //adapter.Fill(ds);
+
+            //MySqlDataReader dataReader =
+
+            customersDataGrid.DataSource = allCustomers;
+
+            //customersDataGrid.DataSource = ds.Tables[0];
+            //customersDataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            //for (int i = 0; i < customersDataGrid.RowCount; i++)
+            //{
+            //    customersDataGrid.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            //}
+
+            conn.Close();
         }
 
         private void editCustBtn_Click(object sender, EventArgs e)

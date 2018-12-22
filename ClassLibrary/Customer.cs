@@ -7,9 +7,11 @@ using System.ComponentModel;
 
 namespace ClassLibrary
 {
-    class Customer
+    public class Customer
     {
         //Members
+
+        public List<Customer> allCustomers;
 
         [DisplayName("Customer ID")]
         public int CustomerId { get; set; }
@@ -37,7 +39,11 @@ namespace ClassLibrary
 
         // Methods
 
-        public void AddCustomer() { }
+        public void AddCustomer(Customer customer) {
+
+            allCustomers.Add(customer);
+
+        }
         //Will need to implement database 
     }
 }
