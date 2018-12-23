@@ -19,23 +19,38 @@ namespace ClassLibrary
         [DisplayName("Customer Name")]
         public string CustomerName { get; set; }
 
-        [Browsable(false)]
-        public int AddressId { get; set; }
+        [DisplayName("Address 1")]
+        public string Address1 { get; set; }
 
-        [Browsable(false)]
-        public int Active { get; set; }
+        [DisplayName("Address 2")]
+        public string Address2 { get; set; }
 
-        [Browsable(false)]
-        public DateTime CreateDate { get; set; }
+        [DisplayName("City")]
+        public string City { get; set; }
 
-        [Browsable(false)]
-        public string CreatedBy { get; set; }
+        [DisplayName("Postal Code")]
+        public string PostalCode { get; set; }
 
-        [Browsable(false)]
-        public DateTime LastUpdated { get; set; }
+        [DisplayName("Country")]
+        public string Country { get; set; }
 
-        [Browsable(false)]
-        public string LastUpdateBy { get; set; }
+        //[Browsable(false)]
+        //public int AddressId { get; set; }
+
+        //[Browsable(false)]
+        //public int Active { get; set; }
+
+        //[Browsable(false)]
+        //public DateTime CreateDate { get; set; }
+
+        //[Browsable(false)]
+        //public string CreatedBy { get; set; }
+
+        //[Browsable(false)]
+        //public DateTime LastUpdated { get; set; }
+
+        //[Browsable(false)]
+        //public string LastUpdateBy { get; set; }
 
         // Methods
 

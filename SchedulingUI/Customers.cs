@@ -20,10 +20,12 @@ namespace SchedulingUI
         {
             InitializeComponent();
             DBConnection connection = new DBConnection();
-            
-            MySqlConnection conn = new MySqlConnection(connection.InitConnection());
 
-            conn.Open();
+            connection.InitConnection();
+
+            //MySqlConnection conn = new MySqlConnection(connection.InitConnection());
+
+            //connection.InitConnection();
 
             List <Customer> allCustomers = new List<Customer>();
 
@@ -40,22 +42,51 @@ namespace SchedulingUI
                             "INNER JOIN country ctry ON ctry.countryId = city.countryId " +
                             "ORDER BY cust.customerId ASC";
 
-            using (MySqlCommand command = new MySqlCommand(select, conn))
-            {
-                using (MySqlDataReader reader = command.ExecuteReader()) {
-                    if (reader != null)
-                    {
-                        while (reader.Read())
-                        {
-                            Customer customer = new Customer();
-                            customer.CustomerName = reader["userName"].ToString();
-                            customer.CustomerId = Convert.ToInt32(reader["customerId"]);
-                            allCustomers.Add(customer);
-                        }
-                    }
-                }
+            MySqlCommand cmd = new MySqlCommand(select, connection.GetConnection());
 
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader != null)
+            {
+                while (reader.Read())
+                {
+                    Customer customer = new Customer();
+
+                    customer.CustomerId = Convert.ToInt32(reader[0]);
+                    customer.CustomerName = reader[1].ToString();
+                    customer.Address1 = reader[2].ToString();
+                    customer.Address2 = reader[3].ToString();
+                    customer.City = reader[4].ToString();
+                    customer.PostalCode = reader[5].ToString();
+                    customer.Country = reader[6].ToString();
+
+                    allCustomers.Add(customer);
+                }
             }
+            //using (MySqlCommand command = new MySqlCommand(select, connection.GetConnection()))
+            //{
+            //    using (MySqlDataReader reader = command.ExecuteReader())
+            //    {
+            //        if (reader != null)
+            //        {
+            //            while (reader.Read())
+            //            {
+            //                Customer customer = new Customer();
+
+            //                customer.CustomerId = Convert.ToInt32(reader["customerId"]);
+            //                customer.CustomerName = reader["customerName"].ToString();
+            //                customer.Address1 = reader["address"].ToString();
+            //                customer.Address2 = reader["address2"].ToString();
+            //                customer.City = reader["city"].ToString();
+            //                customer.PostalCode = reader["postalcode"].ToString();
+            //                customer.Country = reader["country"].ToString();
+
+            //                allCustomers.Add(customer);
+            //            }
+            //        }
+            //    }
+
+            //}
 
             //string select = "SELECT customerName from customer";
 
@@ -75,13 +106,13 @@ namespace SchedulingUI
             //    customersDataGrid.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             //}
 
-            conn.Close();
+            connection.CloseConnection();
         }
 
         private void editCustBtn_Click(object sender, EventArgs e)
         {
             //customersDataGrid.SelectedRows.
-            //MessageBox.Show(customersDataGrid.CurrentRow.Index(0).ToString());
+            MessageBox.Show(customersDataGrid.CurrentRow.DataBoundItem.ToString());
         }
     }
 }

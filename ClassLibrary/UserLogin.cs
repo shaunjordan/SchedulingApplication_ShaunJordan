@@ -16,20 +16,26 @@ namespace ClassLibrary
         {
 
             DBConnection conn = new DBConnection();
-                                   
-            string loginQuery = "SELECT * FROM user WHERE userName = '"+userName+"' AND password = '"+password+"'";
-            
             DataTable results = new DataTable();
-            MySqlDataAdapter dataAdapter = new MySqlDataAdapter(loginQuery, conn.InitConnection());
+
+            conn.InitConnection();
+
+            string loginQuery = "SELECT * FROM user WHERE userName = '"+userName+"' AND password = '"+password+"'";
+
+
+            MySqlCommand cmd = new MySqlCommand(loginQuery, conn.GetConnection());
+                       
+            MySqlDataAdapter dataAdapter = new MySqlDataAdapter();
+            dataAdapter.SelectCommand = cmd;
 
             dataAdapter.Fill(results);
-
             int rowCount = Convert.ToInt32(results.Rows.Count.ToString());
 
             //TODO: try statements and develop messages class to take a delegate?
-            conn.CloseConnection();
+            
             if (rowCount > 0)
             {
+                conn.CloseConnection();
                 return true;
             } else
             {

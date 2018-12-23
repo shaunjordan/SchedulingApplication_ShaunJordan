@@ -28,22 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.testConn = new System.Windows.Forms.Button();
             this.apptMgrBtn = new System.Windows.Forms.Button();
             this.custMgrBtn = new System.Windows.Forms.Button();
             this.exitBtn = new System.Windows.Forms.Button();
             this.reportsBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // button1
+            // testConn
             // 
-            this.button1.Location = new System.Drawing.Point(409, 386);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "dbtest";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.testConn.Location = new System.Drawing.Point(409, 386);
+            this.testConn.Name = "testConn";
+            this.testConn.Size = new System.Drawing.Size(75, 23);
+            this.testConn.TabIndex = 0;
+            this.testConn.Text = "dbtest";
+            this.testConn.UseVisualStyleBackColor = true;
+            this.testConn.Click += new System.EventHandler(this.button1_Click);
             // 
             // apptMgrBtn
             // 
@@ -95,7 +95,7 @@
             this.Controls.Add(this.exitBtn);
             this.Controls.Add(this.custMgrBtn);
             this.Controls.Add(this.apptMgrBtn);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.testConn);
             this.Name = "Main";
             this.Text = "Main";
             this.ResumeLayout(false);
@@ -104,7 +104,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button testConn;
         private System.Windows.Forms.Button apptMgrBtn;
         private System.Windows.Forms.Button custMgrBtn;
         private System.Windows.Forms.Button exitBtn;

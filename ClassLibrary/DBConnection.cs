@@ -12,36 +12,34 @@ namespace ClassLibrary
     public class DBConnection
     {
         private MySqlConnection connection;
-        private string server;
-        private string databaseName;
-        private string user;
-        private string password;
+        private string server = "52.206.157.109";
+        private string databaseName = "U05Fdz";
+        private string user = "U05Fdz";
+        private string password = "53688484989";
         private string connectionString;
 
-        public string InitConnection()
+        public void InitConnection()
         {
-            server = "52.206.157.109";
-            databaseName = "U05Fdz";
-            user = "U05Fdz";
-            password = "53688484989";
-
+            
             connectionString = String.Format("server={0}; database={1}; username={2}; password={3}", server, databaseName, user, password);
-
-            connection = new MySqlConnection(connectionString);
 
             try
             {
+                connection = new MySqlConnection(connectionString);
                 connection.Open();
-
-                //MessageBox.Show("Connected sucessfully");
-
+                //MessageBox.Show("Connection open");
             }
             catch (MySqlException ex)
             {
                 MessageBox.Show(ex.Message + connectionString);
             }
 
-            return connectionString;
+        }
+
+        public MySqlConnection GetConnection()
+        {
+            return connection;
+           
         }
 
         public void CloseConnection()
