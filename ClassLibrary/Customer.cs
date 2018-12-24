@@ -34,6 +34,9 @@ namespace ClassLibrary
         [DisplayName("Country")]
         public string Country { get; set; }
 
+        [DisplayName("Phone")]
+        public string Phone { get; set; }
+
         //[Browsable(false)]
         //public int AddressId { get; set; }
 

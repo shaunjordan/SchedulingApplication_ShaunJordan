@@ -21,6 +21,7 @@ namespace SchedulingUI
             InitializeComponent();
             DBConnection connection = new DBConnection();
 
+            
             connection.InitConnection();
 
             //MySqlConnection conn = new MySqlConnection(connection.InitConnection());
