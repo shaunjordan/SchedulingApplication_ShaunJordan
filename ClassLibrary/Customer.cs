@@ -11,7 +11,7 @@ namespace ClassLibrary
     {
         //Members
 
-        public List<Customer> allCustomers;
+        public List<Customer> AllCustomers = new List<Customer>();
 
         [DisplayName("Customer ID")]
         public int CustomerId { get; set; }
@@ -31,11 +31,13 @@ namespace ClassLibrary
         [DisplayName("Postal Code")]
         public string PostalCode { get; set; }
 
+        [DisplayName("Phone")]
+        public string Phone { get; set; }
+
         [DisplayName("Country")]
         public string Country { get; set; }
 
-        [DisplayName("Phone")]
-        public string Phone { get; set; }
+        
 
         //[Browsable(false)]
         //public int AddressId { get; set; }
@@ -59,9 +61,16 @@ namespace ClassLibrary
 
         public void AddCustomer(Customer customer) {
 
-            allCustomers.Add(customer);
+            AllCustomers.Add(customer);
 
         }
+
+        public List<Customer> GetCustomers()
+        {
+            return AllCustomers;
+        }
+
+        //public List<Customer> AllCustomers { get; set; }
         //Will need to implement database 
     }
 }

@@ -76,6 +76,7 @@
             this.addCustBtn.TabIndex = 6;
             this.addCustBtn.Text = "Add New Customer";
             this.addCustBtn.UseVisualStyleBackColor = true;
+            this.addCustBtn.Click += new System.EventHandler(this.addCustBtn_Click);
             // 
             // customersDataGrid
             // 
