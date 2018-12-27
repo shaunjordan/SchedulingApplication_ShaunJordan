@@ -14,6 +14,9 @@ namespace SchedulingUI
 {
     public partial class AddCustomer : Form
     {
+
+        DBConnection connection = new DBConnection();
+
         public AddCustomer()
         {
             InitializeComponent();
@@ -23,27 +26,27 @@ namespace SchedulingUI
         private void saveCustBtn_Click(object sender, EventArgs e)
         {
 
-            DBConnection connection = new DBConnection();
-            connection.InitConnection();
-                        
+            //DBConnection connection = new DBConnection();
+            //connection.InitConnection();
 
-            Customer customer = new Customer();            
 
-            //customer.CustomerId auto increment the id
-            customer.CustomerName = custNameTextBox.Text;
-            customer.Address1 = addressLine1.Text;
-            customer.Address2 = addressLine2.Text;
-            customer.City = cityTextBox.Text;
-            customer.PostalCode = postalCodeTextbox.Text;
-            customer.Phone = phoneTextBox.Text;
-            customer.Country = countryTextBox.Text;
+            //Customer customer = new Customer();            
 
-            int countryId = 47;
-            //TODO: try here
-            //TODO: replace admin with user
-            string addCountry = "INSERT INTO country VALUES(" + countryId + ",'" + customer.Country  + "', current_timestamp(), 'admin', current_timestamp(), 'admin')";
-            MySqlCommand cmd = new MySqlCommand(addCountry, connection.GetConnection());
-            cmd.ExecuteNonQuery();
+            ////customer.CustomerId auto increment the id
+            //customer.CustomerName = custNameTextBox.Text;
+            //customer.Address1 = addressLine1.Text;
+            //customer.Address2 = addressLine2.Text;
+            //customer.City = cityTextBox.Text;
+            //customer.PostalCode = postalCodeTextbox.Text;
+            //customer.Phone = phoneTextBox.Text;
+            //customer.Country = countryTextBox.Text;
+
+            //int countryId = 47;
+            ////TODO: try here
+            ////TODO: replace admin with user
+            //string addCountry = "INSERT INTO country VALUES(" + countryId + ",'" + customer.Country  + "', current_timestamp(), 'admin', current_timestamp(), 'admin')";
+            //MySqlCommand cmd = new MySqlCommand(addCountry, connection.GetConnection());
+            //cmd.ExecuteNonQuery();
 
             //int countryId = Convert.ToInt32(cmd.LastInsertedId);
 
@@ -52,9 +55,9 @@ namespace SchedulingUI
 
             //cmd.ExecuteNonQuery();
 
-            MessageBox.Show(cmd.LastInsertedId.ToString());
+            //MessageBox.Show(cmd.LastInsertedId.ToString());
 
-           
+           //CustomerDatabase
 
             /*
              * insert into city
@@ -78,6 +81,27 @@ namespace SchedulingUI
             //customerName = customerNameTextBox.Text
             //customer.
             //conn.Close();
+            //connection.CloseConnection();
+
+        }
+
+        private void cancelCustBtn_Click(object sender, EventArgs e)
+        {
+            
+            connection.InitConnection();
+
+            string select = "SELECT countryId" + " FROM city WHERE city = @cityName;";
+            
+
+            MySqlCommand cmd = new MySqlCommand(select, connection.GetConnection());
+            cmd.Parameters.AddWithValue("@cityName", cityTextBox.Text);
+
+            //MySqlDataReader reader = cmd.ExecuteReader();
+
+            int result = Convert.ToInt32(cmd.ExecuteScalar());
+
+            MessageBox.Show(result.ToString());
+
             connection.CloseConnection();
 
         }

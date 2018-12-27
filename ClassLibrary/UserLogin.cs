@@ -36,6 +36,7 @@ namespace ClassLibrary
             if (rowCount > 0)
             {
                 conn.CloseConnection();
+                dataAdapter.Dispose();
                 return true;
             } else
             {

@@ -67,15 +67,11 @@ namespace SchedulingUI
             
             customersDataGrid.DataSource = allCustomers;
 
-            //customersDataGrid.DataSource = ds.Tables[0];
-            //customersDataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
-            //for (int i = 0; i < customersDataGrid.RowCount; i++)
-            //{
-            //    customersDataGrid.Columns[i].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            //}
-
+            reader.Close();
+            reader.Dispose();
             connection.CloseConnection();
-            //conn.Close();
+            
+            
         }
 
         private void editCustBtn_Click(object sender, EventArgs e)

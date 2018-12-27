@@ -192,6 +192,7 @@
             this.cancelCustBtn.TabIndex = 11;
             this.cancelCustBtn.Text = "Cancel";
             this.cancelCustBtn.UseVisualStyleBackColor = true;
+            this.cancelCustBtn.Click += new System.EventHandler(this.cancelCustBtn_Click);
             // 
             // saveCustBtn
             // 
