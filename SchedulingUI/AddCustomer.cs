@@ -90,18 +90,20 @@ namespace SchedulingUI
             
             connection.InitConnection();
 
-            string select = "SELECT countryId" + " FROM city WHERE city = @cityName;";
+            string ctrn = "select_city";
             
+            //TODO: update stored procedure
 
-            MySqlCommand cmd = new MySqlCommand(select, connection.GetConnection());
-            cmd.Parameters.AddWithValue("@cityName", cityTextBox.Text);
+            MySqlCommand cmd = new MySqlCommand(ctrn, connection.GetConnection());
+            cmd.Parameters.AddWithValue("@cty", cityTextBox.Text);
 
-            //MySqlDataReader reader = cmd.ExecuteReader();
+            cmd.CommandType = CommandType.StoredProcedure;
 
             int result = Convert.ToInt32(cmd.ExecuteScalar());
 
             MessageBox.Show(result.ToString());
 
+            
             connection.CloseConnection();
 
         }
