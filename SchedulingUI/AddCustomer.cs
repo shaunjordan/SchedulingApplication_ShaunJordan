@@ -90,12 +90,12 @@ namespace SchedulingUI
             
             connection.InitConnection();
 
-            string ctrn = "select_city";
+            string ctrn = "select_country";
             
             //TODO: update stored procedure
 
             MySqlCommand cmd = new MySqlCommand(ctrn, connection.GetConnection());
-            cmd.Parameters.AddWithValue("@cty", cityTextBox.Text);
+            cmd.Parameters.AddWithValue("@ctry", countrySelectBox.Text);
 
             cmd.CommandType = CommandType.StoredProcedure;
 

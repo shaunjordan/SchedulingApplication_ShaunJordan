@@ -13,16 +13,18 @@ namespace SchedulingUI
 {
     public partial class Main : Form
     {
-        public Main()
+        public Main(int userId)
         {
+            //TODO - I need to pass the user id out of here
+            //maybe create a user object and add it to a list
+            int user = userId;
             InitializeComponent();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DBConnection conn = new DBConnection();
-
-            conn.GetConnection();
+            
         }
 
         private void custMgrBtn_Click(object sender, EventArgs e)

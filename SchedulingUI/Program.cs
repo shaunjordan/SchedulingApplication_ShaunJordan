@@ -17,7 +17,7 @@ namespace SchedulingUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main());
+            Application.Run(new Main(1));
 
             // TODO: add this back after debugging. 
             //Main mainScreen = new Main();

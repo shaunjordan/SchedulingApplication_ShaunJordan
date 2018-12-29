@@ -53,12 +53,12 @@ namespace ClassLibrary
         private int GetCountryId(string countryName)
         {
             //TODO: connection is init in AddCustomer does it need to be added here as well? or passed into this param?
-            string ctryRtn = "ins_ctry";
+            string ctryRtn = "select_ctry";
             int result;
 
 
                 MySqlCommand cmd = new MySqlCommand(ctryRtn, connection.GetConnection());
-            cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@ctry", countryName);
 
                 result = Convert.ToInt32(cmd.ExecuteScalar());
