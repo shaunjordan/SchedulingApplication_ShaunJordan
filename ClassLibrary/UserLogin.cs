@@ -46,32 +46,41 @@ namespace ClassLibrary
 
         }
 
-        public int ValidLogin(string userName, string password)
+        public User ValidLogin(string userName, string password)
         {
 
             DBConnection conn = new DBConnection();
-            int userId;
-
 
             conn.InitConnection();
 
 
-            string loginQuery = "SELECT userId " + "FROM user WHERE userName = @userName AND password = @password";
+            string loginQuery = "SELECT userId, userName " + "FROM user WHERE userName = @userName AND password = @password";
 
             MySqlCommand cmd = new MySqlCommand(loginQuery, conn.GetConnection());
 
             cmd.Parameters.AddWithValue("@userName", userName);
             cmd.Parameters.AddWithValue("@password", password);
-                       
-            
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+
 
             try
             {
-                userId = Convert.ToInt32(cmd.ExecuteScalar());
+                User validUser = new User();
 
+                while (reader.Read())
+                {
+                    validUser.UserId = Convert.ToInt32(reader[0]);
+                    validUser.UserName = reader[1].ToString();
+                }
+                                        
+
+                reader.Close();
+                reader.Dispose();
                 conn.CloseConnection();
 
-                return userId;
+                return validUser;
+                
             }
             catch (Exception)
             {

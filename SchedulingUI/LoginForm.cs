@@ -31,13 +31,31 @@ namespace SchedulingUI
         private void loginButton_Click(object sender, EventArgs e)
         {
 
+
+            GetLoggedInUser();
+            //if (validLogin)
+            //{
+            //    DialogResult = System.Windows.Forms.DialogResult.OK;
+            //} else
+            //{
+            //    //return some other catch exception here.
+            //    DialogResult = System.Windows.Forms.DialogResult.None;
+            //    MessageBox.Show("Login Invalid");
+            //}
+
+        }
+
+        public User GetLoggedInUser()
+        {
+
             UserLogin login = new UserLogin();
 
             string user = userNameInput.Text;
             string pass = passwordInput.Text;
 
-            //bool validLogin = login.Login(user, pass);
-            int userId = login.ValidLogin(user, pass);
+
+
+            User validUser = login.ValidLogin(user, pass);
 
 
             #region Test
@@ -70,7 +88,7 @@ namespace SchedulingUI
             #endregion
 
 
-            if (userId > 0)
+            if (validUser.UserId > 0)
             {
                 DialogResult = System.Windows.Forms.DialogResult.OK;
 
@@ -81,18 +99,7 @@ namespace SchedulingUI
                 MessageBox.Show("Login Invalid");
             }
 
-            //if (validLogin)
-            //{
-            //    DialogResult = System.Windows.Forms.DialogResult.OK;
-            //} else
-            //{
-            //    //return some other catch exception here.
-            //    DialogResult = System.Windows.Forms.DialogResult.None;
-            //    MessageBox.Show("Login Invalid");
-            //}
-
-
-
+            return validUser;
 
         }
     }

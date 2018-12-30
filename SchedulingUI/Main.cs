@@ -13,11 +13,11 @@ namespace SchedulingUI
 {
     public partial class Main : Form
     {
-        public Main(int userId)
+        public Main()
         {
             //TODO - I need to pass the user id out of here
             //maybe create a user object and add it to a list
-            int user = userId;
+            
             InitializeComponent();
             
         }

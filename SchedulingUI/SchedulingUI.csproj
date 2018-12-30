@@ -109,18 +109,6 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="ModifyAppointment.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ModifyAppointment.Designer.cs">
-      <DependentUpon>ModifyAppointment.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ModifyCustomer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ModifyCustomer.Designer.cs">
-      <DependentUpon>ModifyCustomer.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.de-DE.Designer.cs">
