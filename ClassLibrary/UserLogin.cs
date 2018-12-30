@@ -38,7 +38,8 @@ namespace ClassLibrary
                 conn.CloseConnection();
                 dataAdapter.Dispose();
                 return true;
-            } else
+            }
+            else
             {
                 return false;
             }

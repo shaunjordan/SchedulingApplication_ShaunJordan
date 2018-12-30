@@ -13,24 +13,32 @@ namespace SchedulingUI
 {
     public partial class Main : Form
     {
-        public Main()
+
+        private User user;
+
+        public Main(User loggedInUser)
         {
-            //TODO - I need to pass the user id out of here
-            //maybe create a user object and add it to a list
-            
+                        
             InitializeComponent();
+
+            user = loggedInUser;
             
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            MessageBox.Show(user.UserName.ToString());
         }
 
         private void custMgrBtn_Click(object sender, EventArgs e)
         {
             Customers customers = new Customers();
             customers.Show();
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            welcomeLabel.Text = "Welcome, " + user.UserName.ToString();
         }
     }
 }

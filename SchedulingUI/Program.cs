@@ -20,11 +20,12 @@ namespace SchedulingUI
             //Application.Run(new Main());
             
             // TODO: add this back after debugging. 
-            Main mainScreen = new Main();
+            //Main mainScreen = new Main();
             LoginForm loginForm = new LoginForm();
 
             if (loginForm.ShowDialog() == DialogResult.OK)
             {
+                Main mainScreen = new Main(loginForm.GetUser());
                 Application.Run(mainScreen);
             }
 

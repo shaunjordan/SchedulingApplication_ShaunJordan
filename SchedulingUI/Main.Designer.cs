@@ -33,6 +33,7 @@
             this.custMgrBtn = new System.Windows.Forms.Button();
             this.exitBtn = new System.Windows.Forms.Button();
             this.reportsBtn = new System.Windows.Forms.Button();
+            this.welcomeLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // testConn
@@ -86,11 +87,21 @@
             this.reportsBtn.Text = "Reports";
             this.reportsBtn.UseVisualStyleBackColor = true;
             // 
+            // welcomeLabel
+            // 
+            this.welcomeLabel.AutoSize = true;
+            this.welcomeLabel.Location = new System.Drawing.Point(52, 40);
+            this.welcomeLabel.Name = "welcomeLabel";
+            this.welcomeLabel.Size = new System.Drawing.Size(35, 13);
+            this.welcomeLabel.TabIndex = 5;
+            this.welcomeLabel.Text = "label1";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.welcomeLabel);
             this.Controls.Add(this.reportsBtn);
             this.Controls.Add(this.exitBtn);
             this.Controls.Add(this.custMgrBtn);
@@ -98,7 +109,9 @@
             this.Controls.Add(this.testConn);
             this.Name = "Main";
             this.Text = "Main";
+            this.Load += new System.EventHandler(this.Main_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -109,5 +122,6 @@
         private System.Windows.Forms.Button custMgrBtn;
         private System.Windows.Forms.Button exitBtn;
         private System.Windows.Forms.Button reportsBtn;
+        private System.Windows.Forms.Label welcomeLabel;
     }
 }

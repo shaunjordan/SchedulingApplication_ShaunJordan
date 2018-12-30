@@ -22,6 +22,9 @@ namespace SchedulingUI
     {
 
         GeoCoordinateWatcher userLocation = new GeoCoordinateWatcher();
+
+        User validUser;
+
         public LoginForm()
         {
             InitializeComponent();
@@ -55,7 +58,7 @@ namespace SchedulingUI
 
 
 
-            User validUser = login.ValidLogin(user, pass);
+            validUser = login.ValidLogin(user, pass);
 
 
             #region Test
@@ -91,7 +94,7 @@ namespace SchedulingUI
             if (validUser.UserId > 0)
             {
                 DialogResult = System.Windows.Forms.DialogResult.OK;
-
+                
             }
             else
             {
@@ -101,6 +104,11 @@ namespace SchedulingUI
 
             return validUser;
 
+        }
+
+        public User GetUser()
+        {
+            return validUser;
         }
     }
 }
