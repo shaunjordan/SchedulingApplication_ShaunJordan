@@ -22,44 +22,22 @@ namespace SchedulingUI
     {
 
         GeoCoordinateWatcher userLocation = new GeoCoordinateWatcher();
-
-        User validUser;
+              
 
         public LoginForm()
         {
-            InitializeComponent();
-                        
+            InitializeComponent();   
         }
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-
-
-            GetLoggedInUser();
-            //if (validLogin)
-            //{
-            //    DialogResult = System.Windows.Forms.DialogResult.OK;
-            //} else
-            //{
-            //    //return some other catch exception here.
-            //    DialogResult = System.Windows.Forms.DialogResult.None;
-            //    MessageBox.Show("Login Invalid");
-            //}
-
-        }
-
-        public User GetLoggedInUser()
-        {
-
+           
             UserLogin login = new UserLogin();
 
             string user = userNameInput.Text;
             string pass = passwordInput.Text;
 
-
-
-            validUser = login.ValidLogin(user, pass);
-
+            bool validLogin = login.Login(user, pass);
 
             #region Test
             //conn.
@@ -89,26 +67,18 @@ namespace SchedulingUI
             // * Messagebox.Show(); 
             // */
             #endregion
-
-
-            if (validUser.UserId > 0)
+            
+            if (validLogin)
             {
                 DialogResult = System.Windows.Forms.DialogResult.OK;
-                
+
             }
             else
             {
                 DialogResult = System.Windows.Forms.DialogResult.None;
                 MessageBox.Show("Login Invalid");
             }
-
-            return validUser;
-
         }
 
-        public User GetUser()
-        {
-            return validUser;
-        }
     }
 }
