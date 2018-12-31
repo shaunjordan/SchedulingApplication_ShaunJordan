@@ -14,20 +14,18 @@ namespace SchedulingUI
     public partial class Main : Form
     {
 
-        private User user;
+       
 
-        public Main(User loggedInUser)
+        public Main()
         {
                         
             InitializeComponent();
-
-            user = loggedInUser;
-            
+                       
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(user.UserName.ToString());
+            MessageBox.Show(User.displayName);
         }
 
         private void custMgrBtn_Click(object sender, EventArgs e)
@@ -38,7 +36,7 @@ namespace SchedulingUI
 
         private void Main_Load(object sender, EventArgs e)
         {
-            welcomeLabel.Text = "Welcome, " + user.UserName.ToString();
+            welcomeLabel.Text = "Welcome, " + User.displayName;
         }
     }
 }

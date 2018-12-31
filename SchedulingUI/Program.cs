@@ -25,7 +25,7 @@ namespace SchedulingUI
 
             if (loginForm.ShowDialog() == DialogResult.OK)
             {
-                Main mainScreen = new Main(loginForm.GetUser());
+                Main mainScreen = new Main();
                 Application.Run(mainScreen);
             }
 

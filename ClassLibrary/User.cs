@@ -11,6 +11,8 @@ namespace ClassLibrary
         public int UserId { get; set; }
 
         public string UserName { get; set; }
+
+        public static string displayName;
                 
     }
 }

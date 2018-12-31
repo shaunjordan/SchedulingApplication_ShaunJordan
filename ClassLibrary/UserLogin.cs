@@ -20,10 +20,12 @@ namespace ClassLibrary
 
             conn.InitConnection();
 
-            string loginQuery = "SELECT * FROM user WHERE userName = '"+userName+"' AND password = '"+password+"'";
+            string loginQuery = "SELECT * " + "FROM user WHERE userName = @userName AND " + "password = @password";
 
 
             MySqlCommand cmd = new MySqlCommand(loginQuery, conn.GetConnection());
+            cmd.Parameters.AddWithValue("@userName", userName);
+            cmd.Parameters.AddWithValue("@password", password);
                        
             MySqlDataAdapter dataAdapter = new MySqlDataAdapter();
             dataAdapter.SelectCommand = cmd;
@@ -47,13 +49,14 @@ namespace ClassLibrary
 
         }
 
-        public User ValidLogin(string userName, string password)
+        public bool ValidateLogin(string userName, string password)
         {
 
             DBConnection conn = new DBConnection();
 
             conn.InitConnection();
 
+            //TODO: split off the userName and password for individualized error messages
 
             string loginQuery = "SELECT userId, userName " + "FROM user WHERE userName = @userName AND password = @password";
 
@@ -64,23 +67,8 @@ namespace ClassLibrary
 
             MySqlDataReader reader = cmd.ExecuteReader();
 
-
             try
             {
-                User validUser = new User();
-
-                while (reader.Read())
-                {
-                    validUser.UserId = Convert.ToInt32(reader[0]);
-                    validUser.UserName = reader[1].ToString();
-                }
-                                        
-
-                reader.Close();
-                reader.Dispose();
-                conn.CloseConnection();
-
-                return validUser;
                 
             }
             catch (Exception)
@@ -88,6 +76,33 @@ namespace ClassLibrary
 
                 throw;
             }
+
+            //try
+            //{
+            //    User validUser = new User();
+
+            //    while (reader.Read())
+            //    {
+            //        validUser.UserId = Convert.ToInt32(reader[0]);
+            //        validUser.UserName = reader[1].ToString();
+
+            //        User.displayName = reader[1].ToString();
+                    
+            //    }
+                                        
+
+            //    reader.Close();
+            //    reader.Dispose();
+            //    conn.CloseConnection();
+
+            //    return validUser;
+                
+            //}
+            //catch (Exception)
+            //{
+
+            //    throw;
+            //}
 
         }
         
