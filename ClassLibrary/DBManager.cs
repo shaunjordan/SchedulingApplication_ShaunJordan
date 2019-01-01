@@ -13,30 +13,25 @@ namespace ClassLibrary
 {
     public class DBManager
     {
-        DBConnection connection = new DBConnection();
+        //DBConnection connection = new DBConnection();
 
-        public void AddCustomer(string countryName, MySqlConnection conn)
+        public void AddCustomer(string customerName, string address1, string address2, string cityName, string postalCode, string phone, string countryName, string createdBy, MySqlConnection conn)
         {
 
-            //string customerName, string address1, string address2, string cityName, string postalCode, string countryName, string phone, string user
-            connection.InitConnection();
+            //string country = countryName;
+            //string city = cityName;
+            //string createdBy = createdBy;
 
-            //int countryId = GetCountryId(countryName);
+            int countryId = GetCountryId(countryName, conn);
+            
+            int cityId = GetCityId(cityName, countryId, createdBy, conn);
 
-            //int cityId = GetCityId(cityName, countryId);
-
-            //int addressId = GetAddressId(address1, address2, cityId, postalCode, phone);
-
-            string get_country = "select_country";
-
-            MySqlCommand cmd = new MySqlCommand(get_country, conn);
-
-            cmd.Parameters.AddWithValue("@ctry", countryName);
-
-            int number = Convert.ToInt32(cmd.ExecuteScalar());
+            int addressId = GetAddressId(address1, address2, cityId, postalCode, phone, createdBy, conn);
 
 
-            MessageBox.Show(number.ToString());
+
+
+            MessageBox.Show(addressId.ToString());
             //add new customer to DB
 
             //MessageBox.Show(countryId.ToString());
@@ -50,64 +45,68 @@ namespace ClassLibrary
 
             //cmd.ExecuteNonQuery();
 
-            connection.CloseConnection();
+            //connection.CloseConnection();
         }
 
-        private int GetCountryId(string countryName)
+        private int GetCountryId(string countryName, MySqlConnection conn)
         {
             //TODO: connection is init in AddCustomer does it need to be added here as well? or passed into this param?
             string ctryRtn = "select_country";
+
             int result;
 
 
-            MySqlCommand cmd = new MySqlCommand(ctryRtn, connection.GetConnection());
+            MySqlCommand cmd = new MySqlCommand(ctryRtn, conn);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@ctry", countryName);
 
             result = Convert.ToInt32(cmd.ExecuteScalar());
 
             return result;
-                                
+
         }
 
-        private int GetCityId(string cityName, int countryId)
+        private int GetCityId(string cityName, int countryId, string createdBy, MySqlConnection conn)
         {
             //TODO: pass the user name into here
-            string cityRtn = "select_city";
-            int result;
+            //TODO: wrap up everything in a using statements
+            string cityRtn = "insert_city";
+            int cid;
 
-            MySqlCommand cmd = new MySqlCommand(cityRtn, connection.GetConnection());
+            MySqlCommand cmd = new MySqlCommand(cityRtn, conn);
             cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.Parameters.AddWithValue("@cityName", cityName);
             cmd.Parameters.AddWithValue("@countryId", countryId);
+            cmd.Parameters.AddWithValue("@createdBy", createdBy);
 
             cmd.Parameters.AddWithValue("@cityId", MySqlDbType.Int32);
             cmd.Parameters["@cityId"].Direction = ParameterDirection.Output;
+            cmd.ExecuteNonQuery();
 
-            result = Convert.ToInt32(cmd.Parameters["@cityId"].Value); //TODO: get the OUT param from the procedure
+            cid = Convert.ToInt32(cmd.Parameters["@cityId"].Value); //TODO: get the OUT param from the procedure
 
-            return result;
+            return cid;
 
         }
 
-        private int GetAddressId(string address1, string address2, int cityId, string postalCode, string phone)
+        private int GetAddressId(string address1, string address2, int cityId, string postalCode, string phone, string createdBy, MySqlConnection conn)
         {
             string addrRtn = "select_address";
-            int result;
+            int addrId;
 
-            MySqlCommand cmd = new MySqlCommand(addrRtn, connection.GetConnection());
+            MySqlCommand cmd = new MySqlCommand(addrRtn, conn);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@address1", address1);
             cmd.Parameters.AddWithValue("@address2", address2);
             cmd.Parameters.AddWithValue("@cityId", cityId);
             cmd.Parameters.AddWithValue("@postalCode", postalCode);
 
-            result = 1;
+            addrId = 1;
 
-            return result;
+            return addrId;
 
-        } 
+        }
 
     }
 }

@@ -25,9 +25,22 @@ namespace SchedulingUI
 
         private void saveCustBtn_Click(object sender, EventArgs e)
         {
-            
-            //DBConnection connection = new DBConnection();
-            //connection.InitConnection();
+
+
+            connection.InitConnection();
+
+
+            string customerName = custNameTextBox.Text;
+            string address1 = addressLine1.Text;
+            string address2 = addressLine2.Text;
+            string cityName = cityTextBox.Text;
+            string postalCode = postalCodeTextbox.Text;
+            string phone = phoneTextBox.Text;
+            string country = countrySelectBox.Text;
+
+            DBManager newCustomer = new DBManager();
+
+            newCustomer.AddCustomer(customerName, address1, address2, cityName, postalCode, phone, country, User.displayName, connection.GetConnection());
 
 
             //Customer customer = new Customer();            
@@ -57,7 +70,7 @@ namespace SchedulingUI
 
             //MessageBox.Show(cmd.LastInsertedId.ToString());
 
-           //CustomerDatabase
+            //CustomerDatabase
 
             /*
              * insert into city
@@ -81,7 +94,7 @@ namespace SchedulingUI
             //customerName = customerNameTextBox.Text
             //customer.
             //conn.Close();
-            //connection.CloseConnection();
+            connection.CloseConnection();
 
         }
 
@@ -90,12 +103,49 @@ namespace SchedulingUI
 
             connection.InitConnection();
 
-            string country = "United States";
+            //TODO: pass the user name into here
+            //string cityRtn = "insert_city";
 
+            //int countryId = 294;
+            //string cityName = "St. Louis";
+            //string createdBy = "test";
+
+            ////int cid;
+
+            ////MySqlCommand cmd = new MySqlCommand(cityRtn, connection.GetConnection());
+            ////cmd.CommandType = CommandType.StoredProcedure;
+
+            ////cmd.Parameters.AddWithValue("@cityName", cityName);
+            ////cmd.Parameters.AddWithValue("@countryId", countryId);
+            ////cmd.Parameters.AddWithValue("@createdBy", createdBy);
+
+            ////cmd.Parameters.AddWithValue("@cId", MySqlDbType.Int32);
+            ////cmd.Parameters["@cId"].Direction = ParameterDirection.Output;
+
+            ////cid = Convert.ToInt32(cmd.Parameters["@cId"].Value); //TODO: get the OUT param from the procedure
+
+            ////MessageBox.Show(cid.ToString());
+
+            //string myNew = "mynew";
+            //MySqlCommand cmd = new MySqlCommand(myNew, connection.GetConnection());
+            //cmd.CommandType = CommandType.StoredProcedure;
+
+            //cmd.Parameters.AddWithValue("@cityName", cityName);
+            //cmd.Parameters.AddWithValue("@countryId", countryId);
+            //cmd.Parameters.AddWithValue("@createdBy", createdBy);
+
+            //cmd.ExecuteNonQuery();
+
+
+
+
+            string country = "United States";
+            string city = "Lubbock";
+            string createdBy = "test";
 
             DBManager add = new DBManager();
 
-            add.AddCustomer(country, connection.GetConnection());
+            add.AddCustomer(country, city, createdBy, connection.GetConnection());
 
 
             //string ctrn = "select_country";
