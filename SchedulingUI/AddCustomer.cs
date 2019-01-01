@@ -87,24 +87,34 @@ namespace SchedulingUI
 
         private void cancelCustBtn_Click(object sender, EventArgs e)
         {
-            
+
             connection.InitConnection();
 
-            string ctrn = "select_country";
-            
-            //TODO: update stored procedure
+            string country = "United States";
 
-            MySqlCommand cmd = new MySqlCommand(ctrn, connection.GetConnection());
-            cmd.Parameters.AddWithValue("@ctry", countrySelectBox.Text);
 
-            cmd.CommandType = CommandType.StoredProcedure;
+            DBManager add = new DBManager();
 
-            int result = Convert.ToInt32(cmd.ExecuteScalar());
+            add.AddCustomer(country, connection.GetConnection());
 
-            MessageBox.Show(result.ToString());
 
-            
-            connection.CloseConnection();
+            //string ctrn = "select_country";
+
+            ////TODO: update stored procedure
+
+            //MySqlCommand cmd = new MySqlCommand(ctrn, connection.GetConnection());
+            //cmd.Parameters.AddWithValue("@ctry", countrySelectBox.Text);
+
+            //cmd.CommandType = CommandType.StoredProcedure;
+
+            //int result = Convert.ToInt32(cmd.ExecuteScalar());
+
+            //MessageBox.Show(result.ToString());
+
+
+            //connection.CloseConnection();
+
+
 
         }
     }

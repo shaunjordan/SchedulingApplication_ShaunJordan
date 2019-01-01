@@ -15,31 +15,40 @@ namespace ClassLibrary
     {
         DBConnection connection = new DBConnection();
 
-        public void AddCustomer(string customerName, string address1, string address2, string cityName, string postalCode, string countryName, string phone, string user)
+        public void AddCustomer(string countryName, MySqlConnection conn)
         {
-            
+
+            //string customerName, string address1, string address2, string cityName, string postalCode, string countryName, string phone, string user
             connection.InitConnection();
 
-            int countryId = GetCountryId(countryName);
+            //int countryId = GetCountryId(countryName);
 
-            int cityId = GetCityId(cityName, countryId);
+            //int cityId = GetCityId(cityName, countryId);
 
-            int addressId = GetAddressId(address1, address2, cityId, postalCode, phone);
+            //int addressId = GetAddressId(address1, address2, cityId, postalCode, phone);
+
+            string get_country = "select_country";
+
+            MySqlCommand cmd = new MySqlCommand(get_country, conn);
+
+            cmd.Parameters.AddWithValue("@ctry", countryName);
+
+            int number = Convert.ToInt32(cmd.ExecuteScalar());
 
 
-
+            MessageBox.Show(number.ToString());
             //add new customer to DB
 
-            MessageBox.Show(countryId.ToString());
+            //MessageBox.Show(countryId.ToString());
 
-            string add_customer = "insert_customer";
+            //string add_customer = "insert_customer";
 
-            MySqlCommand cmd = new MySqlCommand(add_customer, connection.GetConnection());
-            cmd.Parameters.AddWithValue("@customerName", customerName);
-            cmd.Parameters.AddWithValue("@addressId", cityId);
-            cmd.Parameters.AddWithValue("@createdBy", user);
+            //MySqlCommand cmd = new MySqlCommand(add_customer, connection.GetConnection());
+            //cmd.Parameters.AddWithValue("@customerName", customerName);
+            //cmd.Parameters.AddWithValue("@addressId", cityId);
+            //cmd.Parameters.AddWithValue("@createdBy", user);
 
-            cmd.ExecuteNonQuery();
+            //cmd.ExecuteNonQuery();
 
             connection.CloseConnection();
         }
@@ -63,15 +72,20 @@ namespace ClassLibrary
 
         private int GetCityId(string cityName, int countryId)
         {
+            //TODO: pass the user name into here
             string cityRtn = "select_city";
             int result;
 
             MySqlCommand cmd = new MySqlCommand(cityRtn, connection.GetConnection());
             cmd.CommandType = CommandType.StoredProcedure;
+
             cmd.Parameters.AddWithValue("@cityName", cityName);
             cmd.Parameters.AddWithValue("@countryId", countryId);
 
-            result = 1; //TODO: get the OUT param from the procedure
+            cmd.Parameters.AddWithValue("@cityId", MySqlDbType.Int32);
+            cmd.Parameters["@cityId"].Direction = ParameterDirection.Output;
+
+            result = Convert.ToInt32(cmd.Parameters["@cityId"].Value); //TODO: get the OUT param from the procedure
 
             return result;
 
