@@ -13,14 +13,9 @@ namespace ClassLibrary
 {
     public class DBManager
     {
-        //DBConnection connection = new DBConnection();
-
+        
         public void AddCustomer(string customerName, string address1, string address2, string cityName, string postalCode, string phone, string countryName, string createdBy, MySqlConnection conn)
         {
-
-            //string country = countryName;
-            //string city = cityName;
-            //string createdBy = createdBy;
 
             int countryId = GetCountryId(countryName, conn);
             
@@ -29,21 +24,31 @@ namespace ClassLibrary
             int addressId = GetAddressId(address1, address2, cityId, postalCode, phone, createdBy, conn);
 
 
+            //InsertCustomer(customerName, addressId, createdBy, conn);
 
 
-            MessageBox.Show(addressId.ToString());
             //add new customer to DB
 
             //MessageBox.Show(countryId.ToString());
 
-            //string add_customer = "insert_customer";
+            string add_customer = "insert_customer";
 
-            //MySqlCommand cmd = new MySqlCommand(add_customer, connection.GetConnection());
-            //cmd.Parameters.AddWithValue("@customerName", customerName);
-            //cmd.Parameters.AddWithValue("@addressId", cityId);
-            //cmd.Parameters.AddWithValue("@createdBy", user);
+            MySqlCommand cmd = new MySqlCommand(add_customer, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@customerName", customerName);
+            cmd.Parameters.AddWithValue("@addressId", addressId);
+            cmd.Parameters.AddWithValue("@createdBy", createdBy);
+            
+            int successfulIns = cmd.ExecuteNonQuery();
 
-            //cmd.ExecuteNonQuery();
+            if (successfulIns == 1)
+            {
+                MessageBox.Show("Customer successfully added to the database.");
+            }
+            else
+            {
+                MessageBox.Show("Error adding customer to database.");
+            }
 
             //connection.CloseConnection();
         }
@@ -92,7 +97,7 @@ namespace ClassLibrary
 
         private int GetAddressId(string address1, string address2, int cityId, string postalCode, string phone, string createdBy, MySqlConnection conn)
         {
-            string addrRtn = "select_address";
+            string addrRtn = "insert_address";
             int addrId;
 
             MySqlCommand cmd = new MySqlCommand(addrRtn, conn);
@@ -101,12 +106,39 @@ namespace ClassLibrary
             cmd.Parameters.AddWithValue("@address2", address2);
             cmd.Parameters.AddWithValue("@cityId", cityId);
             cmd.Parameters.AddWithValue("@postalCode", postalCode);
+            cmd.Parameters.AddWithValue("@phone", phone);
+            cmd.Parameters.AddWithValue("@createdBy", createdBy);
 
-            addrId = 1;
+            cmd.Parameters.AddWithValue("@addressId", MySqlDbType.Int32);
+            cmd.Parameters["@addressId"].Direction = ParameterDirection.Output;
+
+            cmd.ExecuteNonQuery();
+
+            addrId = Convert.ToInt32(cmd.Parameters["@cityId"].Value);
 
             return addrId;
 
         }
 
+        private void InsertCustomer(string customerName, int addressId, string createdBy, MySqlConnection conn)
+        {
+            string add_customer = "insert_customer";
+
+            MySqlCommand cmd = new MySqlCommand(add_customer, conn);
+            cmd.Parameters.AddWithValue("@customerName", customerName);
+            cmd.Parameters.AddWithValue("@addressId", addressId);
+            cmd.Parameters.AddWithValue("@createdBy", createdBy);
+
+            int successfulIns = cmd.ExecuteNonQuery();
+
+            if (successfulIns == 1)
+            {
+                MessageBox.Show("Customer successfully added to the database.");
+            }
+            else
+            {
+                MessageBox.Show("Error adding customer to database.");
+            }
+        }
     }
 }

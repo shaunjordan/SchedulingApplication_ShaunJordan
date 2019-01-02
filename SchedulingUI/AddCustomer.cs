@@ -139,13 +139,13 @@ namespace SchedulingUI
 
 
 
-            string country = "United States";
-            string city = "Lubbock";
-            string createdBy = "test";
+            //string country = "United States";
+            //string city = "Lubbock";
+            //string createdBy = "test";
 
-            DBManager add = new DBManager();
+            //DBManager add = new DBManager();
 
-            add.AddCustomer(country, city, createdBy, connection.GetConnection());
+            //add.AddCustomer(country, city, createdBy, connection.GetConnection());
 
 
             //string ctrn = "select_country";
