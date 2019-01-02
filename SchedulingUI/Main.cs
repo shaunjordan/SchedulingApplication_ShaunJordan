@@ -34,5 +34,11 @@ namespace SchedulingUI
         {
             welcomeLabel.Text = "Welcome, " + User.displayName;
         }
+
+        private void exitBtn_Click(object sender, EventArgs e)
+        {
+            //TODD: confirm exit
+            Application.Exit();
+        }
     }
 }
