@@ -11,7 +11,7 @@ namespace ClassLibrary
     {
         //Members
 
-        public List<Customer> AllCustomers = new List<Customer>();
+        private BindingList<Customer> AllCustomers = new BindingList<Customer>();
 
         [DisplayName("Customer ID")]
         public int CustomerId { get; set; }
@@ -38,39 +38,21 @@ namespace ClassLibrary
         public string Country { get; set; }
 
         
-
-        //[Browsable(false)]
-        //public int AddressId { get; set; }
-
-        //[Browsable(false)]
-        //public int Active { get; set; }
-
-        //[Browsable(false)]
-        //public DateTime CreateDate { get; set; }
-
-        //[Browsable(false)]
-        //public string CreatedBy { get; set; }
-
-        //[Browsable(false)]
-        //public DateTime LastUpdated { get; set; }
-
-        //[Browsable(false)]
-        //public string LastUpdateBy { get; set; }
-
-        // Methods
-
         public void AddCustomer(Customer customer) {
 
             AllCustomers.Add(customer);
 
         }
 
-        public List<Customer> GetCustomers()
+        public void ClearList()
+        {
+            AllCustomers.Clear();
+        }
+
+        public BindingList<Customer> GetCustomers()
         {
             return AllCustomers;
         }
 
-        //public List<Customer> AllCustomers { get; set; }
-        //Will need to implement database 
     }
 }

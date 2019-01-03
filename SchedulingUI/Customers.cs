@@ -22,10 +22,6 @@ namespace SchedulingUI
 
             DBConnection connection = new DBConnection();
             connection.InitConnection();
-            //MySqlConnection conn = connection.GetConnection();
-            //conn.Open();
-
-            List<Customer> allCustomers = new List<Customer>();
 
             string select = "SELECT " +
                             "cust.customerId," +
@@ -58,20 +54,21 @@ namespace SchedulingUI
                     customer.PostalCode = reader[5].ToString();
                     customer.Phone = reader[6].ToString();
                     customer.Country = reader[7].ToString();
-                    
 
-                    allCustomers.Add(customer);
-                    
+
+                    customer.AddCustomer(customer);
+
                 }
             }
-            
-            customersDataGrid.DataSource = allCustomers;
+
+            customersDataGrid.DataSource = customer.GetCustomers();
 
             reader.Close();
             reader.Dispose();
             connection.CloseConnection();
-            
-            
+
+
+
         }
 
         private void editCustBtn_Click(object sender, EventArgs e)
@@ -85,6 +82,25 @@ namespace SchedulingUI
             AddCustomer addCustomerScreen = new AddCustomer();
 
             addCustomerScreen.Show();
+        }
+
+        private void Customers_Activated(object sender, EventArgs e)
+        {
+            //DBConnection connection = new DBConnection();
+            //connection.InitConnection();
+
+            //DBManager m = new DBManager();
+            //Customer customer = new Customer();
+
+            //customer.ClearList();
+
+            //m.PopulateCustomerTable(connection.GetConnection());
+
+            //BindingSource customerListSource = new BindingSource();
+            //customerListSource.DataSource = customer.GetCustomers();
+
+            //customersDataGrid.DataSource = customerListSource;
+            //connection.CloseConnection();
         }
     }
 }

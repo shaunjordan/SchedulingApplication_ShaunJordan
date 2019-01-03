@@ -106,6 +106,7 @@
             this.Controls.Add(this.addCustBtn);
             this.Name = "Customers";
             this.Text = "Customers";
+            this.Activated += new System.EventHandler(this.Customers_Activated);
             ((System.ComponentModel.ISupportInitialize)(this.customersDataGrid)).EndInit();
             this.ResumeLayout(false);
 

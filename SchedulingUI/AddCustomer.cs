@@ -45,11 +45,13 @@ namespace SchedulingUI
 
             connection.CloseConnection();
 
+            this.Close();
+
         }
 
         private void cancelCustBtn_Click(object sender, EventArgs e)
         {
-
+            //TODO: are you sure you want to cancel?
             this.Close();
 
         }
