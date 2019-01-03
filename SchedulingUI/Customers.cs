@@ -23,6 +23,8 @@ namespace SchedulingUI
             DBConnection connection = new DBConnection();
             connection.InitConnection();
 
+            BindingList<Customer> AllCustomers = new BindingList<Customer>();
+
             string select = "SELECT " +
                             "cust.customerId," +
                             "cust.customerName," +
@@ -55,13 +57,14 @@ namespace SchedulingUI
                     customer.Phone = reader[6].ToString();
                     customer.Country = reader[7].ToString();
 
+                    AllCustomers.Add(customer);
 
-                    customer.AddCustomer(customer);
+                    //customer.AddCustomer(customer);
 
                 }
             }
 
-            customersDataGrid.DataSource = customer.GetCustomers();
+            customersDataGrid.DataSource = AllCustomers;
 
             reader.Close();
             reader.Dispose();
