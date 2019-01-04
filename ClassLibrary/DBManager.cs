@@ -159,5 +159,34 @@ namespace ClassLibrary
             reader.Close();
             reader.Dispose();
         }
+
+        public bool DeleteCustomer(MySqlConnection conn, int customerId)
+        {
+            string delete_customer = "delete_customer";
+
+            MySqlCommand cmd = new MySqlCommand(delete_customer, conn);
+            cmd.Parameters.AddWithValue("@custId", customerId);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+
+
+            try
+            {
+                int result = cmd.ExecuteNonQuery();
+                if (result == 2)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

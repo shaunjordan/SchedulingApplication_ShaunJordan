@@ -11,7 +11,7 @@ namespace ClassLibrary
     {
         //Members
 
-        private BindingList<Customer> AllCustomers = new BindingList<Customer>();
+        private static BindingList<Customer> AllCustomers = new BindingList<Customer>();
 
         [DisplayName("Customer ID")]
         public int CustomerId { get; set; }

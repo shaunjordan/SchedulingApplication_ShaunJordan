@@ -49,12 +49,13 @@
             // delCustBtn
             // 
             this.delCustBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.delCustBtn.Location = new System.Drawing.Point(624, 344);
+            this.delCustBtn.Location = new System.Drawing.Point(610, 344);
             this.delCustBtn.Name = "delCustBtn";
             this.delCustBtn.Size = new System.Drawing.Size(98, 23);
             this.delCustBtn.TabIndex = 8;
             this.delCustBtn.Text = "Delete Customer";
             this.delCustBtn.UseVisualStyleBackColor = true;
+            this.delCustBtn.Click += new System.EventHandler(this.delCustBtn_Click);
             // 
             // editCustBtn
             // 
