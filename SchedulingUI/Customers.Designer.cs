@@ -60,7 +60,7 @@
             // editCustBtn
             // 
             this.editCustBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.editCustBtn.Location = new System.Drawing.Point(462, 344);
+            this.editCustBtn.Location = new System.Drawing.Point(454, 344);
             this.editCustBtn.Name = "editCustBtn";
             this.editCustBtn.Size = new System.Drawing.Size(129, 23);
             this.editCustBtn.TabIndex = 7;

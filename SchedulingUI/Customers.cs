@@ -17,6 +17,7 @@ namespace SchedulingUI
     public partial class Customers : Form
     {
 
+        //TODO rename the DBManager connections
         DBManager m = new DBManager();
         DBConnection connection = new DBConnection();
         Customer customer = new Customer();
@@ -82,17 +83,52 @@ namespace SchedulingUI
 
         }
 
-        private void editCustBtn_Click(object sender, EventArgs e)
-        {
-            //customersDataGrid.SelectedRows.
-            MessageBox.Show(customersDataGrid.CurrentRow.DataBoundItem.ToString());
-        }
 
         private void addCustBtn_Click(object sender, EventArgs e)
         {
             AddCustomer addCustomerScreen = new AddCustomer();
 
             addCustomerScreen.Show();
+        }
+
+
+        private void editCustBtn_Click(object sender, EventArgs e)
+        {
+            EditCustomer editCustomer = new EditCustomer();
+
+            int rowIndex = customersDataGrid.SelectedCells[0].RowIndex;
+            DataGridViewRow selectedRow = customersDataGrid.Rows[rowIndex];
+
+            int customerId = Convert.ToInt32(selectedRow.Cells[0].Value);
+
+            // pass the customer id to the update customer
+
+        }
+
+        private void delCustBtn_Click(object sender, EventArgs e)
+        {
+
+            int rowIndex = customersDataGrid.SelectedCells[0].RowIndex;
+
+            DataGridViewRow selectedRow = customersDataGrid.Rows[rowIndex];
+
+            int customerId = Convert.ToInt32(selectedRow.Cells[0].Value);
+
+            if (MessageBox.Show("Are you sure you want to delete the selected customer?", "Confirm Delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                connection.InitConnection();
+
+                m.DeleteCustomer(connection.GetConnection(), customerId);
+                customer.ClearList();
+                m.PopulateCustomerTable(connection.GetConnection());
+
+            }
+
+
+            connection.CloseConnection();
+
+            //MessageBox.Show(customerId.ToString());
+
         }
 
         private void Customers_Activated(object sender, EventArgs e)
@@ -112,30 +148,5 @@ namespace SchedulingUI
 
         }
 
-        private void delCustBtn_Click(object sender, EventArgs e)
-        {
-            
-            int rowIndex = customersDataGrid.SelectedCells[0].RowIndex;
-
-            DataGridViewRow selectedRow = customersDataGrid.Rows[rowIndex];
-
-            int customerId = Convert.ToInt32(selectedRow.Cells[0].Value);
-
-            if (MessageBox.Show("Are you sure you want to delete the selected customer?", "Confirm Delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                connection.InitConnection();
-                
-                m.DeleteCustomer(connection.GetConnection(), customerId);
-                customer.ClearList();
-                m.PopulateCustomerTable(connection.GetConnection());
-                
-            }
-
-
-            connection.CloseConnection();
-
-            //MessageBox.Show(customerId.ToString());
-
-        }
     }
 }

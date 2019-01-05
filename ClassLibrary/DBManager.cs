@@ -188,5 +188,16 @@ namespace ClassLibrary
                 throw;
             }
         }
+
+        public void UpdateCustomer(MySqlConnection conn, int customerId)
+        {
+            string update = "update_customer";
+            MySqlCommand cmd = new MySqlCommand(update, conn);
+
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue();
+        }
+
+        
     }
 }
