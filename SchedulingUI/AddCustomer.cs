@@ -14,7 +14,7 @@ namespace SchedulingUI
 {
     public partial class AddCustomer : Form
     {
-
+        //TODO: country list selection should come directly from Database for single source updating
         DBConnection connection = new DBConnection();
 
         public AddCustomer()

@@ -189,13 +189,34 @@ namespace ClassLibrary
             }
         }
 
-        public void UpdateCustomer(MySqlConnection conn, int customerId)
+        public void UpdateCustomer(MySqlConnection conn, int customerId, string customerName, string address1, string address2, string cityName, string postal, string ctryName, string phone)
         {
             string update = "update_customer";
-            MySqlCommand cmd = new MySqlCommand(update, conn);
 
+            MySqlCommand cmd = new MySqlCommand(update, conn);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue();
+
+            cmd.Parameters.AddWithValue("@custId", customerId);
+            cmd.Parameters.AddWithValue("@custName", customerName);
+            cmd.Parameters.AddWithValue("@addr1", address1);
+            cmd.Parameters.AddWithValue("@addr2", address2);
+            cmd.Parameters.AddWithValue("@postal", postal);
+            cmd.Parameters.AddWithValue("@phNumber", phone);
+            cmd.Parameters.AddWithValue("@cityName", cityName);
+            cmd.Parameters.AddWithValue("@ctryId", GetCountryId(ctryName, conn));
+            cmd.Parameters.AddWithValue("@lastUpdatedBy", User.displayName);
+
+            int successfulUpdate = cmd.ExecuteNonQuery();
+
+            if (successfulUpdate > 0)
+            {
+                MessageBox.Show("Customer updated.");
+            }
+            else
+            {
+                MessageBox.Show("Customer not updated.");
+            }
+            
         }
 
         

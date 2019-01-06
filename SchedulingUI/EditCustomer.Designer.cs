@@ -39,12 +39,12 @@
             this.editAddr1Label = new System.Windows.Forms.Label();
             this.editCustNameLabel = new System.Windows.Forms.Label();
             this.editPhoneTextbox = new System.Windows.Forms.TextBox();
-            this.editCountryTextbox = new System.Windows.Forms.TextBox();
             this.editPostalTextbox = new System.Windows.Forms.TextBox();
             this.editCityTextbox = new System.Windows.Forms.TextBox();
             this.editAddr2Textbox = new System.Windows.Forms.TextBox();
             this.editAddr1Textbox = new System.Windows.Forms.TextBox();
             this.editCustNameTextbox = new System.Windows.Forms.TextBox();
+            this.editCountrySelectBox = new System.Windows.Forms.ComboBox();
             this.editCustomerGroup.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,6 +57,7 @@
             this.cancelEditCustBtn.TabIndex = 14;
             this.cancelEditCustBtn.Text = "Cancel";
             this.cancelEditCustBtn.UseVisualStyleBackColor = true;
+            this.cancelEditCustBtn.Click += new System.EventHandler(this.cancelEditCustBtn_Click);
             // 
             // saveEditCustBtn
             // 
@@ -67,9 +68,11 @@
             this.saveEditCustBtn.TabIndex = 13;
             this.saveEditCustBtn.Text = "Save";
             this.saveEditCustBtn.UseVisualStyleBackColor = true;
+            this.saveEditCustBtn.Click += new System.EventHandler(this.saveEditCustBtn_Click);
             // 
             // editCustomerGroup
             // 
+            this.editCustomerGroup.Controls.Add(this.editCountrySelectBox);
             this.editCustomerGroup.Controls.Add(this.editPhoneLabel);
             this.editCustomerGroup.Controls.Add(this.editCountryLabel);
             this.editCustomerGroup.Controls.Add(this.editPostalLabel);
@@ -78,7 +81,6 @@
             this.editCustomerGroup.Controls.Add(this.editAddr1Label);
             this.editCustomerGroup.Controls.Add(this.editCustNameLabel);
             this.editCustomerGroup.Controls.Add(this.editPhoneTextbox);
-            this.editCustomerGroup.Controls.Add(this.editCountryTextbox);
             this.editCustomerGroup.Controls.Add(this.editPostalTextbox);
             this.editCustomerGroup.Controls.Add(this.editCityTextbox);
             this.editCustomerGroup.Controls.Add(this.editAddr2Textbox);
@@ -161,13 +163,6 @@
             this.editPhoneTextbox.Size = new System.Drawing.Size(168, 20);
             this.editPhoneTextbox.TabIndex = 6;
             // 
-            // editCountryTextbox
-            // 
-            this.editCountryTextbox.Location = new System.Drawing.Point(146, 246);
-            this.editCountryTextbox.Name = "editCountryTextbox";
-            this.editCountryTextbox.Size = new System.Drawing.Size(168, 20);
-            this.editCountryTextbox.TabIndex = 5;
-            // 
             // editPostalTextbox
             // 
             this.editPostalTextbox.Location = new System.Drawing.Point(146, 211);
@@ -203,6 +198,270 @@
             this.editCustNameTextbox.Size = new System.Drawing.Size(168, 20);
             this.editCustNameTextbox.TabIndex = 0;
             // 
+            // editCountrySelectBox
+            // 
+            this.editCountrySelectBox.FormattingEnabled = true;
+            this.editCountrySelectBox.Items.AddRange(new object[] {
+            "Afghanistan",
+            "Åland Islands",
+            "Albania",
+            "Algeria",
+            "American Samoa",
+            "Andorra",
+            "Angola",
+            "Anguilla",
+            "Antarctica",
+            "Antigua & Barbuda",
+            "Argentina",
+            "Armenia",
+            "Aruba",
+            "Ascension Island",
+            "Australia",
+            "Austria",
+            "Azerbaijan",
+            "Bahamas",
+            "Bahrain",
+            "Bangladesh",
+            "Barbados",
+            "Belarus",
+            "Belgium",
+            "Belize",
+            "Benin",
+            "Bermuda",
+            "Bhutan",
+            "Bolivia",
+            "Bosnia & Herzegovina",
+            "Botswana",
+            "Brazil",
+            "British Indian Ocean Territory",
+            "British Virgin Islands",
+            "Brunei",
+            "Bulgaria",
+            "Burkina Faso",
+            "Burundi",
+            "Cambodia",
+            "Cameroon",
+            "Canada",
+            "Canary Islands",
+            "Cape Verde",
+            "Caribbean Netherlands",
+            "Cayman Islands",
+            "Central African Republic",
+            "Ceuta & Melilla",
+            "Chad",
+            "Chile",
+            "China",
+            "Christmas Island",
+            "Cocos (Keeling) Islands",
+            "Colombia",
+            "Comoros",
+            "Congo - Brazzaville",
+            "Congo - Kinshasa",
+            "Cook Islands",
+            "Costa Rica",
+            "Côte d’Ivoire",
+            "Croatia",
+            "Cuba",
+            "Curaçao",
+            "Cyprus",
+            "Czechia",
+            "Denmark",
+            "Diego Garcia",
+            "Djibouti",
+            "Dominica",
+            "Dominican Republic",
+            "Ecuador",
+            "Egypt",
+            "El Salvador",
+            "Equatorial Guinea",
+            "Eritrea",
+            "Estonia",
+            "Ethiopia",
+            "Eurozone",
+            "Falkland Islands",
+            "Faroe Islands",
+            "Fiji",
+            "Finland",
+            "France",
+            "French Guiana",
+            "French Polynesia",
+            "French Southern Territories",
+            "Gabon",
+            "Gambia",
+            "Georgia",
+            "Germany",
+            "Ghana",
+            "Gibraltar",
+            "Greece",
+            "Greenland",
+            "Grenada",
+            "Guadeloupe",
+            "Guam",
+            "Guatemala",
+            "Guernsey",
+            "Guinea",
+            "Guinea-Bissau",
+            "Guyana",
+            "Haiti",
+            "Honduras",
+            "Hong Kong SAR China",
+            "Hungary",
+            "Iceland",
+            "India",
+            "Indonesia",
+            "Iran",
+            "Iraq",
+            "Ireland",
+            "Isle of Man",
+            "Israel",
+            "Italy",
+            "Jamaica",
+            "Japan",
+            "Jersey",
+            "Jordan",
+            "Kazakhstan",
+            "Kenya",
+            "Kiribati",
+            "Kosovo",
+            "Kuwait",
+            "Kyrgyzstan",
+            "Laos",
+            "Latvia",
+            "Lebanon",
+            "Lesotho",
+            "Liberia",
+            "Libya",
+            "Liechtenstein",
+            "Lithuania",
+            "Luxembourg",
+            "Macau SAR China",
+            "Macedonia",
+            "Madagascar",
+            "Malawi",
+            "Malaysia",
+            "Maldives",
+            "Mali",
+            "Malta",
+            "Marshall Islands",
+            "Martinique",
+            "Mauritania",
+            "Mauritius",
+            "Mayotte",
+            "Mexico",
+            "Micronesia",
+            "Moldova",
+            "Monaco",
+            "Mongolia",
+            "Montenegro",
+            "Montserrat",
+            "Morocco",
+            "Mozambique",
+            "Myanmar (Burma)",
+            "Namibia",
+            "Nauru",
+            "Nepal",
+            "Netherlands",
+            "New Caledonia",
+            "New Zealand",
+            "Nicaragua",
+            "Niger",
+            "Nigeria",
+            "Niue",
+            "Norfolk Island",
+            "North Korea",
+            "Northern Mariana Islands",
+            "Norway",
+            "Oman",
+            "Pakistan",
+            "Palau",
+            "Palestinian Territories",
+            "Panama",
+            "Papua New Guinea",
+            "Paraguay",
+            "Peru",
+            "Philippines",
+            "Pitcairn Islands",
+            "Poland",
+            "Portugal",
+            "Puerto Rico",
+            "Qatar",
+            "Réunion",
+            "Romania",
+            "Russia",
+            "Rwanda",
+            "Samoa",
+            "San Marino",
+            "São Tomé & Príncipe",
+            "Saudi Arabia",
+            "Senegal",
+            "Serbia",
+            "Seychelles",
+            "Sierra Leone",
+            "Singapore",
+            "Sint Maarten",
+            "Slovakia",
+            "Slovenia",
+            "Solomon Islands",
+            "Somalia",
+            "South Africa",
+            "South Georgia & South Sandwich Islands",
+            "South Korea",
+            "South Sudan",
+            "Spain",
+            "Sri Lanka",
+            "St. Barthélemy",
+            "St. Helena",
+            "St. Kitts & Nevis",
+            "St. Lucia",
+            "St. Martin",
+            "St. Pierre & Miquelon",
+            "St. Vincent & Grenadines",
+            "Sudan",
+            "Suriname",
+            "Svalbard & Jan Mayen",
+            "Swaziland",
+            "Sweden",
+            "Switzerland",
+            "Syria",
+            "Taiwan",
+            "Tajikistan",
+            "Tanzania",
+            "Thailand",
+            "Timor-Leste",
+            "Togo",
+            "Tokelau",
+            "Tonga",
+            "Trinidad & Tobago",
+            "Tristan da Cunha",
+            "Tunisia",
+            "Turkey",
+            "Turkmenistan",
+            "Turks & Caicos Islands",
+            "Tuvalu",
+            "U.S. Outlying Islands",
+            "U.S. Virgin Islands",
+            "Uganda",
+            "Ukraine",
+            "United Arab Emirates",
+            "United Kingdom",
+            "United Nations",
+            "United States",
+            "Uruguay",
+            "Uzbekistan",
+            "Vanuatu",
+            "Vatican City",
+            "Venezuela",
+            "Vietnam",
+            "Wallis & Futuna",
+            "Western Sahara",
+            "Yemen",
+            "Zambia",
+            "Zimbabwe"});
+            this.editCountrySelectBox.Location = new System.Drawing.Point(146, 246);
+            this.editCountrySelectBox.Name = "editCountrySelectBox";
+            this.editCountrySelectBox.Size = new System.Drawing.Size(168, 21);
+            this.editCountrySelectBox.TabIndex = 15;
+            // 
             // EditCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -232,11 +491,11 @@
         private System.Windows.Forms.Label editAddr1Label;
         private System.Windows.Forms.Label editCustNameLabel;
         private System.Windows.Forms.TextBox editPhoneTextbox;
-        private System.Windows.Forms.TextBox editCountryTextbox;
         private System.Windows.Forms.TextBox editPostalTextbox;
         private System.Windows.Forms.TextBox editCityTextbox;
         private System.Windows.Forms.TextBox editAddr2Textbox;
         private System.Windows.Forms.TextBox editAddr1Textbox;
         private System.Windows.Forms.TextBox editCustNameTextbox;
+        private System.Windows.Forms.ComboBox editCountrySelectBox;
     }
 }

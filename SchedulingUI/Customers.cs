@@ -94,14 +94,15 @@ namespace SchedulingUI
 
         private void editCustBtn_Click(object sender, EventArgs e)
         {
-            EditCustomer editCustomer = new EditCustomer();
-
+            
             int rowIndex = customersDataGrid.SelectedCells[0].RowIndex;
             DataGridViewRow selectedRow = customersDataGrid.Rows[rowIndex];
 
-            int customerId = Convert.ToInt32(selectedRow.Cells[0].Value);
+            int custId = Convert.ToInt32(selectedRow.Cells[0].Value);
 
+            EditCustomer editCustomer = new EditCustomer(custId);
             // pass the customer id to the update customer
+            editCustomer.Show();
 
         }
 

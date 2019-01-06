@@ -44,7 +44,7 @@
             this.custNameTextBox = new System.Windows.Forms.TextBox();
             this.cancelCustBtn = new System.Windows.Forms.Button();
             this.saveCustBtn = new System.Windows.Forms.Button();
-            this.countrySelectBox = new System.Windows.Forms.ListBox();
+            this.countrySelectBox = new System.Windows.Forms.ComboBox();
             this.addCustomerGroup.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -459,8 +459,8 @@
             "Zimbabwe"});
             this.countrySelectBox.Location = new System.Drawing.Point(146, 240);
             this.countrySelectBox.Name = "countrySelectBox";
-            this.countrySelectBox.Size = new System.Drawing.Size(168, 17);
-            this.countrySelectBox.TabIndex = 12;
+            this.countrySelectBox.Size = new System.Drawing.Size(168, 21);
+            this.countrySelectBox.TabIndex = 14;
             // 
             // AddCustomer
             // 
@@ -496,6 +496,6 @@
         private System.Windows.Forms.TextBox addressLine2;
         private System.Windows.Forms.TextBox addressLine1;
         private System.Windows.Forms.TextBox custNameTextBox;
-        private System.Windows.Forms.ListBox countrySelectBox;
+        private System.Windows.Forms.ComboBox countrySelectBox;
     }
 }
