@@ -16,5 +16,12 @@ namespace SchedulingUI
         {
             InitializeComponent();
         }
+
+        private void addApptBtn_Click(object sender, EventArgs e)
+        {
+            AddAppointment addAppointment = new AddAppointment();
+
+            addAppointment.Show();
+        }
     }
 }

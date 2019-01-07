@@ -39,17 +39,18 @@
             // backBtn
             // 
             this.backBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.backBtn.Location = new System.Drawing.Point(641, 406);
+            this.backBtn.Location = new System.Drawing.Point(644, 404);
             this.backBtn.Name = "backBtn";
             this.backBtn.Size = new System.Drawing.Size(81, 23);
             this.backBtn.TabIndex = 9;
             this.backBtn.Text = "Back";
             this.backBtn.UseVisualStyleBackColor = true;
+            this.backBtn.Click += new System.EventHandler(this.backBtn_Click);
             // 
             // delCustBtn
             // 
             this.delCustBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.delCustBtn.Location = new System.Drawing.Point(610, 344);
+            this.delCustBtn.Location = new System.Drawing.Point(627, 345);
             this.delCustBtn.Name = "delCustBtn";
             this.delCustBtn.Size = new System.Drawing.Size(98, 23);
             this.delCustBtn.TabIndex = 8;
@@ -60,7 +61,7 @@
             // editCustBtn
             // 
             this.editCustBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.editCustBtn.Location = new System.Drawing.Point(454, 344);
+            this.editCustBtn.Location = new System.Drawing.Point(471, 345);
             this.editCustBtn.Name = "editCustBtn";
             this.editCustBtn.Size = new System.Drawing.Size(129, 23);
             this.editCustBtn.TabIndex = 7;
@@ -71,7 +72,7 @@
             // addCustBtn
             // 
             this.addCustBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addCustBtn.Location = new System.Drawing.Point(317, 344);
+            this.addCustBtn.Location = new System.Drawing.Point(334, 345);
             this.addCustBtn.Name = "addCustBtn";
             this.addCustBtn.Size = new System.Drawing.Size(112, 23);
             this.addCustBtn.TabIndex = 6;

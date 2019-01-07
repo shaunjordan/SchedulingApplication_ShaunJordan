@@ -14,6 +14,7 @@ namespace SchedulingUI
 {
     public partial class EditCustomer : Form
     {
+        //TODO: pass customer data into validations
         //New DB connection called here because edit form needs its own
         //instead of allowing the edit button to open and close the connection
         DBConnection connection = new DBConnection();

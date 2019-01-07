@@ -55,6 +55,7 @@
             this.apptMgrBtn.TabIndex = 1;
             this.apptMgrBtn.Text = "Manage Appointments";
             this.apptMgrBtn.UseVisualStyleBackColor = true;
+            this.apptMgrBtn.Click += new System.EventHandler(this.apptMgrBtn_Click);
             // 
             // custMgrBtn
             // 

@@ -46,10 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Address.cs" />
     <Compile Include="Appointment.cs" />
-    <Compile Include="City.cs" />
-    <Compile Include="Country.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="DBManager.cs" />
     <Compile Include="DBConnection.cs" />

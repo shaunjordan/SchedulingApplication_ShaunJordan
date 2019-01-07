@@ -40,5 +40,12 @@ namespace SchedulingUI
             //TODD: confirm exit
             Application.Exit();
         }
+
+        private void apptMgrBtn_Click(object sender, EventArgs e)
+        {
+            Appointments appointmentForm = new Appointments();
+
+            appointmentForm.Show();
+        }
     }
 }
