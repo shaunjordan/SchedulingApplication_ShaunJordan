@@ -8,6 +8,23 @@ namespace ClassLibrary
 {
     class Appointment
     {
+
+        public enum Months
+        {
+            January,
+            February,
+            March,
+            April,
+            May,
+            June,
+            July,
+            August,
+            September,
+            October,
+            November,
+            December
+        }
+
         public int AppointmentId { get; set; }
 
         public int CustomerId { get; set; }

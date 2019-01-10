@@ -13,6 +13,8 @@ namespace SchedulingUI
 {
     public partial class Main : Form
     {
+        DBManager dbm = new DBManager();
+        DBConnection conn = new DBConnection();
 
         public Main()
         {
@@ -33,6 +35,13 @@ namespace SchedulingUI
         private void Main_Load(object sender, EventArgs e)
         {
             welcomeLabel.Text = "Welcome, " + User.displayName;
+
+            //TODO: this is here to populate the appts customer selection
+            //if user wants to add appointments before customers
+            //it could be moved to activate when the appointments screen is activated
+            conn.InitConnection();
+            dbm.PopulateCustomerTable(conn.GetConnection());
+            conn.CloseConnection();
         }
 
         private void exitBtn_Click(object sender, EventArgs e)

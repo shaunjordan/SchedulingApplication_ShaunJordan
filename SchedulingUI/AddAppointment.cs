@@ -17,21 +17,27 @@ namespace SchedulingUI
         DBConnection connection = new DBConnection();
         Customer customer = new Customer();
         BindingList<string> customerNames = new BindingList<string>();
+        List<string> names = new List<string>();
 
         public AddAppointment()
         {
             InitializeComponent();
 
-            startPicker.Format = DateTimePickerFormat.Custom;
-            startPicker.CustomFormat = "MM/dd/yyyy hh:mm tt";
+            startTimePicker.Format = DateTimePickerFormat.Custom;
+            startTimePicker.CustomFormat = "MM/dd/yyyy hh:mm tt";
+
+            endTimePicker.Format = DateTimePickerFormat.Custom;
+            endTimePicker.CustomFormat = "MM/dd/yyyy hh:mm tt";
 
             foreach (Customer customer in customer.GetCustomers())
             {
                 customerNames.Add(customer.CustomerName);
             }
 
-            apptCustSelect.DataSource = customerNames;
 
+
+            apptCustSelect.DataSource = customerNames;
+            
 
             
         }
