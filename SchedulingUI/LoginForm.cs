@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
 using System.Globalization;
+using System.Resources;
 using SchedulingUI.Properties;
 using SchedulingUI;
 using System.Device.Location;
@@ -21,63 +22,49 @@ namespace SchedulingUI
     public partial class LoginForm : Form
     {
 
-        GeoCoordinateWatcher userLocation = new GeoCoordinateWatcher();
-              
+        CultureInfo ci;
 
-        public LoginForm()
+        public LoginForm(CultureInfo culture)
         {
-            InitializeComponent();   
+            InitializeComponent();
+            ci = culture;
         }
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-           
-            UserLogin login = new UserLogin();
 
-            string user = userNameInput.Text;
-            string pass = passwordInput.Text;
+            //CultureInfo ci = new CultureInfo("de-DE");
 
-            bool validLogin = login.Login(user, pass);
+            MessageBox.Show(ci.ToString());
 
-            #region Test
-            //conn.
-            /*
-             * 
-             * Getting the culture info
-             * 
-            CultureInfo ci = new CultureInfo("de-DE");
-            Properties.Resources.Culture = ci;
-            string s1 = SchedulingUI.Properties.Resources.Hello;
-            MessageBox.Show(s1);
-            */
+            //string userError = Properties.Resources.ResourceManager.GetString("InvalidPassword", ci);
 
-            //MessageBox.Show(userLocation.Position.Location.ToString());
+            //UserLogin login = new UserLogin();
 
-            //MySqlConnection connection = new MySqlConnection();
+            //string user = userNameInput.Text;
+            //string pass = passwordInput.Text;
 
-            //connection.Open();
 
-            ///*
-            // * sql string
-            // * if username and password == valid
-            // * close this form
-            // * show mainform
-            // * else
-            // * display an error to the user in English and German
-            // * Messagebox.Show(); 
-            // */
-            #endregion
-            
-            if (validLogin)
-            {
-                DialogResult = System.Windows.Forms.DialogResult.OK;
+            //int validLogin = login.Login(user, pass);
 
-            }
-            else
-            {
-                DialogResult = System.Windows.Forms.DialogResult.None;
-                MessageBox.Show("Login Invalid");
-            }
+
+            //if (validLogin == 0)
+            //{
+            //    DialogResult = System.Windows.Forms.DialogResult.None;
+            //    //MessageBox.Show("Please check the user name or contact your administrator.", "User not found");
+            //    MessageBox.Show(userError);
+
+            //}
+            //else if (validLogin == 1)
+            //{
+            //    DialogResult = System.Windows.Forms.DialogResult.None;
+            //    MessageBox.Show("Please try again or contact your adminstrator.", "Invalid password");
+            //}
+            //else
+            //{
+            //    DialogResult = System.Windows.Forms.DialogResult.OK;
+            //}
+
         }
 
     }

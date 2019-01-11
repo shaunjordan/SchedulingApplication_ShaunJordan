@@ -17,6 +17,8 @@ namespace SchedulingUI
         //TODO: country list selection should come directly from Database for single source updating
         DBConnection connection = new DBConnection();
 
+        Validations validations = new Validations();
+
         public AddCustomer()
         {
             InitializeComponent();
@@ -37,6 +39,13 @@ namespace SchedulingUI
             string postalCode = postalCodeTextbox.Text;
             string phone = phoneTextBox.Text;
             string country = countrySelectBox.Text;
+
+            if (validations.Error(customerName))
+            {
+
+            }
+
+           
 
             DBManager newCustomer = new DBManager();
 
