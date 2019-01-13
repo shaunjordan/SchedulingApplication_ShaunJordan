@@ -16,6 +16,7 @@ using System.Device.Location;
 using ClassLibrary;
 using MySql.Data.MySqlClient;
 using MySql.Data;
+using System.IO;
 
 namespace SchedulingUI
 {
@@ -23,6 +24,7 @@ namespace SchedulingUI
     {
 
         CultureInfo ci;
+        LoginRecord recordLogin = new LoginRecord();
 
         public LoginForm(CultureInfo culture)
         {
@@ -33,39 +35,42 @@ namespace SchedulingUI
         private void loginButton_Click(object sender, EventArgs e)
         {
 
-            //CultureInfo ci = new CultureInfo("de-DE");
 
-            MessageBox.Show(ci.ToString());
+            string userError = Properties.Resources.ResourceManager.GetString("UserNotFound", ci);
+            string invalidPass = Properties.Resources.ResourceManager.GetString("InvalidPassword", ci);
+            string tryAgain = Properties.Resources.ResourceManager.GetString("PleaseTryAgain", ci);
 
-            //string userError = Properties.Resources.ResourceManager.GetString("InvalidPassword", ci);
-
-            //UserLogin login = new UserLogin();
-
-            //string user = userNameInput.Text;
-            //string pass = passwordInput.Text;
+            #region Login
 
 
-            //int validLogin = login.Login(user, pass);
+            UserLogin login = new UserLogin();
+
+            string user = userNameInput.Text;
+            string pass = passwordInput.Text;
 
 
-            //if (validLogin == 0)
-            //{
-            //    DialogResult = System.Windows.Forms.DialogResult.None;
-            //    //MessageBox.Show("Please check the user name or contact your administrator.", "User not found");
-            //    MessageBox.Show(userError);
+            int validLogin = login.Login(user, pass);
 
-            //}
-            //else if (validLogin == 1)
-            //{
-            //    DialogResult = System.Windows.Forms.DialogResult.None;
-            //    MessageBox.Show("Please try again or contact your adminstrator.", "Invalid password");
-            //}
-            //else
-            //{
-            //    DialogResult = System.Windows.Forms.DialogResult.OK;
-            //}
+
+            if (validLogin == 0)
+            {
+                DialogResult = System.Windows.Forms.DialogResult.None;
+                //MessageBox.Show("Please check the user name or contact your administrator.", "User not found");
+                MessageBox.Show(tryAgain, userError);
+
+            }
+            else if (validLogin == 1)
+            {
+                DialogResult = System.Windows.Forms.DialogResult.None;
+                MessageBox.Show(tryAgain, invalidPass);
+            }
+            else
+            {
+                recordLogin.RecordLogin();
+                DialogResult = System.Windows.Forms.DialogResult.OK;
+            }
+            #endregion
 
         }
-
     }
 }

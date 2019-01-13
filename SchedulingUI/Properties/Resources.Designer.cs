@@ -59,14 +59,5 @@ namespace SchedulingUI.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Hello.
-        /// </summary>
-        internal static string Hello {
-            get {
-                return ResourceManager.GetString("Hello", resourceCulture);
-            }
-        }
     }
 }

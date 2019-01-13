@@ -9,6 +9,7 @@ using System.Windows.Forms;
 
 
 
+
 namespace ClassLibrary
 {
     public class UserLogin
@@ -29,20 +30,22 @@ namespace ClassLibrary
             MySqlCommand uCmd = new MySqlCommand(checkUser, conn.GetConnection());
             uCmd.Parameters.AddWithValue("@userName", userName);
 
+            MySqlDataReader reader = uCmd.ExecuteReader();
             
-            //TODO: implement unique constaint on DB to prevent duplicate user names
-            if (Convert.ToInt32(uCmd.ExecuteScalar()) == 1) 
+            while (reader.Read())
             {
+                User.displayName = reader[1].ToString();
                 valid += 1;
-                uCmd.Dispose();
             }
+            reader.Close();
+            reader.Dispose();
 
 
             MySqlCommand pCmd = new MySqlCommand(checkPassword, conn.GetConnection());
             pCmd.Parameters.AddWithValue("@userName", userName);
             pCmd.Parameters.AddWithValue("@password", password);
 
-            if (Convert.ToInt32(pCmd.ExecuteScalar()) == 1)
+            if (Convert.ToInt32(pCmd.ExecuteScalar()) > 0)
             {
                 valid += 1;
                 pCmd.Dispose();

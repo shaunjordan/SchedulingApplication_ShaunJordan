@@ -120,6 +120,9 @@
   <data name="InvalidPassword" xml:space="preserve">
     <value>Ungültiges Passwort.</value>
   </data>
+  <data name="PleaseTryAgain" xml:space="preserve">
+    <value>Bitte versuchen Sie es erneut oder wenden Sie sich an Ihren Administrator.</value>
+  </data>
   <data name="UserNotFound" xml:space="preserve">
     <value>Benutzer wurde nicht gefunden.</value>
   </data>
