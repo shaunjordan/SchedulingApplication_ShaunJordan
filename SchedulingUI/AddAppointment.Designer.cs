@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.addApptGroupBox = new System.Windows.Forms.GroupBox();
+            this.endTimePicker = new System.Windows.Forms.DateTimePicker();
             this.apptCustSelect = new System.Windows.Forms.ComboBox();
             this.apptCustomerLabel = new System.Windows.Forms.Label();
             this.startTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -39,17 +40,21 @@
             this.apptLocationLabel = new System.Windows.Forms.Label();
             this.apptDescLabel = new System.Windows.Forms.Label();
             this.apptTitleLabel = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.endTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.apptTypeText = new System.Windows.Forms.TextBox();
+            this.apptContactText = new System.Windows.Forms.TextBox();
+            this.apptLocationText = new System.Windows.Forms.TextBox();
+            this.apptDescText = new System.Windows.Forms.TextBox();
+            this.apptTitleText = new System.Windows.Forms.TextBox();
+            this.addApptBtn = new System.Windows.Forms.Button();
+            this.urlLabel = new System.Windows.Forms.Label();
+            this.urlText = new System.Windows.Forms.TextBox();
             this.addApptGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // addApptGroupBox
             // 
+            this.addApptGroupBox.Controls.Add(this.urlText);
+            this.addApptGroupBox.Controls.Add(this.urlLabel);
             this.addApptGroupBox.Controls.Add(this.endTimePicker);
             this.addApptGroupBox.Controls.Add(this.apptCustSelect);
             this.addApptGroupBox.Controls.Add(this.apptCustomerLabel);
@@ -61,17 +66,26 @@
             this.addApptGroupBox.Controls.Add(this.apptLocationLabel);
             this.addApptGroupBox.Controls.Add(this.apptDescLabel);
             this.addApptGroupBox.Controls.Add(this.apptTitleLabel);
-            this.addApptGroupBox.Controls.Add(this.textBox5);
-            this.addApptGroupBox.Controls.Add(this.textBox4);
-            this.addApptGroupBox.Controls.Add(this.textBox3);
-            this.addApptGroupBox.Controls.Add(this.textBox2);
-            this.addApptGroupBox.Controls.Add(this.textBox1);
+            this.addApptGroupBox.Controls.Add(this.apptTypeText);
+            this.addApptGroupBox.Controls.Add(this.apptContactText);
+            this.addApptGroupBox.Controls.Add(this.apptLocationText);
+            this.addApptGroupBox.Controls.Add(this.apptDescText);
+            this.addApptGroupBox.Controls.Add(this.apptTitleText);
             this.addApptGroupBox.Location = new System.Drawing.Point(37, 28);
             this.addApptGroupBox.Name = "addApptGroupBox";
-            this.addApptGroupBox.Size = new System.Drawing.Size(427, 351);
+            this.addApptGroupBox.Size = new System.Drawing.Size(427, 381);
             this.addApptGroupBox.TabIndex = 0;
             this.addApptGroupBox.TabStop = false;
             this.addApptGroupBox.Text = "Add Appointment";
+            // 
+            // endTimePicker
+            // 
+            this.endTimePicker.Location = new System.Drawing.Point(212, 334);
+            this.endTimePicker.Name = "endTimePicker";
+            this.endTimePicker.ShowUpDown = true;
+            this.endTimePicker.Size = new System.Drawing.Size(196, 20);
+            this.endTimePicker.TabIndex = 15;
+            this.endTimePicker.Value = new System.DateTime(2019, 1, 6, 16, 0, 35, 0);
             // 
             // apptCustSelect
             // 
@@ -92,7 +106,7 @@
             // 
             // startTimePicker
             // 
-            this.startTimePicker.Location = new System.Drawing.Point(212, 259);
+            this.startTimePicker.Location = new System.Drawing.Point(212, 292);
             this.startTimePicker.Name = "startTimePicker";
             this.startTimePicker.ShowUpDown = true;
             this.startTimePicker.Size = new System.Drawing.Size(196, 20);
@@ -102,7 +116,7 @@
             // endTimeLabel
             // 
             this.endTimeLabel.AutoSize = true;
-            this.endTimeLabel.Location = new System.Drawing.Point(7, 308);
+            this.endTimeLabel.Location = new System.Drawing.Point(7, 341);
             this.endTimeLabel.Name = "endTimeLabel";
             this.endTimeLabel.Size = new System.Drawing.Size(52, 13);
             this.endTimeLabel.TabIndex = 11;
@@ -111,7 +125,7 @@
             // apptStartLabel
             // 
             this.apptStartLabel.AutoSize = true;
-            this.apptStartLabel.Location = new System.Drawing.Point(7, 266);
+            this.apptStartLabel.Location = new System.Drawing.Point(7, 299);
             this.apptStartLabel.Name = "apptStartLabel";
             this.apptStartLabel.Size = new System.Drawing.Size(55, 13);
             this.apptStartLabel.TabIndex = 10;
@@ -162,55 +176,73 @@
             this.apptTitleLabel.TabIndex = 5;
             this.apptTitleLabel.Text = "Appointment Title";
             // 
-            // textBox5
+            // apptTypeText
             // 
-            this.textBox5.Location = new System.Drawing.Point(191, 205);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(217, 20);
-            this.textBox5.TabIndex = 4;
+            this.apptTypeText.Location = new System.Drawing.Point(191, 205);
+            this.apptTypeText.Name = "apptTypeText";
+            this.apptTypeText.Size = new System.Drawing.Size(217, 20);
+            this.apptTypeText.TabIndex = 4;
             // 
-            // textBox4
+            // apptContactText
             // 
-            this.textBox4.Location = new System.Drawing.Point(191, 167);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(217, 20);
-            this.textBox4.TabIndex = 3;
+            this.apptContactText.Location = new System.Drawing.Point(191, 167);
+            this.apptContactText.Name = "apptContactText";
+            this.apptContactText.Size = new System.Drawing.Size(217, 20);
+            this.apptContactText.TabIndex = 3;
             // 
-            // textBox3
+            // apptLocationText
             // 
-            this.textBox3.Location = new System.Drawing.Point(191, 130);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(217, 20);
-            this.textBox3.TabIndex = 2;
+            this.apptLocationText.Location = new System.Drawing.Point(191, 130);
+            this.apptLocationText.Name = "apptLocationText";
+            this.apptLocationText.Size = new System.Drawing.Size(217, 20);
+            this.apptLocationText.TabIndex = 2;
             // 
-            // textBox2
+            // apptDescText
             // 
-            this.textBox2.Location = new System.Drawing.Point(191, 91);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(217, 20);
-            this.textBox2.TabIndex = 1;
+            this.apptDescText.Location = new System.Drawing.Point(191, 91);
+            this.apptDescText.Name = "apptDescText";
+            this.apptDescText.Size = new System.Drawing.Size(217, 20);
+            this.apptDescText.TabIndex = 1;
             // 
-            // textBox1
+            // apptTitleText
             // 
-            this.textBox1.Location = new System.Drawing.Point(191, 29);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(217, 20);
-            this.textBox1.TabIndex = 0;
+            this.apptTitleText.Location = new System.Drawing.Point(191, 29);
+            this.apptTitleText.Name = "apptTitleText";
+            this.apptTitleText.Size = new System.Drawing.Size(217, 20);
+            this.apptTitleText.TabIndex = 0;
             // 
-            // endTimePicker
+            // addApptBtn
             // 
-            this.endTimePicker.Location = new System.Drawing.Point(212, 301);
-            this.endTimePicker.Name = "endTimePicker";
-            this.endTimePicker.ShowUpDown = true;
-            this.endTimePicker.Size = new System.Drawing.Size(196, 20);
-            this.endTimePicker.TabIndex = 15;
-            this.endTimePicker.Value = new System.DateTime(2019, 1, 6, 16, 0, 35, 0);
+            this.addApptBtn.Location = new System.Drawing.Point(205, 415);
+            this.addApptBtn.Name = "addApptBtn";
+            this.addApptBtn.Size = new System.Drawing.Size(104, 23);
+            this.addApptBtn.TabIndex = 1;
+            this.addApptBtn.Text = "Add Appointment";
+            this.addApptBtn.UseVisualStyleBackColor = true;
+            this.addApptBtn.Click += new System.EventHandler(this.addApptBtn_Click);
+            // 
+            // urlLabel
+            // 
+            this.urlLabel.AutoSize = true;
+            this.urlLabel.Location = new System.Drawing.Point(7, 245);
+            this.urlLabel.Name = "urlLabel";
+            this.urlLabel.Size = new System.Drawing.Size(29, 13);
+            this.urlLabel.TabIndex = 16;
+            this.urlLabel.Text = "URL";
+            // 
+            // urlText
+            // 
+            this.urlText.Location = new System.Drawing.Point(191, 238);
+            this.urlText.Name = "urlText";
+            this.urlText.Size = new System.Drawing.Size(217, 20);
+            this.urlText.TabIndex = 17;
             // 
             // AddAppointment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(514, 450);
+            this.Controls.Add(this.addApptBtn);
             this.Controls.Add(this.addApptGroupBox);
             this.Name = "AddAppointment";
             this.Text = "AddAppointment";
@@ -231,13 +263,16 @@
         private System.Windows.Forms.Label apptLocationLabel;
         private System.Windows.Forms.Label apptDescLabel;
         private System.Windows.Forms.Label apptTitleLabel;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox apptTypeText;
+        private System.Windows.Forms.TextBox apptContactText;
+        private System.Windows.Forms.TextBox apptLocationText;
+        private System.Windows.Forms.TextBox apptDescText;
+        private System.Windows.Forms.TextBox apptTitleText;
         private System.Windows.Forms.ComboBox apptCustSelect;
         private System.Windows.Forms.Label apptCustomerLabel;
         private System.Windows.Forms.DateTimePicker endTimePicker;
+        private System.Windows.Forms.Button addApptBtn;
+        private System.Windows.Forms.TextBox urlText;
+        private System.Windows.Forms.Label urlLabel;
     }
 }

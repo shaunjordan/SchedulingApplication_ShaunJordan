@@ -115,6 +115,23 @@ namespace ClassLibrary
             return addrId;
 
         }
+
+        private int GetCustomerId(string customerName, MySqlConnection conn)
+        {
+            int result;
+
+            string select_customer = "select_customer";
+         
+
+            MySqlCommand cmd = new MySqlCommand(select_customer, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@customerName", customerName);
+
+            result = Convert.ToInt32(cmd.ExecuteScalar());
+
+            return result;
+
+        }
               
         public void PopulateCustomerTable(MySqlConnection conn)
         {
@@ -189,6 +206,7 @@ namespace ClassLibrary
             }
         }
 
+        //TODO: update method to bool or int
         public void UpdateCustomer(MySqlConnection conn, int customerId, string customerName, string address1, string address2, string cityName, string postal, string ctryName, string phone)
         {
             string update = "update_customer";
@@ -216,6 +234,43 @@ namespace ClassLibrary
             {
                 MessageBox.Show("Customer not updated.");
             }
+            
+        }
+
+        public bool AddAppointment(string customer, string title, string descr, string location, string contact, string type, string url, string start, string end, MySqlConnection conn)
+        {
+            string insert_appointment = "insert_appointment";
+            int custId = GetCustomerId(customer, conn);
+
+            //int customer id = get the customer id of the item selected from the static list
+
+            MySqlCommand cmd = new MySqlCommand(insert_appointment, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@custId", custId);
+            cmd.Parameters.AddWithValue("@title", title);
+            cmd.Parameters.AddWithValue("@descr", descr);
+            cmd.Parameters.AddWithValue("@location", location);
+            cmd.Parameters.AddWithValue("@contact", contact);
+            cmd.Parameters.AddWithValue("@apptType", type);
+            cmd.Parameters.AddWithValue("@url", url);
+            cmd.Parameters.AddWithValue("@startTime", start);
+            cmd.Parameters.AddWithValue("@endTime", end);
+            cmd.Parameters.AddWithValue("@createdBy", User.displayName);
+
+            int successfulIns = cmd.ExecuteNonQuery();
+
+            if (successfulIns == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
+
+
+
             
         }
 
