@@ -25,11 +25,11 @@ namespace SchedulingUI
             InitializeComponent();
 
             startTimePicker.Format = DateTimePickerFormat.Custom;
-            startTimePicker.CustomFormat = "MM/dd/yyyy hh:mm tt K";
+            startTimePicker.CustomFormat = "MM/dd/yyyy hh:mm tt";
             startTimePicker.Value = DateTime.Now;
 
             endTimePicker.Format = DateTimePickerFormat.Custom;
-            endTimePicker.CustomFormat = "MM/dd/yyyy hh:mm tt K";
+            endTimePicker.CustomFormat = "MM/dd/yyyy hh:mm tt";
             endTimePicker.Value = DateTime.Now;
 
             foreach (Customer customer in customer.GetCustomers())

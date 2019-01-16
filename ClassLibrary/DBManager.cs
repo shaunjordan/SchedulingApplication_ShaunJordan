@@ -286,6 +286,7 @@ namespace ClassLibrary
                 Appointment appointment = new Appointment();
 
                 appointment.AppointmentId = Convert.ToInt32(reader[0]);
+                appointment.CustomerId = Convert.ToInt32(reader[1]);
                 appointment.Title = reader[2].ToString();
                 appointment.Description = reader[3].ToString();
                 appointment.Location = reader[4].ToString();

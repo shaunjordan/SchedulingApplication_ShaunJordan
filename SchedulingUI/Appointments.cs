@@ -44,8 +44,10 @@ namespace SchedulingUI
             conn.InitConnection();
 
             appointments.ClearMonthly();
-            
+
             int month = months.IndexOf(monthPicker.Text) + 1; //plus one to get the month number
+
+            //MessageBox.Show(month.ToString());
 
             apptManager.UpdateMonthGrid(month, conn.GetConnection());
 
@@ -54,7 +56,7 @@ namespace SchedulingUI
 
             appointmentsDataGrid.DataSource = monthlyAppointments;
 
-            
+
 
             conn.CloseConnection();
         }

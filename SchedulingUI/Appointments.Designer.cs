@@ -34,9 +34,10 @@
             this.backBtn = new System.Windows.Forms.Button();
             this.apptsTabs = new System.Windows.Forms.TabControl();
             this.apptsByMonthTab = new System.Windows.Forms.TabPage();
-            this.apptsByWeekTab = new System.Windows.Forms.TabPage();
-            this.monthPicker = new System.Windows.Forms.ComboBox();
             this.appointmentsDataGrid = new System.Windows.Forms.DataGridView();
+            this.monthPicker = new System.Windows.Forms.ComboBox();
+            this.apptsByWeekTab = new System.Windows.Forms.TabPage();
+            this.selectMonthLabel = new System.Windows.Forms.Label();
             this.apptsTabs.SuspendLayout();
             this.apptsByMonthTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentsDataGrid)).BeginInit();
@@ -87,42 +88,24 @@
             // 
             this.apptsTabs.Controls.Add(this.apptsByMonthTab);
             this.apptsTabs.Controls.Add(this.apptsByWeekTab);
-            this.apptsTabs.Location = new System.Drawing.Point(34, 23);
+            this.apptsTabs.Location = new System.Drawing.Point(12, 23);
             this.apptsTabs.Name = "apptsTabs";
             this.apptsTabs.SelectedIndex = 0;
-            this.apptsTabs.Size = new System.Drawing.Size(702, 322);
+            this.apptsTabs.Size = new System.Drawing.Size(922, 322);
             this.apptsTabs.TabIndex = 6;
             // 
             // apptsByMonthTab
             // 
+            this.apptsByMonthTab.Controls.Add(this.selectMonthLabel);
             this.apptsByMonthTab.Controls.Add(this.appointmentsDataGrid);
             this.apptsByMonthTab.Controls.Add(this.monthPicker);
             this.apptsByMonthTab.Location = new System.Drawing.Point(4, 22);
             this.apptsByMonthTab.Name = "apptsByMonthTab";
             this.apptsByMonthTab.Padding = new System.Windows.Forms.Padding(3);
-            this.apptsByMonthTab.Size = new System.Drawing.Size(694, 296);
+            this.apptsByMonthTab.Size = new System.Drawing.Size(914, 296);
             this.apptsByMonthTab.TabIndex = 0;
             this.apptsByMonthTab.Text = "Appointments - Monthly";
             this.apptsByMonthTab.UseVisualStyleBackColor = true;
-            // 
-            // apptsByWeekTab
-            // 
-            this.apptsByWeekTab.Location = new System.Drawing.Point(4, 22);
-            this.apptsByWeekTab.Name = "apptsByWeekTab";
-            this.apptsByWeekTab.Padding = new System.Windows.Forms.Padding(3);
-            this.apptsByWeekTab.Size = new System.Drawing.Size(694, 296);
-            this.apptsByWeekTab.TabIndex = 1;
-            this.apptsByWeekTab.Text = "Appointments - Weekly";
-            this.apptsByWeekTab.UseVisualStyleBackColor = true;
-            // 
-            // monthPicker
-            // 
-            this.monthPicker.FormattingEnabled = true;
-            this.monthPicker.Location = new System.Drawing.Point(16, 15);
-            this.monthPicker.Name = "monthPicker";
-            this.monthPicker.Size = new System.Drawing.Size(146, 21);
-            this.monthPicker.TabIndex = 0;
-            this.monthPicker.SelectedIndexChanged += new System.EventHandler(this.monthPicker_SelectedIndexChanged);
             // 
             // appointmentsDataGrid
             // 
@@ -137,14 +120,42 @@
             this.appointmentsDataGrid.ReadOnly = true;
             this.appointmentsDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.appointmentsDataGrid.ShowEditingIcon = false;
-            this.appointmentsDataGrid.Size = new System.Drawing.Size(682, 248);
+            this.appointmentsDataGrid.Size = new System.Drawing.Size(902, 248);
             this.appointmentsDataGrid.TabIndex = 11;
+            // 
+            // monthPicker
+            // 
+            this.monthPicker.FormattingEnabled = true;
+            this.monthPicker.Location = new System.Drawing.Point(88, 15);
+            this.monthPicker.Name = "monthPicker";
+            this.monthPicker.Size = new System.Drawing.Size(88, 21);
+            this.monthPicker.TabIndex = 0;
+            this.monthPicker.SelectedIndexChanged += new System.EventHandler(this.monthPicker_SelectedIndexChanged);
+            // 
+            // apptsByWeekTab
+            // 
+            this.apptsByWeekTab.Location = new System.Drawing.Point(4, 22);
+            this.apptsByWeekTab.Name = "apptsByWeekTab";
+            this.apptsByWeekTab.Padding = new System.Windows.Forms.Padding(3);
+            this.apptsByWeekTab.Size = new System.Drawing.Size(694, 296);
+            this.apptsByWeekTab.TabIndex = 1;
+            this.apptsByWeekTab.Text = "Appointments - Weekly";
+            this.apptsByWeekTab.UseVisualStyleBackColor = true;
+            // 
+            // selectMonthLabel
+            // 
+            this.selectMonthLabel.AutoSize = true;
+            this.selectMonthLabel.Location = new System.Drawing.Point(6, 18);
+            this.selectMonthLabel.Name = "selectMonthLabel";
+            this.selectMonthLabel.Size = new System.Drawing.Size(70, 13);
+            this.selectMonthLabel.TabIndex = 12;
+            this.selectMonthLabel.Text = "Select Month";
             // 
             // Appointments
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(946, 450);
             this.Controls.Add(this.apptsTabs);
             this.Controls.Add(this.backBtn);
             this.Controls.Add(this.delApptBtn);
@@ -154,6 +165,7 @@
             this.Text = "Appointments";
             this.apptsTabs.ResumeLayout(false);
             this.apptsByMonthTab.ResumeLayout(false);
+            this.apptsByMonthTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentsDataGrid)).EndInit();
             this.ResumeLayout(false);
 
@@ -170,5 +182,6 @@
         private System.Windows.Forms.TabPage apptsByWeekTab;
         private System.Windows.Forms.ComboBox monthPicker;
         private System.Windows.Forms.DataGridView appointmentsDataGrid;
+        private System.Windows.Forms.Label selectMonthLabel;
     }
 }
