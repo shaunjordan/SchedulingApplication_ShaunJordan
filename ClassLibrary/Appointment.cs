@@ -3,56 +3,70 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace ClassLibrary
 {
-    class Appointment
+    public class Appointment
     {
 
-        public enum Months
-        {
-            January,
-            February,
-            March,
-            April,
-            May,
-            June,
-            July,
-            August,
-            September,
-            October,
-            November,
-            December
-        }
+        private static BindingList<Appointment> MonthlyAppointments = new BindingList<Appointment>();
 
+        private BindingList<Appointment> WeeklyAppointments = new BindingList<Appointment>();
+
+        [DisplayName("Appointment Id")]
         public int AppointmentId { get; set; }
 
+        [Browsable(false)]
         public int CustomerId { get; set; }
 
-        public int UserId { get; set; }
-
+        [DisplayName("Title")]
         public string Title { get; set; }
 
+        [DisplayName("Description")]
         public string Description { get; set; }
 
+        [DisplayName("Location")]
         public string Location { get; set; }
 
+        [DisplayName("Contact")]
         public string Contact { get; set; }
 
+        [DisplayName("Type")]
         public string Type { get; set; }
 
+        [DisplayName("Url")]
         public string Url { get; set; }
 
+        [DisplayName("Start Time")]
         public DateTime Start { get; set; }
 
+        [DisplayName("End Time")]
         public DateTime End { get; set; }
 
-        public DateTime CreateDate { get; set; }
+        public BindingList<Appointment> GetMonthlyAppointments()
+        {
+            return MonthlyAppointments;
+        }
 
-        public string CreatedBy { get; set; }
+        public void AddMonthlyAppointment(Appointment mAppt)
+        {
+            MonthlyAppointments.Add(mAppt);
+        }
 
-        public DateTime LastUpdate { get; set; }
+        public BindingList<Appointment> GetWeeklyAppointments()
+        {
+            return MonthlyAppointments;
+        }
 
-        public string LastUpdateBy { get; set; }
+        public void ClearMonthly()
+        {
+            MonthlyAppointments.Clear();
+        }
+
+        public void AddWeeklyAppointment(Appointment wAppt)
+        {
+            WeeklyAppointments.Add(wAppt);
+        }
     }
 }

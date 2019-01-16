@@ -267,13 +267,40 @@ namespace ClassLibrary
             {
                 return false;
             }
-            
-
-
 
             
         }
 
-        
+        public void UpdateMonthGrid(int month, MySqlConnection conn)
+        {
+            string select_mAppts = "select_mAppts";
+
+            MySqlCommand cmd = new MySqlCommand(select_mAppts, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@monthNum", month);
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                Appointment appointment = new Appointment();
+
+                appointment.AppointmentId = Convert.ToInt32(reader[0]);
+                appointment.Title = reader[2].ToString();
+                appointment.Description = reader[3].ToString();
+                appointment.Location = reader[4].ToString();
+                appointment.Contact = reader[5].ToString();
+                appointment.Type = reader[6].ToString();
+                appointment.Url = reader[7].ToString();
+                appointment.Start = DateTime.Parse(reader[8].ToString());
+                appointment.End = DateTime.Parse(reader[9].ToString());
+
+                appointment.AddMonthlyAppointment(appointment);
+            }
+
+            reader.Close();
+            reader.Dispose();
+
+        }
     }
 }

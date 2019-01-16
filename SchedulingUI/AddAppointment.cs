@@ -25,10 +25,12 @@ namespace SchedulingUI
             InitializeComponent();
 
             startTimePicker.Format = DateTimePickerFormat.Custom;
-            startTimePicker.CustomFormat = "MM/dd/yyyy hh:mm tt";
+            startTimePicker.CustomFormat = "MM/dd/yyyy hh:mm tt K";
+            startTimePicker.Value = DateTime.Now;
 
             endTimePicker.Format = DateTimePickerFormat.Custom;
-            endTimePicker.CustomFormat = "MM/dd/yyyy hh:mm tt";
+            endTimePicker.CustomFormat = "MM/dd/yyyy hh:mm tt K";
+            endTimePicker.Value = DateTime.Now;
 
             foreach (Customer customer in customer.GetCustomers())
             {
@@ -47,6 +49,8 @@ namespace SchedulingUI
         {
             connection.InitConnection();
 
+            //TODO: set business times.
+
             string customer = apptCustSelect.Text;
             string title = apptTitleText.Text;
             string descr = apptDescText.Text;
@@ -62,10 +66,19 @@ namespace SchedulingUI
             DateTime endTimeValue = DateTime.Parse(endTime);
 
 
-            dBManager.AddAppointment(customer, title, descr, location, contact, type, url, startTimeValue.ToString("yyyy-MM-dd HH:mm:ss"), endTimeValue.ToString("yyyy-MM-dd HH:mm:ss"), connection.GetConnection());
+            bool appointmentAdded = dBManager.AddAppointment(customer, title, descr, location, contact, type, url, startTimeValue.ToString("yyyy-MM-dd HH:mm:ss"), endTimeValue.ToString("yyyy-MM-dd HH:mm:ss"), connection.GetConnection());
 
 
-            //MessageBox.Show(startDateValue.ToString("yyy-MM-dd HH:mm:ss"));
+            if (appointmentAdded)
+            {
+                MessageBox.Show("Appointment successfully added to the database");
+            }
+            else
+            {
+                MessageBox.Show("There was an error adding the appointment, please try again.");
+            }
+
+            this.Close();
 
             connection.CloseConnection();
         }
