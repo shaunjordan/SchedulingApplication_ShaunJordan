@@ -43,6 +43,7 @@ namespace SchedulingUI
         {
             conn.InitConnection();
 
+            //Clear binding list before adding new data from the DB
             appointments.ClearMonthly();
 
             int month = months.IndexOf(monthPicker.Text) + 1; //plus one to get the month number
@@ -59,6 +60,11 @@ namespace SchedulingUI
 
 
             conn.CloseConnection();
+        }
+
+        private void backBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -9,6 +9,7 @@ using MySql.Data;
 using MySql.Data.MySqlClient;
 using System.Windows.Forms;
 using System.ComponentModel;
+using System.Globalization;
 
 namespace ClassLibrary
 {
@@ -274,6 +275,7 @@ namespace ClassLibrary
         public void UpdateMonthGrid(int month, MySqlConnection conn)
         {
             string select_mAppts = "select_mAppts";
+            
 
             MySqlCommand cmd = new MySqlCommand(select_mAppts, conn);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -284,6 +286,7 @@ namespace ClassLibrary
             while (reader.Read())
             {
                 Appointment appointment = new Appointment();
+                
 
                 appointment.AppointmentId = Convert.ToInt32(reader[0]);
                 appointment.CustomerId = Convert.ToInt32(reader[1]);
@@ -293,8 +296,15 @@ namespace ClassLibrary
                 appointment.Contact = reader[5].ToString();
                 appointment.Type = reader[6].ToString();
                 appointment.Url = reader[7].ToString();
-                appointment.Start = DateTime.Parse(reader[8].ToString());
-                appointment.End = DateTime.Parse(reader[9].ToString());
+
+                DateTime start = DateTime.Parse(reader[8].ToString());
+                DateTime end = DateTime.Parse(reader[9].ToString());
+
+                appointment.Start = start.ToLocalTime();
+                appointment.End = end.ToLocalTime();
+
+                //appointment.Start = DateTime.Parse(reader[8].ToString());
+                //appointment.End = DateTime.Parse(reader[9].ToString());
 
                 appointment.AddMonthlyAppointment(appointment);
             }

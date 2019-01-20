@@ -23,7 +23,14 @@ namespace SchedulingUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(User.displayName);
+            //MessageBox.Show(User.displayName);
+            DateTime myDate = DateTime.UtcNow;
+            DateTime toLoc = myDate.ToLocalTime();
+
+           
+
+
+            MessageBox.Show(toLoc.ToString());
         }
 
         private void custMgrBtn_Click(object sender, EventArgs e)

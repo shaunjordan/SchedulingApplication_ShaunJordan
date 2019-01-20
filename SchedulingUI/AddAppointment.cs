@@ -51,6 +51,8 @@ namespace SchedulingUI
 
             //TODO: set business times.
 
+            TimeZone localTime = TimeZone.CurrentTimeZone;
+
             string customer = apptCustSelect.Text;
             string title = apptTitleText.Text;
             string descr = apptDescText.Text;
@@ -65,8 +67,10 @@ namespace SchedulingUI
             DateTime startTimeValue = DateTime.Parse(startTime);
             DateTime endTimeValue = DateTime.Parse(endTime);
 
+            DateTime startUTC = startTimeValue.ToUniversalTime();
+            DateTime endUTC = endTimeValue.ToUniversalTime();
 
-            bool appointmentAdded = dBManager.AddAppointment(customer, title, descr, location, contact, type, url, startTimeValue.ToString("yyyy-MM-dd HH:mm:ss"), endTimeValue.ToString("yyyy-MM-dd HH:mm:ss"), connection.GetConnection());
+            bool appointmentAdded = dBManager.AddAppointment(customer, title, descr, location, contact, type, url, startUTC.ToString("yyyy-MM-dd HH:mm:ss"), endUTC.ToString("yyyy-MM-dd HH:mm:ss"), connection.GetConnection());
 
 
             if (appointmentAdded)
