@@ -38,9 +38,11 @@
             this.appointmentsDataGrid = new System.Windows.Forms.DataGridView();
             this.monthPicker = new System.Windows.Forms.ComboBox();
             this.apptsByWeekTab = new System.Windows.Forms.TabPage();
+            this.weekPicker = new System.Windows.Forms.ComboBox();
             this.apptsTabs.SuspendLayout();
             this.apptsByMonthTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentsDataGrid)).BeginInit();
+            this.apptsByWeekTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // addApptBtn
@@ -144,6 +146,7 @@
             // 
             // apptsByWeekTab
             // 
+            this.apptsByWeekTab.Controls.Add(this.weekPicker);
             this.apptsByWeekTab.Location = new System.Drawing.Point(4, 22);
             this.apptsByWeekTab.Name = "apptsByWeekTab";
             this.apptsByWeekTab.Padding = new System.Windows.Forms.Padding(3);
@@ -151,6 +154,14 @@
             this.apptsByWeekTab.TabIndex = 1;
             this.apptsByWeekTab.Text = "Appointments - Weekly";
             this.apptsByWeekTab.UseVisualStyleBackColor = true;
+            // 
+            // weekPicker
+            // 
+            this.weekPicker.FormattingEnabled = true;
+            this.weekPicker.Location = new System.Drawing.Point(114, 18);
+            this.weekPicker.Name = "weekPicker";
+            this.weekPicker.Size = new System.Drawing.Size(315, 21);
+            this.weekPicker.TabIndex = 0;
             // 
             // Appointments
             // 
@@ -168,6 +179,7 @@
             this.apptsByMonthTab.ResumeLayout(false);
             this.apptsByMonthTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentsDataGrid)).EndInit();
+            this.apptsByWeekTab.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -184,5 +196,6 @@
         private System.Windows.Forms.ComboBox monthPicker;
         private System.Windows.Forms.DataGridView appointmentsDataGrid;
         private System.Windows.Forms.Label selectMonthLabel;
+        private System.Windows.Forms.ComboBox weekPicker;
     }
 }

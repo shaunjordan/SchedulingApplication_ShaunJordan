@@ -313,5 +313,10 @@ namespace ClassLibrary
             reader.Dispose();
 
         }
+
+        public void UpdateWeekGrid(MySqlConnection conn)
+        {
+            
+        }
     }
 }
