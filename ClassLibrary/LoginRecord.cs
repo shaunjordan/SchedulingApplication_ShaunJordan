@@ -22,20 +22,6 @@ namespace ClassLibrary
            
             File.AppendAllText(path, log);
             
-
-            //if (!File.Exists(path))
-            //{
-            //    File.Create(path);
-            //    TextWriter textWriter = new StreamWriter(path);
-            //    textWriter.WriteLine(log);
-            //    textWriter.Close();
-            //}
-            //else if (File.Exists(path))
-            //{
-            //    using
-            //}
-
-            //System.IO.File.WriteAllText(AppDomain.CurrentDomain.BaseDirectory + @"\UserLogins", log);
         }
     }
 }

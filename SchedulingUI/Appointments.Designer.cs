@@ -39,10 +39,15 @@
             this.monthPicker = new System.Windows.Forms.ComboBox();
             this.apptsByWeekTab = new System.Windows.Forms.TabPage();
             this.weekPicker = new System.Windows.Forms.ComboBox();
+            this.selectWeekLabel = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.endWeek = new System.Windows.Forms.ComboBox();
+            this.endingWeekLabel = new System.Windows.Forms.Label();
             this.apptsTabs.SuspendLayout();
             this.apptsByMonthTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentsDataGrid)).BeginInit();
             this.apptsByWeekTab.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // addApptBtn
@@ -125,6 +130,7 @@
             this.appointmentsDataGrid.AllowUserToDeleteRows = false;
             this.appointmentsDataGrid.AllowUserToResizeColumns = false;
             this.appointmentsDataGrid.AllowUserToResizeRows = false;
+            this.appointmentsDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.appointmentsDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.appointmentsDataGrid.Location = new System.Drawing.Point(6, 42);
             this.appointmentsDataGrid.MultiSelect = false;
@@ -137,6 +143,7 @@
             // 
             // monthPicker
             // 
+            this.monthPicker.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.monthPicker.FormattingEnabled = true;
             this.monthPicker.Location = new System.Drawing.Point(88, 15);
             this.monthPicker.Name = "monthPicker";
@@ -146,6 +153,10 @@
             // 
             // apptsByWeekTab
             // 
+            this.apptsByWeekTab.Controls.Add(this.endingWeekLabel);
+            this.apptsByWeekTab.Controls.Add(this.endWeek);
+            this.apptsByWeekTab.Controls.Add(this.dataGridView1);
+            this.apptsByWeekTab.Controls.Add(this.selectWeekLabel);
             this.apptsByWeekTab.Controls.Add(this.weekPicker);
             this.apptsByWeekTab.Location = new System.Drawing.Point(4, 22);
             this.apptsByWeekTab.Name = "apptsByWeekTab";
@@ -157,11 +168,48 @@
             // 
             // weekPicker
             // 
+            this.weekPicker.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.weekPicker.FormattingEnabled = true;
-            this.weekPicker.Location = new System.Drawing.Point(114, 18);
+            this.weekPicker.Location = new System.Drawing.Point(120, 11);
             this.weekPicker.Name = "weekPicker";
-            this.weekPicker.Size = new System.Drawing.Size(315, 21);
+            this.weekPicker.Size = new System.Drawing.Size(188, 21);
             this.weekPicker.TabIndex = 0;
+            this.weekPicker.SelectedIndexChanged += new System.EventHandler(this.weekPicker_SelectedIndexChanged);
+            // 
+            // selectWeekLabel
+            // 
+            this.selectWeekLabel.AutoSize = true;
+            this.selectWeekLabel.Location = new System.Drawing.Point(6, 14);
+            this.selectWeekLabel.Name = "selectWeekLabel";
+            this.selectWeekLabel.Size = new System.Drawing.Size(108, 13);
+            this.selectWeekLabel.TabIndex = 1;
+            this.selectWeekLabel.Text = "Select Starting Week";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(6, 38);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(1054, 252);
+            this.dataGridView1.TabIndex = 2;
+            // 
+            // endWeek
+            // 
+            this.endWeek.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.endWeek.FormattingEnabled = true;
+            this.endWeek.Location = new System.Drawing.Point(452, 11);
+            this.endWeek.Name = "endWeek";
+            this.endWeek.Size = new System.Drawing.Size(188, 21);
+            this.endWeek.TabIndex = 3;
+            // 
+            // endingWeekLabel
+            // 
+            this.endingWeekLabel.AutoSize = true;
+            this.endingWeekLabel.Location = new System.Drawing.Point(338, 14);
+            this.endingWeekLabel.Name = "endingWeekLabel";
+            this.endingWeekLabel.Size = new System.Drawing.Size(105, 13);
+            this.endingWeekLabel.TabIndex = 4;
+            this.endingWeekLabel.Text = "Select Ending Week";
             // 
             // Appointments
             // 
@@ -180,6 +228,8 @@
             this.apptsByMonthTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.appointmentsDataGrid)).EndInit();
             this.apptsByWeekTab.ResumeLayout(false);
+            this.apptsByWeekTab.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -197,5 +247,9 @@
         private System.Windows.Forms.DataGridView appointmentsDataGrid;
         private System.Windows.Forms.Label selectMonthLabel;
         private System.Windows.Forms.ComboBox weekPicker;
+        private System.Windows.Forms.Label selectWeekLabel;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ComboBox endWeek;
+        private System.Windows.Forms.Label endingWeekLabel;
     }
 }
