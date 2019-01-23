@@ -12,7 +12,7 @@ namespace ClassLibrary
 
         private static BindingList<Appointment> MonthlyAppointments = new BindingList<Appointment>();
 
-        private BindingList<Appointment> WeeklyAppointments = new BindingList<Appointment>();
+        private static BindingList<Appointment> WeeklyAppointments = new BindingList<Appointment>();
 
         [DisplayName("Appointment Id")]
         public int AppointmentId { get; set; }
@@ -54,19 +54,24 @@ namespace ClassLibrary
             MonthlyAppointments.Add(mAppt);
         }
 
-        public BindingList<Appointment> GetWeeklyAppointments()
-        {
-            return MonthlyAppointments;
-        }
-
         public void ClearMonthly()
         {
             MonthlyAppointments.Clear();
         }
 
+        public BindingList<Appointment> GetWeeklyAppointments()
+        {
+            return WeeklyAppointments;
+        }
+           
         public void AddWeeklyAppointment(Appointment wAppt)
         {
             WeeklyAppointments.Add(wAppt);
+        }
+
+        public void ClearWeekly()
+        {
+            WeeklyAppointments.Clear();
         }
     }
 }

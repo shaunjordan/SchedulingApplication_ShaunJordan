@@ -23,14 +23,19 @@ namespace SchedulingUI
 
         private void button1_Click(object sender, EventArgs e)
         {
+            // Test button
             //MessageBox.Show(User.displayName);
-            DateTime myDate = DateTime.UtcNow;
-            DateTime toLoc = myDate.ToLocalTime();
+            //DateTime myDate = DateTime.UtcNow;
+            //DateTime toLoc = myDate.ToLocalTime();
 
-           
+            //MessageBox.Show(toLoc.ToString());
+            int year = Convert.ToInt32(DateTime.Now.Year);
+            DateTime start = new DateTime(year, 1, 1);
 
+            start.AddDays(1 - (int)start.DayOfWeek);
 
-            MessageBox.Show(toLoc.ToString());
+            MessageBox.Show(start.ToString());
+
         }
 
         private void custMgrBtn_Click(object sender, EventArgs e)

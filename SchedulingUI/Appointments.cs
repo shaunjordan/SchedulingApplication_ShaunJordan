@@ -24,18 +24,21 @@ namespace SchedulingUI
         private List<string> endWeeks = new List<string>();
 
         DBConnection conn = new DBConnection();
+
         DBManager apptManager = new DBManager();
+        
+
         Appointment appointments = new Appointment();
+        Appointment testApts = new Appointment();
+
 
         public Appointments()
         {
             InitializeComponent();
-            monthPicker.DataSource = months;
 
-            PopulateWeeks();
-
-            weekPicker.DataSource = startWeeks;
-            endWeek.DataSource = endWeeks;
+            monthPicker.DataSource = months;                        
+            weekPicker.DataSource = PopulateWeeks();
+            
         }
 
         
@@ -62,34 +65,13 @@ namespace SchedulingUI
 
             BindingSource monthlyAppointments = new BindingSource();
             monthlyAppointments.DataSource = appointments.GetMonthlyAppointments();
-
+                        
             appointmentsDataGrid.DataSource = monthlyAppointments;
-
-
-
+            
             conn.CloseConnection();
         }
 
-        //public List<string> PopulateWeeks()
-        //{
-        //    List<string> weeks = new List<string>();
-        //    int year = Convert.ToInt32(DateTime.Now.Year);
-        //    DateTime start = new DateTime(year, 1, 1);
-
-        //    start = start.AddDays(1 - (int)start.DayOfWeek);
-        //    DateTime end = start.AddDays(6);
-
-        //    while (start.Year < 1 + year)
-        //    {
-        //        weeks.Add(string.Format("{0:yyyy-MM-dd} to {1:yyyy-MM-dd}", start, end));
-        //        start = start.AddDays(7);
-        //        end = end.AddDays(7);
-        //    }
-
-        //    return weeks;
-        //}
-
-        public void PopulateWeeks()
+        private List<string> PopulateWeeks()
         {
             List<string> weeks = new List<string>();
             int year = Convert.ToInt32(DateTime.Now.Year);
@@ -100,36 +82,55 @@ namespace SchedulingUI
 
             while (start.Year < 1 + year)
             {
-                startWeeks.Add(string.Format("{0:yyyy-MM-dd}", start));
-                endWeeks.Add(string.Format("{0:yyyy-MM-dd}", end));
+                weeks.Add(string.Format("{0:yyyy-MM-dd} to {1:yyyy-MM-dd}", start, end));
                 start = start.AddDays(7);
                 end = end.AddDays(7);
             }
 
-            //return weeks;
+            return weeks;
         }
+
 
         private void backBtn_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void weekPicker_SelectedIndexChanged(object sender, EventArgs e)
+        private void weekPicker_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            DateTime startingWeek = DateTime.Parse(weekPicker.Text.Substring(0,10));
-            DateTime endingWeek = DateTime.Parse(endWeek.Text.Substring(0, 10));
+            conn.InitConnection();
+            //run a query to populate the table
 
-            if (startingWeek > endingWeek)
-            {
-                MessageBox.Show("Invalid selection. Start date cannot be greater than end date.");
-                weekPicker.ResetText();
-                endWeek.ResetText();
-            }
-            else
-            {
+            appointments.ClearWeekly();
 
-            }
-            
+            //DateTime startingDate = DateTime.Parse(weekPicker.Text.Substring(0, 10));
+            //DateTime endingDate = DateTime.Parse(weekPicker.Text.Substring(14, 10));
+
+
+            //apptManager.UpdateWeekGrid(startingDate.ToString("yyyy-MM-dd HH:mm:ss"), endingDate.ToString("yyyy-MM-dd HH:mm:ss"), conn.GetConnection());
+
+            string startDate = weekPicker.Text.Substring(0, 10);
+            string endDate = weekPicker.Text.Substring(14, 10);
+
+            apptManager.UpdateWeekGrid(startDate, endDate, conn.GetConnection());
+            //BindingList<Appointment> test = new BindingList<Appointment>();
+
+            //MessageBox.Show(startDate);
+
+
+            BindingSource weeklyAppointments = new BindingSource();
+            weeklyAppointments.DataSource = appointments.GetWeeklyAppointments();
+
+            weeklyDataGrid.DataSource = weeklyAppointments;
+
+            //MessageBox.Show(testApts.GetWeeklyAppointments().Count.ToString());
+
+            conn.CloseConnection();
+            //DateTime startingDate = DateTime.Parse(weekPicker.Text.Substring(0, 10));
+            //DateTime endingDate = DateTime.Parse(weekPicker.Text.Substring(14, 10));
+
+            //MessageBox.Show(startingDate.ToString("yyyy-MM-dd HH:mm:ss"));
+            //MessageBox.Show(endingDate.ToString("yyyy-MM-dd HH:mm:ss"));
         }
     }
 }
