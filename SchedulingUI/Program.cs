@@ -29,7 +29,6 @@ namespace SchedulingUI
 
             if (loginForm.ShowDialog() == DialogResult.OK)
             {
-                
                 Application.Run(mainScreen);
             }
 

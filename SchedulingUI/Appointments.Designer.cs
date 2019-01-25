@@ -68,6 +68,7 @@
             this.editApptBtn.TabIndex = 3;
             this.editApptBtn.Text = "Edit Appointment";
             this.editApptBtn.UseVisualStyleBackColor = true;
+            this.editApptBtn.Click += new System.EventHandler(this.editApptBtn_Click);
             // 
             // delApptBtn
             // 
@@ -78,6 +79,7 @@
             this.delApptBtn.TabIndex = 4;
             this.delApptBtn.Text = "Delete Appointment";
             this.delApptBtn.UseVisualStyleBackColor = true;
+            this.delApptBtn.Click += new System.EventHandler(this.delApptBtn_Click);
             // 
             // backBtn
             // 
@@ -164,10 +166,18 @@
             // 
             // weeklyDataGrid
             // 
+            this.weeklyDataGrid.AllowUserToAddRows = false;
+            this.weeklyDataGrid.AllowUserToDeleteRows = false;
+            this.weeklyDataGrid.AllowUserToResizeColumns = false;
+            this.weeklyDataGrid.AllowUserToResizeRows = false;
             this.weeklyDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.weeklyDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.weeklyDataGrid.Location = new System.Drawing.Point(6, 38);
+            this.weeklyDataGrid.MultiSelect = false;
             this.weeklyDataGrid.Name = "weeklyDataGrid";
+            this.weeklyDataGrid.ReadOnly = true;
+            this.weeklyDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.weeklyDataGrid.ShowEditingIcon = false;
             this.weeklyDataGrid.Size = new System.Drawing.Size(1054, 252);
             this.weeklyDataGrid.TabIndex = 2;
             // 

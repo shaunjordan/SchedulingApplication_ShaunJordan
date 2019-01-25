@@ -27,9 +27,8 @@ namespace SchedulingUI
 
         DBManager apptManager = new DBManager();
         
-
         Appointment appointments = new Appointment();
-        Appointment testApts = new Appointment();
+        
 
 
         public Appointments()
@@ -55,6 +54,7 @@ namespace SchedulingUI
             conn.InitConnection();
 
             //Clear binding list before adding new data from the DB
+            //datagrid source is static binding list
             appointments.ClearMonthly();
 
             int month = months.IndexOf(monthPicker.Text) + 1; //plus one to get the month number
@@ -99,38 +99,34 @@ namespace SchedulingUI
         private void weekPicker_SelectionChangeCommitted(object sender, EventArgs e)
         {
             conn.InitConnection();
-            //run a query to populate the table
 
             appointments.ClearWeekly();
 
-            //DateTime startingDate = DateTime.Parse(weekPicker.Text.Substring(0, 10));
-            //DateTime endingDate = DateTime.Parse(weekPicker.Text.Substring(14, 10));
+            DateTime startingDate = DateTime.Parse(weekPicker.Text.Substring(0, 10));
 
-
-            //apptManager.UpdateWeekGrid(startingDate.ToString("yyyy-MM-dd HH:mm:ss"), endingDate.ToString("yyyy-MM-dd HH:mm:ss"), conn.GetConnection());
-
-            string startDate = weekPicker.Text.Substring(0, 10);
-            string endDate = weekPicker.Text.Substring(14, 10);
-
-            apptManager.UpdateWeekGrid(startDate, endDate, conn.GetConnection());
-            //BindingList<Appointment> test = new BindingList<Appointment>();
-
-            //MessageBox.Show(startDate);
-
+            //set end date to max datetime value
+            //capture appointments earlier than or on 11:59:59
+            DateTime endingDate = DateTime.Parse(weekPicker.Text.Substring(14, 10)).AddDays(1).Date.AddSeconds(-1);
+                       
+            apptManager.UpdateWeekGrid(startingDate.ToString("yyyy-MM-dd HH:mm:ss"), endingDate.ToString("yyyy-MM-dd HH:mm:ss"), conn.GetConnection());
 
             BindingSource weeklyAppointments = new BindingSource();
             weeklyAppointments.DataSource = appointments.GetWeeklyAppointments();
 
             weeklyDataGrid.DataSource = weeklyAppointments;
-
-            //MessageBox.Show(testApts.GetWeeklyAppointments().Count.ToString());
-
+                        
             conn.CloseConnection();
-            //DateTime startingDate = DateTime.Parse(weekPicker.Text.Substring(0, 10));
-            //DateTime endingDate = DateTime.Parse(weekPicker.Text.Substring(14, 10));
+            
+        }
 
-            //MessageBox.Show(startingDate.ToString("yyyy-MM-dd HH:mm:ss"));
-            //MessageBox.Show(endingDate.ToString("yyyy-MM-dd HH:mm:ss"));
+        private void editApptBtn_Click(object sender, EventArgs e)
+        {
+            //edit the appointment
+        }
+
+        private void delApptBtn_Click(object sender, EventArgs e)
+        {
+            //delete the appointment - verify deletion
         }
     }
 }
