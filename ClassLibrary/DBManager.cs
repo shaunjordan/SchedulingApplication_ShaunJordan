@@ -207,6 +207,37 @@ namespace ClassLibrary
             }
         }
 
+        public bool DeleteAppointment(MySqlConnection conn, int apptId)
+        {
+            //TODO: catch exceptions
+            string delete_appointment = "delete_appointment";
+
+            MySqlCommand cmd = new MySqlCommand(delete_appointment, conn);
+            cmd.Parameters.AddWithValue("@apptId", apptId);
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            try
+            {
+                int result = cmd.ExecuteNonQuery();
+                if (result == 1)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+                
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            
+        }
+
         //TODO: update method to bool or int
         public void UpdateCustomer(MySqlConnection conn, int customerId, string customerName, string address1, string address2, string cityName, string postal, string ctryName, string phone)
         {

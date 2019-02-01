@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClassLibrary;
 
+
 namespace SchedulingUI
 {
     public partial class Appointments : Form
     {
 
-        private List<string> months = new List<string> {
+        private static List<string> months = new List<string> {
             "January", "February", "March",
             "April","May","June",
             "July","August","September",
@@ -127,6 +128,7 @@ namespace SchedulingUI
         private void delApptBtn_Click(object sender, EventArgs e)
         {
             //delete the appointment - verify deletion
+            
         }
     }
 }
