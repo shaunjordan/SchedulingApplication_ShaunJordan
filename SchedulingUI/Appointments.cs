@@ -127,8 +127,37 @@ namespace SchedulingUI
 
         private void delApptBtn_Click(object sender, EventArgs e)
         {
-            //delete the appointment - verify deletion
+            int rowIndex;
+            int apptId;
+            DataGridViewRow selectedRow;
             
+            if (apptsTabs.SelectedTab == apptsTabs.TabPages["apptsByMonthTab"])
+            {
+                rowIndex = appointmentsDataGrid.SelectedCells[0].RowIndex;
+
+                selectedRow = appointmentsDataGrid.Rows[rowIndex];
+
+                apptId = Convert.ToInt32(selectedRow.Cells[0].Value);
+            }
+            else
+            {
+                rowIndex = weeklyDataGrid.SelectedCells[0].RowIndex;
+
+                selectedRow = weeklyDataGrid.Rows[rowIndex];
+
+                apptId = Convert.ToInt32(selectedRow.Cells[0].Value);
+            }
+
+
+            if (MessageBox.Show("Are you sure you want to delete the selected appointment?", "Confirm Delete", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                conn.InitConnection();
+
+                apptManager.DeleteAppointment(conn.GetConnection(), apptId);
+            }
+
+            conn.CloseConnection();
+
         }
     }
 }
