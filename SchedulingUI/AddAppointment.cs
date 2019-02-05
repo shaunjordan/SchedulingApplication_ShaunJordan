@@ -67,6 +67,8 @@ namespace SchedulingUI
             DateTime startTimeValue = DateTime.Parse(startTime);
             DateTime endTimeValue = DateTime.Parse(endTime);
 
+
+            //local time set to UTC before entry into database
             DateTime startUTC = startTimeValue.ToUniversalTime();
             DateTime endUTC = endTimeValue.ToUniversalTime();
 
@@ -85,6 +87,14 @@ namespace SchedulingUI
             this.Close();
 
             connection.CloseConnection();
+        }
+
+        private void cancelAddApptBtn_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to cancel?", "Changes will not be saved.", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
     }
 }

@@ -303,6 +303,38 @@ namespace ClassLibrary
             
         }
 
+        public bool EditAppointment(int apptId, string title, string description, string contact, string location, string type, string url, string start, string end, string updatedBy, MySqlConnection conn)
+        {
+            string update_appointment = "update_appointment";
+            MySqlCommand cmd = new MySqlCommand(update_appointment, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@apptId", apptId);
+            cmd.Parameters.AddWithValue("@title", title);
+            cmd.Parameters.AddWithValue("@descr", description);
+            cmd.Parameters.AddWithValue("@contact",contact);
+            cmd.Parameters.AddWithValue("@location", location);
+            cmd.Parameters.AddWithValue("@apptType", type);
+            cmd.Parameters.AddWithValue("@url", url);
+            cmd.Parameters.AddWithValue("@startTime", start);
+            cmd.Parameters.AddWithValue("@endTime", end);
+            cmd.Parameters.AddWithValue("@updatedBy", updatedBy);
+
+            int successfulUpdate = cmd.ExecuteNonQuery();
+
+            if (successfulUpdate == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+
+            //DBManager.UpdateAppointment(apptId, title, description, contact, location, type, url, startTime, endTime, User.displayName);
+            
+        }
+
         public void UpdateMonthGrid(int month, MySqlConnection conn)
         {
             string select_mAppts = "select_mAppts";

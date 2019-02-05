@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.addApptGroupBox = new System.Windows.Forms.GroupBox();
+            this.urlText = new System.Windows.Forms.TextBox();
+            this.urlLabel = new System.Windows.Forms.Label();
             this.endTimePicker = new System.Windows.Forms.DateTimePicker();
             this.apptCustSelect = new System.Windows.Forms.ComboBox();
             this.apptCustomerLabel = new System.Windows.Forms.Label();
@@ -46,8 +48,7 @@
             this.apptDescText = new System.Windows.Forms.TextBox();
             this.apptTitleText = new System.Windows.Forms.TextBox();
             this.addApptBtn = new System.Windows.Forms.Button();
-            this.urlLabel = new System.Windows.Forms.Label();
-            this.urlText = new System.Windows.Forms.TextBox();
+            this.cancelAddApptBtn = new System.Windows.Forms.Button();
             this.addApptGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,6 +78,22 @@
             this.addApptGroupBox.TabIndex = 0;
             this.addApptGroupBox.TabStop = false;
             this.addApptGroupBox.Text = "Add Appointment";
+            // 
+            // urlText
+            // 
+            this.urlText.Location = new System.Drawing.Point(191, 238);
+            this.urlText.Name = "urlText";
+            this.urlText.Size = new System.Drawing.Size(217, 20);
+            this.urlText.TabIndex = 17;
+            // 
+            // urlLabel
+            // 
+            this.urlLabel.AutoSize = true;
+            this.urlLabel.Location = new System.Drawing.Point(7, 245);
+            this.urlLabel.Name = "urlLabel";
+            this.urlLabel.Size = new System.Drawing.Size(29, 13);
+            this.urlLabel.TabIndex = 16;
+            this.urlLabel.Text = "URL";
             // 
             // endTimePicker
             // 
@@ -213,7 +230,7 @@
             // 
             // addApptBtn
             // 
-            this.addApptBtn.Location = new System.Drawing.Point(205, 415);
+            this.addApptBtn.Location = new System.Drawing.Point(249, 415);
             this.addApptBtn.Name = "addApptBtn";
             this.addApptBtn.Size = new System.Drawing.Size(104, 23);
             this.addApptBtn.TabIndex = 1;
@@ -221,31 +238,26 @@
             this.addApptBtn.UseVisualStyleBackColor = true;
             this.addApptBtn.Click += new System.EventHandler(this.addApptBtn_Click);
             // 
-            // urlLabel
+            // cancelAddApptBtn
             // 
-            this.urlLabel.AutoSize = true;
-            this.urlLabel.Location = new System.Drawing.Point(7, 245);
-            this.urlLabel.Name = "urlLabel";
-            this.urlLabel.Size = new System.Drawing.Size(29, 13);
-            this.urlLabel.TabIndex = 16;
-            this.urlLabel.Text = "URL";
-            // 
-            // urlText
-            // 
-            this.urlText.Location = new System.Drawing.Point(191, 238);
-            this.urlText.Name = "urlText";
-            this.urlText.Size = new System.Drawing.Size(217, 20);
-            this.urlText.TabIndex = 17;
+            this.cancelAddApptBtn.Location = new System.Drawing.Point(370, 415);
+            this.cancelAddApptBtn.Name = "cancelAddApptBtn";
+            this.cancelAddApptBtn.Size = new System.Drawing.Size(75, 23);
+            this.cancelAddApptBtn.TabIndex = 2;
+            this.cancelAddApptBtn.Text = "Cancel";
+            this.cancelAddApptBtn.UseVisualStyleBackColor = true;
+            this.cancelAddApptBtn.Click += new System.EventHandler(this.cancelAddApptBtn_Click);
             // 
             // AddAppointment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(514, 450);
+            this.Controls.Add(this.cancelAddApptBtn);
             this.Controls.Add(this.addApptBtn);
             this.Controls.Add(this.addApptGroupBox);
             this.Name = "AddAppointment";
-            this.Text = "AddAppointment";
+            this.Text = "Add Appointment";
             this.addApptGroupBox.ResumeLayout(false);
             this.addApptGroupBox.PerformLayout();
             this.ResumeLayout(false);
@@ -274,5 +286,6 @@
         private System.Windows.Forms.Button addApptBtn;
         private System.Windows.Forms.TextBox urlText;
         private System.Windows.Forms.Label urlLabel;
+        private System.Windows.Forms.Button cancelAddApptBtn;
     }
 }
