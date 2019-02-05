@@ -14,13 +14,13 @@ namespace SchedulingUI
 {
     public partial class EditAppointment : Form
     {
-
+        //TODO: set datetime to value from DB
         DBConnection conn = new DBConnection();
         DBManager dbManager = new DBManager();
 
         private int apptId;
 
-        public EditAppointment(int appointmentId, string customerName)
+        public EditAppointment(int appointmentId)
         {
             InitializeComponent();
 
@@ -34,22 +34,25 @@ namespace SchedulingUI
             editEndTimePicker.CustomFormat = "MM/dd/yyyy hh:mm tt";
             editEndTimePicker.Value = DateTime.Now; //enter the correct datetime from the appointment
 
-            editApptCustText.Text = customerName;
+            
 
             apptId = appointmentId;
 
             string select = "SELECT " +
                             "title," +
+                            "customerName," +
                             "description," +
                             "contact," +
                             "location," +
                             "type," +
                             "url " +
                             "FROM appointment " +
+                            "INNER JOIN customer " +
+                            "ON appointment.customerId = customer.customerId " +
                             "WHERE appointmentId = @appointmentId";
 
             MySqlCommand cmd = new MySqlCommand(select, conn.GetConnection());
-            cmd.Parameters.AddWithValue("@appointmentId", appointmentId);
+            cmd.Parameters.AddWithValue("@appointmentId", apptId);
 
             MySqlDataReader reader = cmd.ExecuteReader();
 
@@ -58,15 +61,16 @@ namespace SchedulingUI
                 while (reader.Read())
                 {
 
-                    editApptTitleText.Text = reader[2].ToString();
-                    editApptDescText.Text = reader[3].ToString();
-                    editApptLocationText.Text = reader[4].ToString();
-                    editApptContactText.Text = reader[5].ToString();
-                    editApptTypeText.Text = reader[6].ToString();
-                    editUrlText.Text = reader[7].ToString();
+                    editApptTitleText.Text = reader[0].ToString();
+                    editApptCustText.Text = reader[1].ToString();
+                    editApptDescText.Text = reader[2].ToString();
+                    editApptLocationText.Text = reader[3].ToString();
+                    editApptContactText.Text = reader[4].ToString();
+                    editApptTypeText.Text = reader[5].ToString();
+                    editUrlText.Text = reader[6].ToString();
                     //editStartTimePicker.Text;
                     //editEndTimePicker.Text;
-
+                    
                 }
             }
 
@@ -85,7 +89,7 @@ namespace SchedulingUI
             }
         }
 
-        private void editApptButton_Click(object sender, EventArgs e)
+        private void saveApptEditBtn_Click(object sender, EventArgs e)
         {
             conn.InitConnection();
 

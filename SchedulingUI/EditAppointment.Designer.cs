@@ -46,7 +46,7 @@
             this.editApptDescText = new System.Windows.Forms.TextBox();
             this.editApptTitleText = new System.Windows.Forms.TextBox();
             this.cancelAddApptBtn = new System.Windows.Forms.Button();
-            this.editApptButton = new System.Windows.Forms.Button();
+            this.saveApptEditBtn = new System.Windows.Forms.Button();
             this.editApptGroupBox = new System.Windows.Forms.GroupBox();
             this.editApptCustText = new System.Windows.Forms.TextBox();
             this.editApptGroupBox.SuspendLayout();
@@ -188,7 +188,7 @@
             // 
             // editApptTitleText
             // 
-            this.editApptTitleText.Location = new System.Drawing.Point(191, 29);
+            this.editApptTitleText.Location = new System.Drawing.Point(191, 25);
             this.editApptTitleText.Name = "editApptTitleText";
             this.editApptTitleText.Size = new System.Drawing.Size(217, 20);
             this.editApptTitleText.TabIndex = 0;
@@ -203,15 +203,15 @@
             this.cancelAddApptBtn.UseVisualStyleBackColor = true;
             this.cancelAddApptBtn.Click += new System.EventHandler(this.cancelAddApptBtn_Click);
             // 
-            // editApptButton
+            // saveApptEditBtn
             // 
-            this.editApptButton.Location = new System.Drawing.Point(224, 412);
-            this.editApptButton.Name = "editApptButton";
-            this.editApptButton.Size = new System.Drawing.Size(104, 23);
-            this.editApptButton.TabIndex = 4;
-            this.editApptButton.Text = "Save Changes";
-            this.editApptButton.UseVisualStyleBackColor = true;
-            this.editApptButton.Click += new System.EventHandler(this.editApptButton_Click);
+            this.saveApptEditBtn.Location = new System.Drawing.Point(224, 412);
+            this.saveApptEditBtn.Name = "saveApptEditBtn";
+            this.saveApptEditBtn.Size = new System.Drawing.Size(104, 23);
+            this.saveApptEditBtn.TabIndex = 4;
+            this.saveApptEditBtn.Text = "Save Changes";
+            this.saveApptEditBtn.UseVisualStyleBackColor = true;
+            this.saveApptEditBtn.Click += new System.EventHandler(this.saveApptEditBtn_Click);
             // 
             // editApptGroupBox
             // 
@@ -254,7 +254,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(460, 450);
             this.Controls.Add(this.cancelAddApptBtn);
-            this.Controls.Add(this.editApptButton);
+            this.Controls.Add(this.saveApptEditBtn);
             this.Controls.Add(this.editApptGroupBox);
             this.Name = "EditAppointment";
             this.Text = "Edit Appointment";
@@ -284,7 +284,7 @@
         private System.Windows.Forms.TextBox editApptDescText;
         private System.Windows.Forms.TextBox editApptTitleText;
         private System.Windows.Forms.Button cancelAddApptBtn;
-        private System.Windows.Forms.Button editApptButton;
+        private System.Windows.Forms.Button saveApptEditBtn;
         private System.Windows.Forms.GroupBox editApptGroupBox;
         private System.Windows.Forms.TextBox editApptCustText;
     }

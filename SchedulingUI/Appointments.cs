@@ -144,7 +144,10 @@ namespace SchedulingUI
                 apptId = Convert.ToInt32(selectedRow.Cells[0].Value);
             }
 
-            //EditAppointment editAppointment = new EditAppointment();
+            EditAppointment editAppointment = new EditAppointment(apptId);
+            editAppointment.Show();
+
+            //MessageBox.Show(apptId.ToString());
         }
 
         private void delApptBtn_Click(object sender, EventArgs e)
