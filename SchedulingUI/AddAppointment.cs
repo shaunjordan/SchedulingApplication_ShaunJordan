@@ -18,7 +18,13 @@ namespace SchedulingUI
         DBManager dBManager = new DBManager();
         Customer customer = new Customer();
         BindingList<string> customerNames = new BindingList<string>();
-        
+        private List<string> appointmentTypes = new List<string>
+        {
+            "Introductory",
+            "Follow-up",
+            "Consultation",
+            "Other"
+        };
 
         public AddAppointment()
         {
@@ -37,6 +43,7 @@ namespace SchedulingUI
                 customerNames.Add(customer.CustomerName);
             }
 
+            
 
 
             apptCustSelect.DataSource = customerNames;

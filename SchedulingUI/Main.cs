@@ -68,5 +68,11 @@ namespace SchedulingUI
 
             appointmentForm.Show();
         }
+
+        private void reportsBtn_Click(object sender, EventArgs e)
+        {
+            Reports reports = new Reports();
+            reports.Show();
+        }
     }
 }
