@@ -54,6 +54,7 @@
             this.schedBtn.TabIndex = 1;
             this.schedBtn.Text = "Consultant Schedules";
             this.schedBtn.UseVisualStyleBackColor = true;
+            this.schedBtn.Click += new System.EventHandler(this.schedBtn_Click);
             // 
             // totalCustsBtn
             // 
@@ -61,8 +62,9 @@
             this.totalCustsBtn.Name = "totalCustsBtn";
             this.totalCustsBtn.Size = new System.Drawing.Size(166, 23);
             this.totalCustsBtn.TabIndex = 2;
-            this.totalCustsBtn.Text = "Total Customers";
+            this.totalCustsBtn.Text = "Customers By Country";
             this.totalCustsBtn.UseVisualStyleBackColor = true;
+            this.totalCustsBtn.Click += new System.EventHandler(this.totalCustsBtn_Click);
             // 
             // reportsGroupBox
             // 
