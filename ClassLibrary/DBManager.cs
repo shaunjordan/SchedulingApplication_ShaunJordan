@@ -52,7 +52,7 @@ namespace ClassLibrary
 
         private int GetCountryId(string countryName, MySqlConnection conn)
         {
-            //TODO: connection is init in AddCustomer does it need to be added here as well? or passed into this param?
+            
             string ctryRtn = "select_country";
 
             int result;
@@ -86,7 +86,7 @@ namespace ClassLibrary
             cmd.Parameters["@cityId"].Direction = ParameterDirection.Output;
             cmd.ExecuteNonQuery();
 
-            cid = Convert.ToInt32(cmd.Parameters["@cityId"].Value); //TODO: get the OUT param from the procedure
+            cid = Convert.ToInt32(cmd.Parameters["@cityId"].Value);
 
             return cid;
 

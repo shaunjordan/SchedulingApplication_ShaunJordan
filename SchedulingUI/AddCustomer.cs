@@ -17,7 +17,13 @@ namespace SchedulingUI
         //TODO: country list selection should come directly from Database for single source updating
         DBConnection connection = new DBConnection();
 
+        DBManager newCustomer = new DBManager();
+
         Validations validations = new Validations();
+
+
+        //private List<string> requiredFields = new List<string>();
+
 
         public AddCustomer()
         {
@@ -30,7 +36,7 @@ namespace SchedulingUI
 
 
             connection.InitConnection();
-
+            
 
             string customerName = custNameTextBox.Text;
             string address1 = addressLine1.Text;
@@ -40,22 +46,36 @@ namespace SchedulingUI
             string phone = phoneTextBox.Text;
             string country = countrySelectBox.Text;
 
-            if (validations.Error(customerName))
+            List<string> requiredFields = new List<string> { customerName, address1, cityName, postalCode, phone, country };
+
+
+
+            foreach (string field in requiredFields)
             {
-
+                if (String.IsNullOrWhiteSpace(field))
+                {
+                    
+                }
             }
+            
 
-           
+            //if (validations.Error(customerName))
+            //{
 
-            DBManager newCustomer = new DBManager();
+            //}
+            //validations.Error(ErrorAlert);
 
             newCustomer.AddCustomer(customerName, address1, address2, cityName, postalCode, phone, country, User.displayName, connection.GetConnection());
-
-
+            
             connection.CloseConnection();
 
             this.Close();
 
+        }
+
+        private void ErrorAlert(string errors)
+        {
+            MessageBox.Show(errors);
         }
 
         private void cancelCustBtn_Click(object sender, EventArgs e)

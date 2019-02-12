@@ -48,7 +48,7 @@
             // 
             // schedBtn
             // 
-            this.schedBtn.Location = new System.Drawing.Point(19, 83);
+            this.schedBtn.Location = new System.Drawing.Point(19, 81);
             this.schedBtn.Name = "schedBtn";
             this.schedBtn.Size = new System.Drawing.Size(166, 23);
             this.schedBtn.TabIndex = 1;

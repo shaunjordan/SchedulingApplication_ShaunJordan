@@ -26,6 +26,8 @@ namespace SchedulingUI
             "Other"
         };
 
+        
+
         public AddAppointment()
         {
             InitializeComponent();

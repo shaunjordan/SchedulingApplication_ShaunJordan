@@ -9,18 +9,23 @@ namespace ClassLibrary
 {
     public class Validations
     {
-        //public delegate bool FieldValidation(TextBox text);
+       public delegate void FieldValidation(string textboxValue);
 
-       public bool Error(string value)
+       public void Error(FieldValidation fieldValidation)
         {
-            if (String.IsNullOrWhiteSpace(value))
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            string errors = "";
+
+            errors += "Error";
+
+            fieldValidation(errors);
+            //if (String.IsNullOrWhiteSpace(value))
+            //{
+            //    return false;
+            //}
+            //else
+            //{
+            //    return true;
+            //}
         }
 
     }
