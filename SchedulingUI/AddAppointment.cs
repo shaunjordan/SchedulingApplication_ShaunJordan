@@ -17,7 +17,9 @@ namespace SchedulingUI
         DBConnection connection = new DBConnection();
         DBManager dBManager = new DBManager();
         Customer customer = new Customer();
+
         BindingList<string> customerNames = new BindingList<string>();
+
         private List<string> appointmentTypes = new List<string>
         {
             "Introductory",
@@ -45,11 +47,13 @@ namespace SchedulingUI
                 customerNames.Add(customer.CustomerName);
             }
 
+            customerNames.Select(name => customer.GetCustomers());
             
-
+            
 
             apptCustSelect.DataSource = customerNames;
-            
+
+            apptTypeText.DataSource = appointmentTypes;
 
             
         }
@@ -81,6 +85,7 @@ namespace SchedulingUI
             DateTime startUTC = startTimeValue.ToUniversalTime();
             DateTime endUTC = endTimeValue.ToUniversalTime();
 
+            
             bool appointmentAdded = dBManager.AddAppointment(customer, title, descr, location, contact, type, url, startUTC.ToString("yyyy-MM-dd HH:mm:ss"), endUTC.ToString("yyyy-MM-dd HH:mm:ss"), connection.GetConnection());
 
 

@@ -48,7 +48,7 @@ namespace SchedulingUI
         {
             welcomeLabel.Text = "Welcome, " + User.displayName;
 
-            //TODO: this is here to populate the appts customer selection
+            //this is here to populate the appts customer selection
             //if user wants to add appointments before customers
             //it could be moved to activate when the appointments screen is activated
             conn.InitConnection();

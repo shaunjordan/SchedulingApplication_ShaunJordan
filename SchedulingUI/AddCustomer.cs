@@ -21,13 +21,16 @@ namespace SchedulingUI
 
         Validations validations = new Validations();
 
-
+        
+        
         //private List<string> requiredFields = new List<string>();
 
 
         public AddCustomer()
         {
             InitializeComponent();
+
+            countrySelectBox.SelectedIndex = 0;
             
         }
 
@@ -36,40 +39,48 @@ namespace SchedulingUI
 
 
             connection.InitConnection();
+
+            List<TextBox> requiredInputs = new List<TextBox> { custNameTextBox, addressLine1, cityTextBox, postalCodeTextbox, phoneTextBox };
             
+            var checkFields = requiredInputs.Where(input => String.IsNullOrWhiteSpace(input.Text))
+                //TODO: explain this lambda
+                .Select(input => input.AccessibleName)
+                .ToArray();
 
-            string customerName = custNameTextBox.Text;
-            string address1 = addressLine1.Text;
-            string address2 = addressLine2.Text;
-            string cityName = cityTextBox.Text;
-            string postalCode = postalCodeTextbox.Text;
-            string phone = phoneTextBox.Text;
-            string country = countrySelectBox.Text;
+            var checkedFields = checkFields;
 
-            List<string> requiredFields = new List<string> { customerName, address1, cityName, postalCode, phone, country };
-
-
-
-            foreach (string field in requiredFields)
+            if (checkedFields.Length > 0)
             {
-                if (String.IsNullOrWhiteSpace(field))
+                string InvalidFields = "";
+
+                foreach (var inputName in checkedFields)
                 {
-                    
+
+                 InvalidFields += inputName + " cannot be blank.\n";
+
                 }
+
+                MessageBox.Show(InvalidFields.ToString(), "Invalid data in form");
+                
             }
-            
+            else
+            {
+                string customerName = custNameTextBox.Text;
+                string address1 = addressLine1.Text;
+                string address2 = addressLine2.Text;
+                string cityName = cityTextBox.Text;
+                string postalCode = postalCodeTextbox.Text;
+                string phone = phoneTextBox.Text;
+                string country = countrySelectBox.Text;
 
-            //if (validations.Error(customerName))
-            //{
+                newCustomer.AddCustomer(customerName, address1, address2, cityName, postalCode, phone, country, User.displayName, connection.GetConnection());
 
-            //}
-            //validations.Error(ErrorAlert);
-
-            newCustomer.AddCustomer(customerName, address1, address2, cityName, postalCode, phone, country, User.displayName, connection.GetConnection());
-            
+                this.Close();
+            }
+                                  
             connection.CloseConnection();
 
-            this.Close();
+            
 
         }
 

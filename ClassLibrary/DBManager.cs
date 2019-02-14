@@ -15,7 +15,15 @@ namespace ClassLibrary
 {
     public class DBManager
     {
-                
+
+        public delegate bool NumberPred(int number);
+
+        NumberPred evenNum = IsEven;
+
+        public static bool IsEven(int number) => number % 2 == 0;
+
+        
+
         public void AddCustomer(string customerName, string address1, string address2, string cityName, string postalCode, string phone, string countryName, string createdBy, MySqlConnection conn)
         {
             //Retrieve the countryId based on name from a Stored Procedure

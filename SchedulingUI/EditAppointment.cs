@@ -16,7 +16,16 @@ namespace SchedulingUI
     {
         //TODO: set datetime to value from DB
         DBConnection conn = new DBConnection();
+
         DBManager dbManager = new DBManager();
+
+        private List<string> appointmentTypes = new List<string>
+        {
+            "Introductory",
+            "Follow-up",
+            "Consultation",
+            "Other"
+        };
 
         private int apptId;
 
@@ -34,7 +43,7 @@ namespace SchedulingUI
             editEndTimePicker.CustomFormat = "MM/dd/yyyy hh:mm tt";
             editEndTimePicker.Value = DateTime.Now; //enter the correct datetime from the appointment
 
-            
+            editApptTypeText.DataSource = appointmentTypes;
 
             apptId = appointmentId;
 

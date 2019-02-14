@@ -42,18 +42,19 @@
             this.apptLocationLabel = new System.Windows.Forms.Label();
             this.apptDescLabel = new System.Windows.Forms.Label();
             this.apptTitleLabel = new System.Windows.Forms.Label();
-            this.apptTypeText = new System.Windows.Forms.TextBox();
             this.apptContactText = new System.Windows.Forms.TextBox();
             this.apptLocationText = new System.Windows.Forms.TextBox();
             this.apptDescText = new System.Windows.Forms.TextBox();
             this.apptTitleText = new System.Windows.Forms.TextBox();
             this.addApptBtn = new System.Windows.Forms.Button();
             this.cancelAddApptBtn = new System.Windows.Forms.Button();
+            this.apptTypeText = new System.Windows.Forms.ComboBox();
             this.addApptGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // addApptGroupBox
             // 
+            this.addApptGroupBox.Controls.Add(this.apptTypeText);
             this.addApptGroupBox.Controls.Add(this.urlText);
             this.addApptGroupBox.Controls.Add(this.urlLabel);
             this.addApptGroupBox.Controls.Add(this.endTimePicker);
@@ -67,7 +68,6 @@
             this.addApptGroupBox.Controls.Add(this.apptLocationLabel);
             this.addApptGroupBox.Controls.Add(this.apptDescLabel);
             this.addApptGroupBox.Controls.Add(this.apptTitleLabel);
-            this.addApptGroupBox.Controls.Add(this.apptTypeText);
             this.addApptGroupBox.Controls.Add(this.apptContactText);
             this.addApptGroupBox.Controls.Add(this.apptLocationText);
             this.addApptGroupBox.Controls.Add(this.apptDescText);
@@ -193,13 +193,6 @@
             this.apptTitleLabel.TabIndex = 5;
             this.apptTitleLabel.Text = "Appointment Title";
             // 
-            // apptTypeText
-            // 
-            this.apptTypeText.Location = new System.Drawing.Point(191, 205);
-            this.apptTypeText.Name = "apptTypeText";
-            this.apptTypeText.Size = new System.Drawing.Size(217, 20);
-            this.apptTypeText.TabIndex = 4;
-            // 
             // apptContactText
             // 
             this.apptContactText.Location = new System.Drawing.Point(191, 167);
@@ -248,6 +241,14 @@
             this.cancelAddApptBtn.UseVisualStyleBackColor = true;
             this.cancelAddApptBtn.Click += new System.EventHandler(this.cancelAddApptBtn_Click);
             // 
+            // apptTypeText
+            // 
+            this.apptTypeText.FormattingEnabled = true;
+            this.apptTypeText.Location = new System.Drawing.Point(191, 203);
+            this.apptTypeText.Name = "apptTypeText";
+            this.apptTypeText.Size = new System.Drawing.Size(217, 21);
+            this.apptTypeText.TabIndex = 18;
+            // 
             // AddAppointment
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -275,7 +276,6 @@
         private System.Windows.Forms.Label apptLocationLabel;
         private System.Windows.Forms.Label apptDescLabel;
         private System.Windows.Forms.Label apptTitleLabel;
-        private System.Windows.Forms.TextBox apptTypeText;
         private System.Windows.Forms.TextBox apptContactText;
         private System.Windows.Forms.TextBox apptLocationText;
         private System.Windows.Forms.TextBox apptDescText;
@@ -287,5 +287,6 @@
         private System.Windows.Forms.TextBox urlText;
         private System.Windows.Forms.Label urlLabel;
         private System.Windows.Forms.Button cancelAddApptBtn;
+        private System.Windows.Forms.ComboBox apptTypeText;
     }
 }
