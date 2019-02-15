@@ -14,6 +14,12 @@ namespace ClassLibrary
 
         private static BindingList<Appointment> WeeklyAppointments = new BindingList<Appointment>();
 
+        public static List<string> businessDays = new List<string> { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday" };
+
+        public static int businessStart = 800;
+
+        public static int businessEnd = 1700;
+
         [DisplayName("Appointment Id")]
         public int AppointmentId { get; set; }
 

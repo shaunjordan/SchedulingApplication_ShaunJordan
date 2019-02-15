@@ -73,32 +73,30 @@ namespace SchedulingUI
             string contact = apptContactText.Text;
             string type = apptTypeText.Text;
             string url = urlText.Text;
-            string startTime = startTimePicker.Text;
-            string endTime = endTimePicker.Text;
+            DateTime startTime = DateTime.Parse(startTimePicker.Text);
+            DateTime endTime = DateTime.Parse(endTimePicker.Text);
 
-
-            DateTime startTimeValue = DateTime.Parse(startTime);
-            DateTime endTimeValue = DateTime.Parse(endTime);
-
-
-            //local time set to UTC before entry into database
-            DateTime startUTC = startTimeValue.ToUniversalTime();
-            DateTime endUTC = endTimeValue.ToUniversalTime();
 
             
-            bool appointmentAdded = dBManager.AddAppointment(customer, title, descr, location, contact, type, url, startUTC.ToString("yyyy-MM-dd HH:mm:ss"), endUTC.ToString("yyyy-MM-dd HH:mm:ss"), connection.GetConnection());
 
-
-            if (appointmentAdded)
+            //if startTime is before business start, after business end, or not a weekday fail out
+            // lambda expression used with LINQ to determine if 
+            if ((int)(startTime.TimeOfDay.TotalHours * 100) < Appointment.businessStart || (int)(startTime.TimeOfDay.TotalHours * 100) > Appointment.businessEnd || !Appointment.businessDays.Any(day => day == startTime.DayOfWeek.ToString()))
             {
-                MessageBox.Show("Appointment successfully added to the database");
+                MessageBox.Show("Appointment outside of business hours. Please adjust appointment time.");
             }
             else
             {
-                MessageBox.Show("There was an error adding the appointment, please try again.");
+                //local time set to UTC before entry into database
+                DateTime startUTC = startTime.ToUniversalTime();
+                DateTime endUTC = endTime.ToUniversalTime();
+
+
+                bool appointmentAdded = dBManager.AddAppointment(customer, title, descr, location, contact, type, url, startUTC.ToString("yyyy-MM-dd HH:mm:ss"), endUTC.ToString("yyyy-MM-dd HH:mm:ss"), connection.GetConnection());
+
+                this.Close();
             }
 
-            this.Close();
 
             connection.CloseConnection();
         }
