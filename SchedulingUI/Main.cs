@@ -61,7 +61,17 @@ namespace SchedulingUI
             //if user wants to add appointments before customers
             //it could be moved to activate when the appointments screen is activated
             conn.InitConnection();
+
             dbm.PopulateCustomerTable(conn.GetConnection());
+
+
+            /*
+             * if get max current time - max appt date <= 15, then reminder
+             * 
+             * 
+             */
+
+
             conn.CloseConnection();
         }
 

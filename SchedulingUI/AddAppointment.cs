@@ -80,8 +80,12 @@ namespace SchedulingUI
             
 
             //if startTime is before business start, after business end, or not a weekday fail out
-            // lambda expression used with LINQ to determine if 
-            if ((int)(startTime.TimeOfDay.TotalHours * 100) < Appointment.businessStart || (int)(startTime.TimeOfDay.TotalHours * 100) > Appointment.businessEnd || !Appointment.businessDays.Any(day => day == startTime.DayOfWeek.ToString()))
+            /* lambda expression used with LINQ to avoid manually looping through each item in the list of available weekdays
+             * to determine if chosen start day or end day is outside of business hours.
+             * the use of a lamba here simplifies the code and makes the footprint smaller
+             * A lamba can be used here to accomplish the same goals as a complicated for-loop.
+             */
+            if ((int)(startTime.TimeOfDay.TotalHours * 100) < Appointment.businessStart || (int)(startTime.TimeOfDay.TotalHours * 100) > Appointment.businessEnd || !Appointment.businessDays.Any(day => day == startTime.DayOfWeek.ToString()) || !Appointment.businessDays.Any(day => day == endTime.DayOfWeek.ToString()))
             {
                 MessageBox.Show("Appointment outside of business hours. Please adjust appointment time.");
             }

@@ -41,9 +41,14 @@ namespace SchedulingUI
             connection.InitConnection();
 
             List<TextBox> requiredInputs = new List<TextBox> { custNameTextBox, addressLine1, cityTextBox, postalCodeTextbox, phoneTextBox };
-            
+            /*
+             * Lamba used here to determine if any of the required textboxes are empty or contain only whitespace
+             * If so the name of the textbox is pushed to a string to display in a message box along with some error text.
+             * This is more efficient than using a for-loop to loop through the list of required textboxes and determine if they are empty:
+             * to do so would require multiple lines of code, whereas the use of a lambda and some methods on the textboxes allows for the 
+             * same to be accomplished in three lines of code.
+             */
             var checkFields = requiredInputs.Where(input => String.IsNullOrWhiteSpace(input.Text))
-                //TODO: explain this lambda
                 .Select(input => input.AccessibleName)
                 .ToArray();
 
