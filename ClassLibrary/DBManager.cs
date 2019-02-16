@@ -418,9 +418,42 @@ namespace ClassLibrary
             reader.Dispose();
         }
 
-        public void LatestAppointment()
+        public StringBuilder Reminder(MySqlConnection conn)
         {
+            string reminder = "reminder_proc";
 
+            StringBuilder reminderString = new StringBuilder();
+
+            var formatString = "Your {0} appointment with {1} is in {2} minutes.";
+            
+
+            MySqlCommand cmd = new MySqlCommand(reminder, conn);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@currentTime", DateTime.Now.ToUniversalTime().ToString());
+            cmd.Parameters.AddWithValue("@userName", User.displayName);
+
+            MySqlDataReader reader = cmd.ExecuteReader();
+
+            if (reader == null)
+            {
+
+                reminderString.Append("You have no appointments within the next 15 minutes.");
+            }
+            else
+            {
+                while (reader.Read())
+                {
+
+                    var valueArray = new object[3] { reader[0].ToString(), reader[1].ToString(), reader[2].ToString() };
+
+                    reminderString.AppendFormat(formatString, valueArray);
+                }
+            }
+
+            reader.Close();
+            reader.Dispose();
+
+            return reminderString;
         }
     }
 }

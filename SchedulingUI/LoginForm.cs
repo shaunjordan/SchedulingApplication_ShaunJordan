@@ -34,13 +34,14 @@ namespace SchedulingUI
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-
+            //TODO: region not picking up
 
             string userError = Properties.Resources.ResourceManager.GetString("UserNotFound", ci);
             string invalidPass = Properties.Resources.ResourceManager.GetString("InvalidPassword", ci);
             string tryAgain = Properties.Resources.ResourceManager.GetString("PleaseTryAgain", ci);
 
             #region Login
+            
 
 
             UserLogin login = new UserLogin();

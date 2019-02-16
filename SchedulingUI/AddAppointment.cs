@@ -77,20 +77,24 @@ namespace SchedulingUI
             DateTime endTime = DateTime.Parse(endTimePicker.Text);
 
 
-            
-
-            //if startTime is before business start, after business end, or not a weekday fail out
             /* lambda expression used with LINQ to avoid manually looping through each item in the list of available weekdays
              * to determine if chosen start day or end day is outside of business hours.
              * the use of a lamba here simplifies the code and makes the footprint smaller
              * A lamba can be used here to accomplish the same goals as a complicated for-loop.
              */
-            if ((int)(startTime.TimeOfDay.TotalHours * 100) < Appointment.businessStart || (int)(startTime.TimeOfDay.TotalHours * 100) > Appointment.businessEnd || !Appointment.businessDays.Any(day => day == startTime.DayOfWeek.ToString()) || !Appointment.businessDays.Any(day => day == endTime.DayOfWeek.ToString()))
-            {
-                MessageBox.Show("Appointment outside of business hours. Please adjust appointment time.");
-            }
-            else
-            {
+
+            //if startTime is before set business start, after set business end, or not a weekday, or before current day fail out
+
+            //if ((int)(startTime.TimeOfDay.TotalHours * 100) < Appointment.businessStart || 
+            //    (int)(startTime.TimeOfDay.TotalHours * 100) > Appointment.businessEnd || 
+            //    !Appointment.businessDays.Any(day => day == startTime.DayOfWeek.ToString()) || 
+            //    !Appointment.businessDays.Any(day => day == endTime.DayOfWeek.ToString()) || 
+            //    startTime < DateTime.Now || endTime < DateTime.Now)
+            //{
+            //    MessageBox.Show("Appointment outside of business hours. Please adjust appointment time.");
+            //}
+            //else
+            //{
                 //local time set to UTC before entry into database
                 DateTime startUTC = startTime.ToUniversalTime();
                 DateTime endUTC = endTime.ToUniversalTime();
@@ -99,7 +103,7 @@ namespace SchedulingUI
                 bool appointmentAdded = dBManager.AddAppointment(customer, title, descr, location, contact, type, url, startUTC.ToString("yyyy-MM-dd HH:mm:ss"), endUTC.ToString("yyyy-MM-dd HH:mm:ss"), connection.GetConnection());
 
                 this.Close();
-            }
+            //}
 
 
             connection.CloseConnection();

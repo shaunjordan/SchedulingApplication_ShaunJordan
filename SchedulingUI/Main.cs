@@ -64,14 +64,12 @@ namespace SchedulingUI
 
             dbm.PopulateCustomerTable(conn.GetConnection());
 
-
-            /*
-             * if get max current time - max appt date <= 15, then reminder
-             * 
-             * 
-             */
-
-
+            //should only run if true
+           
+            MessageBox.Show(dbm.Reminder(conn.GetConnection()).ToString());
+            
+            
+            
             conn.CloseConnection();
         }
 
