@@ -57,13 +57,9 @@ namespace SchedulingUI
             conn.InitConnection();
 
             dbm.PopulateCustomerTable(conn.GetConnection());
-
-            //should only run if true
-           
+                       
             MessageBox.Show(dbm.Reminder(conn.GetConnection()).ToString());
-            
-            
-            
+   
             conn.CloseConnection();
         }
 

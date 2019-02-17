@@ -195,5 +195,23 @@ namespace SchedulingUI
             conn.CloseConnection();
 
         }
+
+        private void Appointments_Activated(object sender, EventArgs e)
+        {
+            conn.InitConnection();
+
+            int month = months.IndexOf(monthPicker.Text) + 1;
+
+            DateTime startingDate = DateTime.Parse(weekPicker.Text.Substring(0, 10));
+            DateTime endingDate = DateTime.Parse(weekPicker.Text.Substring(14, 10)).AddDays(1).Date.AddSeconds(-1);
+
+            appointments.ClearMonthly();
+            appointments.ClearWeekly();
+
+            apptManager.UpdateMonthGrid(month, conn.GetConnection());
+            apptManager.UpdateWeekGrid(startingDate.ToString("yyyy-MM-dd HH:mm:ss"), endingDate.ToString("yyyy-MM-dd HH:mm:ss"), conn.GetConnection());
+
+            conn.CloseConnection();
+        }
     }
 }

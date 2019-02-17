@@ -212,6 +212,7 @@
             this.Controls.Add(this.addApptBtn);
             this.Name = "Appointments";
             this.Text = "Appointments";
+            this.Activated += new System.EventHandler(this.Appointments_Activated);
             this.apptsTabs.ResumeLayout(false);
             this.apptsByMonthTab.ResumeLayout(false);
             this.apptsByMonthTab.PerformLayout();

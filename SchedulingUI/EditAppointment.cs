@@ -54,7 +54,9 @@ namespace SchedulingUI
                             "contact," +
                             "location," +
                             "type," +
-                            "url " +
+                            "url, " +
+                            "start, " +
+                            "end " +
                             "FROM appointment " +
                             "INNER JOIN customer " +
                             "ON appointment.customerId = customer.customerId " +
@@ -77,8 +79,12 @@ namespace SchedulingUI
                     editApptContactText.Text = reader[4].ToString();
                     editApptTypeText.Text = reader[5].ToString();
                     editUrlText.Text = reader[6].ToString();
-                    //editStartTimePicker.Text;
-                    //editEndTimePicker.Text;
+
+                    DateTime pickerStart = DateTime.Parse(reader[7].ToString());
+                    DateTime pickerEnd = DateTime.Parse(reader[8].ToString());
+
+                    editStartTimePicker.Text = pickerStart.ToLocalTime().ToString();
+                    editEndTimePicker.Text = pickerEnd.ToLocalTime().ToString();
                     
                 }
             }
@@ -102,7 +108,7 @@ namespace SchedulingUI
         {
             conn.InitConnection();
 
-            int apptId = 1;
+            
             string title = editApptTitleText.Text;
             string description = editApptDescText.Text;
             string contact = editApptContactText.Text;
@@ -120,6 +126,7 @@ namespace SchedulingUI
 
             dbManager.EditAppointment(apptId, title, description, contact, location, type, url, startUTC.ToString("yyyy-MM-dd HH:mm:ss"), endUTC.ToString("yyyy-MM-dd HH:mm:ss"), User.displayName, conn.GetConnection());
 
+            this.Close();
 
             conn.CloseConnection();
         }

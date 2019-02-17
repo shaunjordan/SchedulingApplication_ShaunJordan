@@ -17,6 +17,7 @@ namespace SchedulingUI
         DBConnection connection = new DBConnection();
         DBManager dBManager = new DBManager();
         Customer customer = new Customer();
+        Appointment appointment = new Appointment();
 
         BindingList<string> customerNames = new BindingList<string>();
 
@@ -84,19 +85,28 @@ namespace SchedulingUI
              */
 
             //if startTime is before set business start, after set business end, or not a weekday, or before current day fail out
-
-            //TODO: add in extra logic on appointment overlap
-
-            //if ((int)(startTime.TimeOfDay.TotalHours * 100) < Appointment.businessStart || 
-            //    (int)(startTime.TimeOfDay.TotalHours * 100) > Appointment.businessEnd || 
-            //    !Appointment.businessDays.Any(day => day == startTime.DayOfWeek.ToString()) || 
-            //    !Appointment.businessDays.Any(day => day == endTime.DayOfWeek.ToString()) || 
-            //    startTime < DateTime.Now || endTime < DateTime.Now)
-            //{
-            //    MessageBox.Show("Appointment outside of business hours. Please adjust appointment time.");
-            //}
-            //else
-            //{
+            if (endTime < startTime)
+            {
+                MessageBox.Show("Appointment cannot end before starting. Adjust appointment times.");
+            }
+            else if (appointment.GetMonthlyAppointments()
+                .Where(x => (startTime >= x.Start && startTime <= x.End)
+                || (endTime >= x.Start && endTime <= x.End)
+                || (x.Start >= startTime && x.Start <= endTime)
+                ).Count() > 0)
+            {
+                MessageBox.Show("Appointments cannot overalp. Please adjust appointment times.");
+            }
+            else if ((int)(startTime.TimeOfDay.TotalHours * 100) < Appointment.businessStart ||
+                (int)(startTime.TimeOfDay.TotalHours * 100) > Appointment.businessEnd ||
+                !Appointment.businessDays.Any(day => day == startTime.DayOfWeek.ToString()) ||
+                !Appointment.businessDays.Any(day => day == endTime.DayOfWeek.ToString()) ||
+                startTime < DateTime.Now || endTime < DateTime.Now)
+            {
+                MessageBox.Show("Appointment outside of business hours. Please adjust appointment time.");
+            }
+            else
+            {
                 //local time set to UTC before entry into database
                 DateTime startUTC = startTime.ToUniversalTime();
                 DateTime endUTC = endTime.ToUniversalTime();
@@ -105,7 +115,7 @@ namespace SchedulingUI
                 bool appointmentAdded = dBManager.AddAppointment(customer, title, descr, location, contact, type, url, startUTC.ToString("yyyy-MM-dd HH:mm:ss"), endUTC.ToString("yyyy-MM-dd HH:mm:ss"), connection.GetConnection());
 
                 this.Close();
-            //}
+            }
 
 
             connection.CloseConnection();
