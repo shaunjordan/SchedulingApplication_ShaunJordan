@@ -5,9 +5,11 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClassLibrary;
+using System.Globalization;
 
 namespace SchedulingUI
 {
@@ -28,27 +30,19 @@ namespace SchedulingUI
             //DateTime myDate = DateTime.UtcNow;
             //DateTime toLoc = myDate.ToLocalTime();
 
-            DateTime businessStart = DateTime.Now;
+            CultureInfo.CurrentCulture.ClearCachedData();
 
+            CultureInfo.CurrentUICulture.ClearCachedData();
 
-
-
-            ////MessageBox.Show(toLoc.ToString());
-            //int year = Convert.ToInt32(DateTime.Now.Year);
-            //DateTime start = new DateTime(year, 1, 1);
-
-            //start.AddDays(1 - (int)start.DayOfWeek);
-            if ((decimal)businessStart.TimeOfDay.TotalHours > 16)
-            {
-                MessageBox.Show("Test");
-            }
 
             //MessageBox.Show(start.ToString());
             //MessageBox.Show(businessStart.TimeOfDay.TotalHours.ToString());
+            MessageBox.Show(DateTime.Now.ToUniversalTime().ToString());
         }
 
         private void custMgrBtn_Click(object sender, EventArgs e)
         {
+
             Customers customers = new Customers();
             customers.Show();
         }

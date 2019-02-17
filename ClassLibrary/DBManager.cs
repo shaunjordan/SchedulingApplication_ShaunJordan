@@ -429,17 +429,12 @@ namespace ClassLibrary
 
             MySqlCommand cmd = new MySqlCommand(reminder, conn);
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@currentTime", DateTime.Now.ToUniversalTime().ToString());
+            cmd.Parameters.AddWithValue("@currentTime", DateTime.Now.ToUniversalTime().ToString("yyyy-MM-dd HH:mm:ss"));
             cmd.Parameters.AddWithValue("@userName", User.displayName);
 
             MySqlDataReader reader = cmd.ExecuteReader();
 
-            if (reader == null)
-            {
-
-                reminderString.Append("You have no appointments within the next 15 minutes.");
-            }
-            else
+            if (reader != null)
             {
                 while (reader.Read())
                 {
@@ -448,12 +443,20 @@ namespace ClassLibrary
 
                     reminderString.AppendFormat(formatString, valueArray);
                 }
-            }
+            }          
 
             reader.Close();
             reader.Dispose();
 
-            return reminderString;
+            if (reminderString.ToString() == "")
+            {
+                reminderString.Append("You have no appointments in the next 15 minutes.");
+                return reminderString;
+            }
+            else
+            {
+                return reminderString;
+            }
         }
     }
 }

@@ -85,6 +85,8 @@ namespace SchedulingUI
 
             //if startTime is before set business start, after set business end, or not a weekday, or before current day fail out
 
+            //TODO: add in extra logic on appointment overlap
+
             //if ((int)(startTime.TimeOfDay.TotalHours * 100) < Appointment.businessStart || 
             //    (int)(startTime.TimeOfDay.TotalHours * 100) > Appointment.businessEnd || 
             //    !Appointment.businessDays.Any(day => day == startTime.DayOfWeek.ToString()) || 

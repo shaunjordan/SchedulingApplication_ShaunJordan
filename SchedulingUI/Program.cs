@@ -19,6 +19,7 @@ namespace SchedulingUI
         static void Main()
         {
             CultureInfo ci = Thread.CurrentThread.CurrentCulture;
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Main());

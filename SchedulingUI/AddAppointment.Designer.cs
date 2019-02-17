@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.addApptGroupBox = new System.Windows.Forms.GroupBox();
+            this.apptTypeText = new System.Windows.Forms.ComboBox();
             this.urlText = new System.Windows.Forms.TextBox();
             this.urlLabel = new System.Windows.Forms.Label();
             this.endTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -48,7 +49,6 @@
             this.apptTitleText = new System.Windows.Forms.TextBox();
             this.addApptBtn = new System.Windows.Forms.Button();
             this.cancelAddApptBtn = new System.Windows.Forms.Button();
-            this.apptTypeText = new System.Windows.Forms.ComboBox();
             this.addApptGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -78,6 +78,15 @@
             this.addApptGroupBox.TabIndex = 0;
             this.addApptGroupBox.TabStop = false;
             this.addApptGroupBox.Text = "Add Appointment";
+            // 
+            // apptTypeText
+            // 
+            this.apptTypeText.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.apptTypeText.FormattingEnabled = true;
+            this.apptTypeText.Location = new System.Drawing.Point(191, 203);
+            this.apptTypeText.Name = "apptTypeText";
+            this.apptTypeText.Size = new System.Drawing.Size(217, 21);
+            this.apptTypeText.TabIndex = 18;
             // 
             // urlText
             // 
@@ -240,14 +249,6 @@
             this.cancelAddApptBtn.Text = "Cancel";
             this.cancelAddApptBtn.UseVisualStyleBackColor = true;
             this.cancelAddApptBtn.Click += new System.EventHandler(this.cancelAddApptBtn_Click);
-            // 
-            // apptTypeText
-            // 
-            this.apptTypeText.FormattingEnabled = true;
-            this.apptTypeText.Location = new System.Drawing.Point(191, 203);
-            this.apptTypeText.Name = "apptTypeText";
-            this.apptTypeText.Size = new System.Drawing.Size(217, 21);
-            this.apptTypeText.TabIndex = 18;
             // 
             // AddAppointment
             // 
