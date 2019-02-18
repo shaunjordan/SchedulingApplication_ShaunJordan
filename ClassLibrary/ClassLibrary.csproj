@@ -56,7 +56,6 @@
     <Compile Include="ReportManager.cs" />
     <Compile Include="User.cs" />
     <Compile Include="UserLogin.cs" />
-    <Compile Include="Validations.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

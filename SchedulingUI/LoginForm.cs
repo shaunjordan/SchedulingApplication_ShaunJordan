@@ -34,7 +34,7 @@ namespace SchedulingUI
 
         private void loginButton_Click(object sender, EventArgs e)
         {
-            //TODO: region not picking up
+            
 
             string userError = Properties.Resources.ResourceManager.GetString("UserNotFound", ci);
             string invalidPass = Properties.Resources.ResourceManager.GetString("InvalidPassword", ci);
@@ -56,7 +56,6 @@ namespace SchedulingUI
             if (validLogin == 0)
             {
                 DialogResult = System.Windows.Forms.DialogResult.None;
-                //MessageBox.Show("Please check the user name or contact your administrator.", "User not found");
                 MessageBox.Show(tryAgain, userError);
 
             }

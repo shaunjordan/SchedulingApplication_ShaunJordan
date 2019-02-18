@@ -17,69 +17,14 @@ namespace SchedulingUI
     public partial class Customers : Form
     {
 
-        //TODO rename the DBManager connections
-        DBManager m = new DBManager();
+        
+        DBManager dbm = new DBManager();
         DBConnection connection = new DBConnection();
         Customer customer = new Customer();
 
         public Customers()
         {
             InitializeComponent();
-
-            #region old
-
-
-            //DBConnection connection = new DBConnection();
-            //connection.InitConnection();
-
-            //BindingList<Customer> AllCustomers = new BindingList<Customer>();
-
-            //string select = "SELECT " +
-            //                "cust.customerId," +
-            //                "cust.customerName," +
-            //                "addr.address," +
-            //                "addr.address2," +
-            //                "city.city," +
-            //                "addr.postalcode," +
-            //                "addr.phone," +
-            //                "ctry.country " +
-            //                "FROM customer cust INNER JOIN address addr ON addr.addressId = cust.addressId " +
-            //                "INNER JOIN city ON city.cityId = addr.cityId " +
-            //                "INNER JOIN country ctry ON ctry.countryId = city.countryId " +
-            //                "ORDER BY cust.customerId ASC";
-
-            //MySqlCommand cmd = new MySqlCommand(select, connection.GetConnection());
-
-            //MySqlDataReader reader = cmd.ExecuteReader();
-
-            //if (reader != null)
-            //{
-            //    while (reader.Read())
-            //    {
-            //        Customer customer = new Customer();
-            //        customer.CustomerId = Convert.ToInt32(reader[0]);
-            //        customer.CustomerName = reader[1].ToString();
-            //        customer.Address1 = reader[2].ToString();
-            //        customer.Address2 = reader[3].ToString();
-            //        customer.City = reader[4].ToString();
-            //        customer.PostalCode = reader[5].ToString();
-            //        customer.Phone = reader[6].ToString();
-            //        customer.Country = reader[7].ToString();
-
-            //        AllCustomers.Add(customer);
-
-            //        //customer.AddCustomer(customer);
-
-            //    }
-            //}
-
-            //customersDataGrid.DataSource = AllCustomers;
-
-            //reader.Close();
-            //reader.Dispose();
-            //connection.CloseConnection();
-            #endregion
-
 
         }
 
@@ -119,9 +64,9 @@ namespace SchedulingUI
             {
                 connection.InitConnection();
 
-                m.DeleteCustomer(connection.GetConnection(), customerId);
+                dbm.DeleteCustomer(connection.GetConnection(), customerId);
                 customer.ClearList();
-                m.PopulateCustomerTable(connection.GetConnection());
+                dbm.PopulateCustomerTable(connection.GetConnection());
 
             }
 
@@ -139,7 +84,7 @@ namespace SchedulingUI
               
             customer.ClearList();
 
-            m.PopulateCustomerTable(connection.GetConnection());
+            dbm.PopulateCustomerTable(connection.GetConnection());
 
             BindingSource customerListSource = new BindingSource();
             customerListSource.DataSource = customer.GetCustomers();

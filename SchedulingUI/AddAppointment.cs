@@ -63,7 +63,7 @@ namespace SchedulingUI
         {
             connection.InitConnection();
 
-            //TODO: set business times.
+            
 
             TimeZone localTime = TimeZone.CurrentTimeZone;
 
@@ -98,7 +98,7 @@ namespace SchedulingUI
                 MessageBox.Show("Appointments cannot overalp. Please adjust appointment times.");
             }
             else if ((int)(startTime.TimeOfDay.TotalHours * 100) < Appointment.businessStart ||
-                (int)(startTime.TimeOfDay.TotalHours * 100) > Appointment.businessEnd ||
+                (int)(endTime.TimeOfDay.TotalHours * 100) > Appointment.businessEnd ||
                 !Appointment.businessDays.Any(day => day == startTime.DayOfWeek.ToString()) ||
                 !Appointment.businessDays.Any(day => day == endTime.DayOfWeek.ToString()) ||
                 startTime < DateTime.Now || endTime < DateTime.Now)

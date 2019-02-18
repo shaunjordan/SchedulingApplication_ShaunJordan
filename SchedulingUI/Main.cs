@@ -22,24 +22,7 @@ namespace SchedulingUI
         {
             InitializeComponent();
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            // Test button
-            //MessageBox.Show(User.displayName);
-            //DateTime myDate = DateTime.UtcNow;
-            //DateTime toLoc = myDate.ToLocalTime();
-
-            CultureInfo.CurrentCulture.ClearCachedData();
-
-            CultureInfo.CurrentUICulture.ClearCachedData();
-
-
-            //MessageBox.Show(start.ToString());
-            //MessageBox.Show(businessStart.TimeOfDay.TotalHours.ToString());
-            MessageBox.Show(DateTime.Now.ToUniversalTime().ToString());
-        }
-
+      
         private void custMgrBtn_Click(object sender, EventArgs e)
         {
 

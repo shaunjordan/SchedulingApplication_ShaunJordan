@@ -14,7 +14,7 @@ namespace SchedulingUI
 {
     public partial class EditCustomer : Form
     {
-        //TODO: pass customer data into validations
+        
         //New DB connection called here because edit form needs its own
         //instead of allowing the edit button to open and close the connection
         DBConnection connection = new DBConnection();
@@ -89,7 +89,7 @@ namespace SchedulingUI
 
         private void cancelEditCustBtn_Click(object sender, EventArgs e)
         {
-            //TODO: are you sure you want to cancel? Changes will not be saved
+           
             this.Close();
         }
     }

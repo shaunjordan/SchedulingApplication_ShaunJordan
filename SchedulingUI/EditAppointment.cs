@@ -14,7 +14,7 @@ namespace SchedulingUI
 {
     public partial class EditAppointment : Form
     {
-        //TODO: set datetime to value from DB
+        
         DBConnection conn = new DBConnection();
 
         DBManager dbManager = new DBManager();
@@ -115,14 +115,11 @@ namespace SchedulingUI
             string location = editApptLocationText.Text;
             string type = editApptTypeText.Text;
             string url = editUrlText.Text;
-            string startTime = editStartTimePicker.Text;
-            string endTime = editEndTimePicker.Text;
+            DateTime startTime = DateTime.Parse(editStartTimePicker.Text);
+            DateTime endTime = DateTime.Parse(editEndTimePicker.Text);
 
-            DateTime startTimeValue = DateTime.Parse(startTime);
-            DateTime endTimeValue = DateTime.Parse(endTime);
-
-            DateTime startUTC = startTimeValue.ToUniversalTime();
-            DateTime endUTC = endTimeValue.ToUniversalTime();
+            DateTime startUTC = startTime.ToUniversalTime();
+            DateTime endUTC = endTime.ToUniversalTime();
 
             dbManager.EditAppointment(apptId, title, description, contact, location, type, url, startUTC.ToString("yyyy-MM-dd HH:mm:ss"), endUTC.ToString("yyyy-MM-dd HH:mm:ss"), User.displayName, conn.GetConnection());
 

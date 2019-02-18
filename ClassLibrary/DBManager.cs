@@ -70,8 +70,7 @@ namespace ClassLibrary
 
         private int GetCityId(string cityName, int countryId, string createdBy, MySqlConnection conn)
         {
-            //TODO: pass the user name into here
-            //TODO: wrap up everything in a using statements
+            
             string cityRtn = "insert_city";
             int cid;
 
@@ -209,7 +208,7 @@ namespace ClassLibrary
 
         public bool DeleteAppointment(MySqlConnection conn, int apptId)
         {
-            //TODO: catch exceptions
+            
             string delete_appointment = "delete_appointment";
 
             MySqlCommand cmd = new MySqlCommand(delete_appointment, conn);
@@ -238,7 +237,7 @@ namespace ClassLibrary
             
         }
 
-        //TODO: update method to bool or int
+        
         public void UpdateCustomer(MySqlConnection conn, int customerId, string customerName, string address1, string address2, string cityName, string postal, string ctryName, string phone)
         {
             string update = "update_customer";

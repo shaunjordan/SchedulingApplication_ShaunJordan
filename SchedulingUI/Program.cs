@@ -18,13 +18,21 @@ namespace SchedulingUI
         [STAThread]
         static void Main()
         {
-            CultureInfo ci = Thread.CurrentThread.CurrentCulture;
+            
+            //sourced from: https://stackoverflow.com/questions/8879259/get-current-location-as-specified-in-region-and-language-in-c-sharp
+            var regKeyGeoId = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(@"Control Panel\International\Geo");
+            var geoID = (string)regKeyGeoId.GetValue("Nation");
+            var allRegions = CultureInfo.GetCultures(CultureTypes.SpecificCultures).Select(x => new RegionInfo(x.ToString()));
+            var regionInfo = allRegions.FirstOrDefault(r => r.GeoId == Int32.Parse(geoID));
+
+            CultureInfo ci = new CultureInfo(regionInfo.ToString());
+
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Main());
+            
 
-            // TODO: add this back after debugging. 
+            
             Main mainScreen = new Main();
             LoginForm loginForm = new LoginForm(ci);
 

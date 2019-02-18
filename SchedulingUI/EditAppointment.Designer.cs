@@ -47,8 +47,8 @@
             this.cancelAddApptBtn = new System.Windows.Forms.Button();
             this.saveApptEditBtn = new System.Windows.Forms.Button();
             this.editApptGroupBox = new System.Windows.Forms.GroupBox();
-            this.editApptCustText = new System.Windows.Forms.TextBox();
             this.editApptTypeText = new System.Windows.Forms.ComboBox();
+            this.editApptCustText = new System.Windows.Forms.TextBox();
             this.editApptGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -233,6 +233,15 @@
             this.editApptGroupBox.TabStop = false;
             this.editApptGroupBox.Text = "Edit Appointment";
             // 
+            // editApptTypeText
+            // 
+            this.editApptTypeText.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.editApptTypeText.FormattingEnabled = true;
+            this.editApptTypeText.Location = new System.Drawing.Point(191, 203);
+            this.editApptTypeText.Name = "editApptTypeText";
+            this.editApptTypeText.Size = new System.Drawing.Size(217, 21);
+            this.editApptTypeText.TabIndex = 19;
+            // 
             // editApptCustText
             // 
             this.editApptCustText.Location = new System.Drawing.Point(191, 61);
@@ -240,14 +249,6 @@
             this.editApptCustText.ReadOnly = true;
             this.editApptCustText.Size = new System.Drawing.Size(217, 20);
             this.editApptCustText.TabIndex = 18;
-            // 
-            // editApptTypeText
-            // 
-            this.editApptTypeText.FormattingEnabled = true;
-            this.editApptTypeText.Location = new System.Drawing.Point(191, 203);
-            this.editApptTypeText.Name = "editApptTypeText";
-            this.editApptTypeText.Size = new System.Drawing.Size(217, 21);
-            this.editApptTypeText.TabIndex = 19;
             // 
             // EditAppointment
             // 

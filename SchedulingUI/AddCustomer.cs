@@ -14,18 +14,12 @@ namespace SchedulingUI
 {
     public partial class AddCustomer : Form
     {
-        //TODO: country list selection should come directly from Database for single source updating
+        
         DBConnection connection = new DBConnection();
 
         DBManager newCustomer = new DBManager();
-
-        Validations validations = new Validations();
-
-        
-        
-        //private List<string> requiredFields = new List<string>();
-
-
+               
+               
         public AddCustomer()
         {
             InitializeComponent();
@@ -82,6 +76,16 @@ namespace SchedulingUI
 
                 this.Close();
             }
+
+            try
+            {
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
                                   
             connection.CloseConnection();
 
@@ -96,7 +100,7 @@ namespace SchedulingUI
 
         private void cancelCustBtn_Click(object sender, EventArgs e)
         {
-            //TODO: are you sure you want to cancel?
+            
             this.Close();
 
         }

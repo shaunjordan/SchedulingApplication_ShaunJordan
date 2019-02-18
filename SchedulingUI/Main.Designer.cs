@@ -28,23 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.testConn = new System.Windows.Forms.Button();
             this.apptMgrBtn = new System.Windows.Forms.Button();
             this.custMgrBtn = new System.Windows.Forms.Button();
             this.exitBtn = new System.Windows.Forms.Button();
             this.reportsBtn = new System.Windows.Forms.Button();
             this.welcomeLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // testConn
-            // 
-            this.testConn.Location = new System.Drawing.Point(409, 386);
-            this.testConn.Name = "testConn";
-            this.testConn.Size = new System.Drawing.Size(75, 23);
-            this.testConn.TabIndex = 0;
-            this.testConn.Text = "dbtest";
-            this.testConn.UseVisualStyleBackColor = true;
-            this.testConn.Click += new System.EventHandler(this.button1_Click);
             // 
             // apptMgrBtn
             // 
@@ -109,7 +98,6 @@
             this.Controls.Add(this.exitBtn);
             this.Controls.Add(this.custMgrBtn);
             this.Controls.Add(this.apptMgrBtn);
-            this.Controls.Add(this.testConn);
             this.Name = "Main";
             this.Text = "Main";
             this.Load += new System.EventHandler(this.Main_Load);
@@ -119,8 +107,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button testConn;
         private System.Windows.Forms.Button apptMgrBtn;
         private System.Windows.Forms.Button custMgrBtn;
         private System.Windows.Forms.Button exitBtn;
